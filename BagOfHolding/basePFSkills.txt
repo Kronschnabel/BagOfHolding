@@ -1,0 +1,23 @@
+skill>Acrobatics|0|1|0|0|0|0|0|false|false
+skill>Appraise|0|3|0|0|0|0|false|false
+skill>Bluff|0|5|0|0|0|0|false|false
+skill>Climb|0|0|0|0|0|0|false|false
+skill>Craft|0|3|0|0|0|0|false|false
+skill>Diplomacy|0|5|0|0|0|0|false|false
+skill>Disable Device|0|1|0|0|0|0|false|false
+skill>Disguise|0|5|0|0|0|0|false|false
+skill>Escape Artist|0|1|0|0|0|0|false|false
+skill>Fly|0|1|0|0|0|0|false|false
+skill>Handle Animal|0|5|0|0|0|0|false|false
+skill>Heal|0|4|0|0|0|0|false|false
+skill>Intimidate|0|5|0|0|0|0|false|false
+skill>Linguistics|0|3|0|0|0|0|false|false
+skill>Perception|0|3|0|0|0|0|false|false
+skill>Ride|0|1|0|0|0|0|false|false
+skill>Sense Motive|0|4|0|0|0|0|false|false
+skill>Sleight of Hand|0|1|0|0|0|0|false|false
+skill>Spellcraft|0|3|0|0|0|0|false|false
+skill>Stealth|0|1|0|0|0|0|false|false
+skill>Survival|0|4|0|0|0|0|false|false
+skill>Swim|0|0|0|0|0|0|false|false
+skill>Use Magic Device|0|5|0|0|0|0|false|false
