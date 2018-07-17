@@ -41,7 +41,7 @@
             this.item_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.item_table.ColumnCount = 2;
             this.item_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.item_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 423F));
+            this.item_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 424F));
             this.item_table.Controls.Add(this.item_info_table, 1, 0);
             this.item_table.Controls.Add(this.notes_box, 1, 1);
             this.item_table.Controls.Add(this.equipped_box, 0, 0);
@@ -60,11 +60,11 @@
             this.item_info_table.ColumnCount = 3;
             this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.27586F));
             this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.72414F));
-            this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
             this.item_info_table.Controls.Add(this.weight_box, 0, 0);
             this.item_info_table.Controls.Add(this.cost_box, 1, 0);
             this.item_info_table.Controls.Add(this.item_name_box, 0, 0);
-            this.item_info_table.Location = new System.Drawing.Point(30, 4);
+            this.item_info_table.Location = new System.Drawing.Point(29, 4);
             this.item_info_table.Name = "item_info_table";
             this.item_info_table.RowCount = 1;
             this.item_info_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -77,7 +77,7 @@
             this.weight_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.weight_box.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.weight_box.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weight_box.Location = new System.Drawing.Point(222, 4);
+            this.weight_box.Location = new System.Drawing.Point(220, 4);
             this.weight_box.Name = "weight_box";
             this.weight_box.Size = new System.Drawing.Size(94, 20);
             this.weight_box.TabIndex = 2;
@@ -91,9 +91,9 @@
             this.cost_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cost_box.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cost_box.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cost_box.Location = new System.Drawing.Point(323, 4);
+            this.cost_box.Location = new System.Drawing.Point(321, 4);
             this.cost_box.Name = "cost_box";
-            this.cost_box.Size = new System.Drawing.Size(87, 20);
+            this.cost_box.Size = new System.Drawing.Size(89, 20);
             this.cost_box.TabIndex = 1;
             this.cost_box.Text = "cost";
             this.cost_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -107,7 +107,7 @@
             this.item_name_box.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_name_box.Location = new System.Drawing.Point(4, 4);
             this.item_name_box.Name = "item_name_box";
-            this.item_name_box.Size = new System.Drawing.Size(211, 20);
+            this.item_name_box.Size = new System.Drawing.Size(209, 20);
             this.item_name_box.TabIndex = 0;
             this.item_name_box.Text = "itemName";
             this.item_name_box.TextChanged += new System.EventHandler(this.item_name_box_TextChanged);
@@ -118,7 +118,7 @@
             this.notes_box.BackColor = System.Drawing.Color.Gainsboro;
             this.notes_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.notes_box.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notes_box.Location = new System.Drawing.Point(30, 38);
+            this.notes_box.Location = new System.Drawing.Point(29, 38);
             this.notes_box.Name = "notes_box";
             this.notes_box.Size = new System.Drawing.Size(414, 77);
             this.notes_box.TabIndex = 2;
@@ -131,7 +131,7 @@
             this.equipped_box.Location = new System.Drawing.Point(4, 4);
             this.equipped_box.Name = "equipped_box";
             this.equipped_box.Padding = new System.Windows.Forms.Padding(4, 7, 3, 3);
-            this.equipped_box.Size = new System.Drawing.Size(19, 24);
+            this.equipped_box.Size = new System.Drawing.Size(18, 24);
             this.equipped_box.TabIndex = 3;
             this.equipped_box.UseVisualStyleBackColor = true;
             this.equipped_box.CheckedChanged += new System.EventHandler(this.equipped_box_CheckedChanged);

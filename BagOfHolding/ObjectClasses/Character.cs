@@ -125,6 +125,28 @@ namespace BagOfHolding
             saveChar();
         }
 
+        public void saveInv(string path) {
+            List<string> file = new List<string>();
+
+            foreach(Item i in inv)
+                file.Add("item>" + i.toString());
+            foreach(Weapon w in weapons)
+                file.Add("weapon>" + w.toString());
+            foreach(Armor a in armor)
+                file.Add("armor>" + a.toString());
+
+            File.WriteAllLines(path, file);
+        }
+
+        public void saveSpells(string path) {
+            List<string> file = new List<string>();
+
+            foreach(Spell s in spellbook)
+                file.Add("spell>" + s.toString());
+
+            File.WriteAllLines(path, file);
+        }
+
         private void trySaveImage(string path) {
             try {
                 charImage.Save(path);
@@ -336,6 +358,10 @@ namespace BagOfHolding
             }
 
             setSkillMods();
+        }
+
+        public void loadInv(string path, bool overwrite) {
+
         }
 
         private void setBlankChar() {

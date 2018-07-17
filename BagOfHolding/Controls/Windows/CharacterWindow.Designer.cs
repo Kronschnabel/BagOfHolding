@@ -456,8 +456,8 @@
             // skillsToolStripMenuItem
             // 
             this.skillsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addPathfinderSkillsToolStripMenuItem,
-            this.newSkillToolStripMenuItem});
+            this.newSkillToolStripMenuItem,
+            this.addPathfinderSkillsToolStripMenuItem});
             this.skillsToolStripMenuItem.Name = "skillsToolStripMenuItem";
             this.skillsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.skillsToolStripMenuItem.Text = "&Skills";
@@ -682,9 +682,9 @@
             this.saves_label.Location = new System.Drawing.Point(0, 1);
             this.saves_label.Margin = new System.Windows.Forms.Padding(0);
             this.saves_label.Name = "saves_label";
-            this.saves_label.Size = new System.Drawing.Size(238, 16);
+            this.saves_label.Size = new System.Drawing.Size(240, 16);
             this.saves_label.TabIndex = 0;
-            this.saves_label.Text = " SAVES                            Fort             Will              Ref       ";
+            this.saves_label.Text = " SAVES                            Fort              Ref              Will       ";
             this.saves_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // saves_table_2
@@ -695,8 +695,8 @@
             this.saves_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.saves_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.saves_table_2.Controls.Add(this.fort_save_box, 0, 0);
-            this.saves_table_2.Controls.Add(this.will_save_box, 1, 0);
-            this.saves_table_2.Controls.Add(this.ref_save_box, 2, 0);
+            this.saves_table_2.Controls.Add(this.will_save_box, 2, 0);
+            this.saves_table_2.Controls.Add(this.ref_save_box, 1, 0);
             this.saves_table_2.Location = new System.Drawing.Point(91, 19);
             this.saves_table_2.Margin = new System.Windows.Forms.Padding(0);
             this.saves_table_2.Name = "saves_table_2";
@@ -726,7 +726,7 @@
             this.will_save_box.BackColor = System.Drawing.Color.Gainsboro;
             this.will_save_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.will_save_box.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.will_save_box.Location = new System.Drawing.Point(60, 0);
+            this.will_save_box.Location = new System.Drawing.Point(109, 0);
             this.will_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.will_save_box.Name = "will_save_box";
             this.will_save_box.Size = new System.Drawing.Size(23, 16);
@@ -741,7 +741,7 @@
             this.ref_save_box.BackColor = System.Drawing.Color.Gainsboro;
             this.ref_save_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ref_save_box.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ref_save_box.Location = new System.Drawing.Point(109, 0);
+            this.ref_save_box.Location = new System.Drawing.Point(60, 0);
             this.ref_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.ref_save_box.Name = "ref_save_box";
             this.ref_save_box.Size = new System.Drawing.Size(23, 16);
@@ -1189,7 +1189,7 @@
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.class_table_1.Controls.Add(this.f_class_1, 0, 0);
             this.class_table_1.Controls.Add(this.class_level_box_1, 2, 0);
             this.class_table_1.Controls.Add(this.class_hd_box_1, 3, 0);
@@ -1296,7 +1296,7 @@
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.class_table_2.Controls.Add(this.f_class_2, 0, 0);
             this.class_table_2.Controls.Add(this.class_level_box_2, 2, 0);
             this.class_table_2.Controls.Add(this.class_hd_box_2, 3, 0);
@@ -1388,7 +1388,7 @@
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.class_table_3.Controls.Add(this.f_class_3, 0, 0);
             this.class_table_3.Controls.Add(this.class_level_box_3, 2, 0);
             this.class_table_3.Controls.Add(this.class_hd_box_3, 3, 0);
@@ -1480,7 +1480,7 @@
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.class_table_4.Controls.Add(this.f_class_4, 0, 0);
             this.class_table_4.Controls.Add(this.class_level_box_4, 2, 0);
             this.class_table_4.Controls.Add(this.class_hd_box_4, 3, 0);
@@ -1572,7 +1572,7 @@
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.class_table_5.Controls.Add(this.f_class_5, 0, 0);
             this.class_table_5.Controls.Add(this.class_level_box_5, 2, 0);
             this.class_table_5.Controls.Add(this.class_hd_box_5, 3, 0);

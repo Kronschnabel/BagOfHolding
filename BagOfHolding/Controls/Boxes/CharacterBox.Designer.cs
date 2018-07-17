@@ -837,9 +837,9 @@
             this.saves_label.Location = new System.Drawing.Point(0, 1);
             this.saves_label.Margin = new System.Windows.Forms.Padding(0);
             this.saves_label.Name = "saves_label";
-            this.saves_label.Size = new System.Drawing.Size(147, 16);
+            this.saves_label.Size = new System.Drawing.Size(149, 16);
             this.saves_label.TabIndex = 0;
-            this.saves_label.Text = "    Fort            Will              Ref       ";
+            this.saves_label.Text = "    Fort             Ref              Will       ";
             this.saves_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // saves_table_2
@@ -850,8 +850,8 @@
             this.saves_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.saves_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.saves_table_2.Controls.Add(this.fort_save_box, 0, 0);
-            this.saves_table_2.Controls.Add(this.will_save_box, 1, 0);
-            this.saves_table_2.Controls.Add(this.ref_save_box, 2, 0);
+            this.saves_table_2.Controls.Add(this.will_save_box, 2, 0);
+            this.saves_table_2.Controls.Add(this.ref_save_box, 1, 0);
             this.saves_table_2.Location = new System.Drawing.Point(0, 19);
             this.saves_table_2.Margin = new System.Windows.Forms.Padding(0);
             this.saves_table_2.Name = "saves_table_2";
@@ -881,7 +881,7 @@
             this.will_save_box.BackColor = System.Drawing.Color.Gainsboro;
             this.will_save_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.will_save_box.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.will_save_box.Location = new System.Drawing.Point(60, 0);
+            this.will_save_box.Location = new System.Drawing.Point(109, 0);
             this.will_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.will_save_box.Name = "will_save_box";
             this.will_save_box.Size = new System.Drawing.Size(23, 16);
@@ -896,7 +896,7 @@
             this.ref_save_box.BackColor = System.Drawing.Color.Gainsboro;
             this.ref_save_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ref_save_box.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ref_save_box.Location = new System.Drawing.Point(109, 0);
+            this.ref_save_box.Location = new System.Drawing.Point(60, 0);
             this.ref_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.ref_save_box.Name = "ref_save_box";
             this.ref_save_box.Size = new System.Drawing.Size(23, 16);

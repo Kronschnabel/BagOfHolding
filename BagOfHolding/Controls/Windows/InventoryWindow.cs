@@ -126,6 +126,28 @@ namespace BagOfHolding
         private void newItemToolStripMenuItem_Click(object sender, EventArgs e) {
             addNewItem();
         }
+
+        private void saveInventoryAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog saveWindow = new SaveFileDialog();
+            saveWindow.Filter = "Inventory Files ('*.inv') | *.inv";
+            saveWindow.DefaultExt = "inv";
+
+            if(saveWindow.ShowDialog() == DialogResult.OK) {
+                character.saveInv(saveWindow.FileName);
+            }
+        }
         #endregion
+
+        private void overwriteInventoryToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog loadWindow = new OpenFileDialog();
+            loadWindow.Filter = "Inventory Files ('*.inv') | *.inv";
+            loadWindow.DefaultExt = "char";
+
+            if(loadWindow.ShowDialog() == DialogResult.OK) {
+                character.loadChar(loadWindow.FileName);
+                updateUIData();
+                updateSkillUI();
+            }
+        }
     }
 }

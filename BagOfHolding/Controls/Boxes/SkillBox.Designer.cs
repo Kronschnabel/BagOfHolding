@@ -25,7 +25,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.skillTable = new System.Windows.Forms.TableLayoutPanel();
+            this.skill_table = new System.Windows.Forms.TableLayoutPanel();
             this.class_skill_box = new System.Windows.Forms.CheckBox();
             this.skill_name_box = new System.Windows.Forms.TextBox();
             this.ability_box = new System.Windows.Forms.TextBox();
@@ -36,31 +36,31 @@
             this.miscMod2_box = new System.Windows.Forms.TextBox();
             this.ranks_box = new System.Windows.Forms.NumericUpDown();
             this.ability_mod_box = new System.Windows.Forms.TextBox();
-            this.skillTable.SuspendLayout();
+            this.skill_table.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ranks_box)).BeginInit();
             this.SuspendLayout();
             // 
-            // skillTable
+            // skill_table
             // 
-            this.skillTable.BackColor = System.Drawing.Color.Gainsboro;
-            this.skillTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.skillTable.ColumnCount = 4;
-            this.skillTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.33898F));
-            this.skillTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.66102F));
-            this.skillTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.skillTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
-            this.skillTable.Controls.Add(this.class_skill_box, 0, 0);
-            this.skillTable.Controls.Add(this.skill_name_box, 1, 0);
-            this.skillTable.Controls.Add(this.ability_box, 2, 0);
-            this.skillTable.Controls.Add(this.tableLayoutPanel2, 3, 0);
-            this.skillTable.Location = new System.Drawing.Point(0, 0);
-            this.skillTable.Margin = new System.Windows.Forms.Padding(0);
-            this.skillTable.Name = "skillTable";
-            this.skillTable.RowCount = 1;
-            this.skillTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.skillTable.Size = new System.Drawing.Size(370, 29);
-            this.skillTable.TabIndex = 2;
+            this.skill_table.BackColor = System.Drawing.Color.Gainsboro;
+            this.skill_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.skill_table.ColumnCount = 4;
+            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.33898F));
+            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.66102F));
+            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
+            this.skill_table.Controls.Add(this.class_skill_box, 0, 0);
+            this.skill_table.Controls.Add(this.skill_name_box, 1, 0);
+            this.skill_table.Controls.Add(this.ability_box, 2, 0);
+            this.skill_table.Controls.Add(this.tableLayoutPanel2, 3, 0);
+            this.skill_table.Location = new System.Drawing.Point(0, 0);
+            this.skill_table.Margin = new System.Windows.Forms.Padding(0);
+            this.skill_table.Name = "skill_table";
+            this.skill_table.RowCount = 1;
+            this.skill_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.skill_table.Size = new System.Drawing.Size(370, 29);
+            this.skill_table.TabIndex = 2;
             // 
             // class_skill_box
             // 
@@ -84,7 +84,7 @@
             this.skill_name_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skill_name_box.Location = new System.Drawing.Point(29, 7);
             this.skill_name_box.Name = "skill_name_box";
-            this.skill_name_box.Size = new System.Drawing.Size(90, 15);
+            this.skill_name_box.Size = new System.Drawing.Size(88, 15);
             this.skill_name_box.TabIndex = 6;
             this.skill_name_box.Text = "skillName";
             this.skill_name_box.TextChanged += new System.EventHandler(this.skill_name_box_TextChanged);
@@ -96,7 +96,7 @@
             this.ability_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ability_box.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ability_box.ForeColor = System.Drawing.Color.DarkGray;
-            this.ability_box.Location = new System.Drawing.Point(126, 4);
+            this.ability_box.Location = new System.Drawing.Point(124, 4);
             this.ability_box.Name = "ability_box";
             this.ability_box.Size = new System.Drawing.Size(25, 23);
             this.ability_box.TabIndex = 6;
@@ -121,11 +121,11 @@
             this.tableLayoutPanel2.Controls.Add(this.ranks_box, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ability_mod_box, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(158, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(156, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(208, 21);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(210, 21);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // total_box
@@ -222,11 +222,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.skillTable);
+            this.Controls.Add(this.skill_table);
             this.Name = "SkillBox";
             this.Size = new System.Drawing.Size(370, 29);
-            this.skillTable.ResumeLayout(false);
-            this.skillTable.PerformLayout();
+            this.skill_table.ResumeLayout(false);
+            this.skill_table.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ranks_box)).EndInit();
@@ -236,7 +236,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel skillTable;
+        private System.Windows.Forms.TableLayoutPanel skill_table;
         private System.Windows.Forms.CheckBox class_skill_box;
         private System.Windows.Forms.TextBox skill_name_box;
         private System.Windows.Forms.TextBox ability_box;

@@ -69,6 +69,32 @@ namespace BagOfHolding
             skill = s;
         }
 
+        private void setForeColor(Color f) {
+            skill_table.ForeColor = f;
+            skill_name_box.ForeColor = f;
+            class_skill_box.ForeColor = f;
+            ability_box.ForeColor = f;
+            total_box.ForeColor = f;
+            ranks_box.ForeColor = f;
+            ability_mod_box.ForeColor = f;
+            trained_box.ForeColor = f;
+            miscMod1_box.ForeColor = f;
+            miscMod2_box.ForeColor = f;
+        }
+
+        private void setBackColor(Color b) {
+            skill_table.BackColor = b;
+            skill_name_box.BackColor = b;
+            class_skill_box.BackColor = b;
+            ability_box.BackColor = b;
+            total_box.BackColor = b;
+            ranks_box.BackColor = b;
+            ability_mod_box.BackColor = b;
+            trained_box.BackColor = b;
+            miscMod1_box.BackColor = b;
+            miscMod2_box.BackColor = b;
+        }
+
         #endregion
 
         #region Event Handlers
