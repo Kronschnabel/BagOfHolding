@@ -51,8 +51,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPathfinderSkillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSkillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPathfinderSkillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spell_butt = new System.Windows.Forms.Button();
             this.inv_butt = new System.Windows.Forms.Button();
             this.hp_text_panel = new System.Windows.Forms.Panel();
@@ -108,7 +108,6 @@
             this.class_hd_box_1 = new System.Windows.Forms.TextBox();
             this.class_name_box_1 = new System.Windows.Forms.TextBox();
             this.class_skill_box_1 = new System.Windows.Forms.TextBox();
-            this.classes_label = new System.Windows.Forms.TextBox();
             this.class_table_2 = new System.Windows.Forms.TableLayoutPanel();
             this.f_class_2 = new System.Windows.Forms.CheckBox();
             this.class_level_box_2 = new System.Windows.Forms.TextBox();
@@ -133,6 +132,7 @@
             this.class_hd_box_5 = new System.Windows.Forms.TextBox();
             this.class_name_box_5 = new System.Windows.Forms.TextBox();
             this.class_skill_box_5 = new System.Windows.Forms.TextBox();
+            this.classes_label = new System.Windows.Forms.Label();
             this.char_panel = new System.Windows.Forms.Panel();
             this.subtitle_box = new System.Windows.Forms.TextBox();
             this.char_name_box = new System.Windows.Forms.TextBox();
@@ -148,6 +148,7 @@
             this.char_level_box = new System.Windows.Forms.TextBox();
             this.avatar_panel = new System.Windows.Forms.Panel();
             this.char_image = new System.Windows.Forms.PictureBox();
+            this.skill_clear_butt = new System.Windows.Forms.Button();
             this.main_panel.SuspendLayout();
             this.bab_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
@@ -288,7 +289,7 @@
             this.bab_box.Margin = new System.Windows.Forms.Padding(4);
             this.bab_box.Name = "bab_box";
             this.bab_box.Size = new System.Drawing.Size(60, 30);
-            this.bab_box.TabIndex = 13;
+            this.bab_box.TabIndex = 29;
             this.bab_box.Text = "+0";
             this.bab_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.bab_box.TextChanged += new System.EventHandler(this.bab_box_TextChanged);
@@ -303,7 +304,7 @@
             this.melee_box.Margin = new System.Windows.Forms.Padding(4);
             this.melee_box.Name = "melee_box";
             this.melee_box.Size = new System.Drawing.Size(48, 21);
-            this.melee_box.TabIndex = 12;
+            this.melee_box.TabIndex = 30;
             this.melee_box.Text = "+0";
             this.melee_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.melee_box.TextChanged += new System.EventHandler(this.melee_box_TextChanged);
@@ -318,7 +319,7 @@
             this.ranged_box.Margin = new System.Windows.Forms.Padding(4);
             this.ranged_box.Name = "ranged_box";
             this.ranged_box.Size = new System.Drawing.Size(48, 21);
-            this.ranged_box.TabIndex = 11;
+            this.ranged_box.TabIndex = 31;
             this.ranged_box.Text = "+0";
             this.ranged_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ranged_box.TextChanged += new System.EventHandler(this.ranged_box_TextChanged);
@@ -462,19 +463,19 @@
             this.skillsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.skillsToolStripMenuItem.Text = "&Skills";
             // 
-            // addPathfinderSkillsToolStripMenuItem
-            // 
-            this.addPathfinderSkillsToolStripMenuItem.Name = "addPathfinderSkillsToolStripMenuItem";
-            this.addPathfinderSkillsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.addPathfinderSkillsToolStripMenuItem.Text = "Add Pathfinder skills...";
-            this.addPathfinderSkillsToolStripMenuItem.Click += new System.EventHandler(this.addPathfinderSkillsToolStripMenuItem_Click);
-            // 
             // newSkillToolStripMenuItem
             // 
             this.newSkillToolStripMenuItem.Name = "newSkillToolStripMenuItem";
             this.newSkillToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.newSkillToolStripMenuItem.Text = "New Skill...";
             this.newSkillToolStripMenuItem.Click += new System.EventHandler(this.newSkillToolStripMenuItem_Click);
+            // 
+            // addPathfinderSkillsToolStripMenuItem
+            // 
+            this.addPathfinderSkillsToolStripMenuItem.Name = "addPathfinderSkillsToolStripMenuItem";
+            this.addPathfinderSkillsToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.addPathfinderSkillsToolStripMenuItem.Text = "Add Pathfinder skills...";
+            this.addPathfinderSkillsToolStripMenuItem.Click += new System.EventHandler(this.addPathfinderSkillsToolStripMenuItem_Click);
             // 
             // spell_butt
             // 
@@ -524,7 +525,7 @@
             this.max_hp_box.Location = new System.Drawing.Point(52, 1);
             this.max_hp_box.Name = "max_hp_box";
             this.max_hp_box.Size = new System.Drawing.Size(41, 16);
-            this.max_hp_box.TabIndex = 1;
+            this.max_hp_box.TabIndex = 9;
             this.max_hp_box.Text = "0";
             this.max_hp_box.TextChanged += new System.EventHandler(this.max_hp_box_TextChanged);
             // 
@@ -539,7 +540,7 @@
             this.hp_box.Location = new System.Drawing.Point(-1, 1);
             this.hp_box.Name = "hp_box";
             this.hp_box.Size = new System.Drawing.Size(42, 16);
-            this.hp_box.TabIndex = 1;
+            this.hp_box.TabIndex = 8;
             this.hp_box.Text = "0";
             this.hp_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.hp_box.TextChanged += new System.EventHandler(this.hp_box_TextChanged);
@@ -564,19 +565,21 @@
             this.char_notes_box.Location = new System.Drawing.Point(385, 29);
             this.char_notes_box.Name = "char_notes_box";
             this.char_notes_box.Size = new System.Drawing.Size(402, 141);
-            this.char_notes_box.TabIndex = 15;
+            this.char_notes_box.TabIndex = 32;
             this.char_notes_box.Text = "";
             this.char_notes_box.TextChanged += new System.EventHandler(this.char_notes_box_TextChanged);
             // 
             // skill_panel_back
             // 
             this.skill_panel_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.skill_panel_back.Controls.Add(this.skill_clear_butt);
             this.skill_panel_back.Controls.Add(this.skills_label);
             this.skill_panel_back.Controls.Add(this.skill_panel);
             this.skill_panel_back.Location = new System.Drawing.Point(385, 176);
             this.skill_panel_back.Name = "skill_panel_back";
             this.skill_panel_back.Size = new System.Drawing.Size(402, 341);
             this.skill_panel_back.TabIndex = 14;
+            this.skill_panel_back.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skill_panel_back_MouseMove);
             // 
             // skills_label
             // 
@@ -632,7 +635,7 @@
             this.speed_box.Location = new System.Drawing.Point(267, 353);
             this.speed_box.Name = "speed_box";
             this.speed_box.Size = new System.Drawing.Size(49, 16);
-            this.speed_box.TabIndex = 11;
+            this.speed_box.TabIndex = 22;
             this.speed_box.Text = "20ft";
             this.speed_box.TextChanged += new System.EventHandler(this.speed_box_TextChanged);
             // 
@@ -644,7 +647,7 @@
             this.speed_label.Location = new System.Drawing.Point(223, 353);
             this.speed_label.Name = "speed_label";
             this.speed_label.Size = new System.Drawing.Size(47, 16);
-            this.speed_label.TabIndex = 10;
+            this.speed_label.TabIndex = 99;
             this.speed_label.Text = "Speed:";
             // 
             // saves_table_1
@@ -715,7 +718,7 @@
             this.fort_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.fort_save_box.Name = "fort_save_box";
             this.fort_save_box.Size = new System.Drawing.Size(23, 16);
-            this.fort_save_box.TabIndex = 5;
+            this.fort_save_box.TabIndex = 26;
             this.fort_save_box.Text = "0";
             this.fort_save_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.fort_save_box.TextChanged += new System.EventHandler(this.fort_save_box_TextChanged);
@@ -730,7 +733,7 @@
             this.will_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.will_save_box.Name = "will_save_box";
             this.will_save_box.Size = new System.Drawing.Size(23, 16);
-            this.will_save_box.TabIndex = 5;
+            this.will_save_box.TabIndex = 28;
             this.will_save_box.Text = "0";
             this.will_save_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.will_save_box.TextChanged += new System.EventHandler(this.will_save_box_TextChanged);
@@ -745,7 +748,7 @@
             this.ref_save_box.Margin = new System.Windows.Forms.Padding(0);
             this.ref_save_box.Name = "ref_save_box";
             this.ref_save_box.Size = new System.Drawing.Size(23, 16);
-            this.ref_save_box.TabIndex = 5;
+            this.ref_save_box.TabIndex = 27;
             this.ref_save_box.Text = "0";
             this.ref_save_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ref_save_box.TextChanged += new System.EventHandler(this.ref_save_box_TextChanged);
@@ -801,7 +804,7 @@
             this.str_box.Name = "str_box";
             this.str_box.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.str_box.Size = new System.Drawing.Size(35, 16);
-            this.str_box.TabIndex = 8;
+            this.str_box.TabIndex = 10;
             this.str_box.Text = "0";
             this.str_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.str_box.TextChanged += new System.EventHandler(this.str_box_TextChanged);
@@ -889,7 +892,7 @@
             this.dex_box.Margin = new System.Windows.Forms.Padding(0);
             this.dex_box.Name = "dex_box";
             this.dex_box.Size = new System.Drawing.Size(35, 16);
-            this.dex_box.TabIndex = 8;
+            this.dex_box.TabIndex = 11;
             this.dex_box.Text = "0";
             this.dex_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dex_box.TextChanged += new System.EventHandler(this.dex_box_TextChanged);
@@ -905,7 +908,7 @@
             this.con_box.Margin = new System.Windows.Forms.Padding(0);
             this.con_box.Name = "con_box";
             this.con_box.Size = new System.Drawing.Size(35, 16);
-            this.con_box.TabIndex = 8;
+            this.con_box.TabIndex = 12;
             this.con_box.Text = "0";
             this.con_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.con_box.TextChanged += new System.EventHandler(this.con_box_TextChanged);
@@ -921,7 +924,7 @@
             this.int_box.Margin = new System.Windows.Forms.Padding(0);
             this.int_box.Name = "int_box";
             this.int_box.Size = new System.Drawing.Size(35, 16);
-            this.int_box.TabIndex = 8;
+            this.int_box.TabIndex = 13;
             this.int_box.Text = "0";
             this.int_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.int_box.TextChanged += new System.EventHandler(this.int_box_TextChanged);
@@ -937,7 +940,7 @@
             this.wis_box.Margin = new System.Windows.Forms.Padding(0);
             this.wis_box.Name = "wis_box";
             this.wis_box.Size = new System.Drawing.Size(35, 16);
-            this.wis_box.TabIndex = 8;
+            this.wis_box.TabIndex = 15;
             this.wis_box.Text = "0";
             this.wis_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.wis_box.TextChanged += new System.EventHandler(this.wis_box_TextChanged);
@@ -953,7 +956,7 @@
             this.cha_box.Margin = new System.Windows.Forms.Padding(0);
             this.cha_box.Name = "cha_box";
             this.cha_box.Size = new System.Drawing.Size(35, 16);
-            this.cha_box.TabIndex = 8;
+            this.cha_box.TabIndex = 16;
             this.cha_box.Text = "0";
             this.cha_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cha_box.TextChanged += new System.EventHandler(this.cha_box_TextChanged);
@@ -971,6 +974,7 @@
             this.str_mod_label.ReadOnly = true;
             this.str_mod_label.Size = new System.Drawing.Size(35, 16);
             this.str_mod_label.TabIndex = 8;
+            this.str_mod_label.TabStop = false;
             this.str_mod_label.Text = "+0";
             this.str_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -987,6 +991,7 @@
             this.dex_mod_label.ReadOnly = true;
             this.dex_mod_label.Size = new System.Drawing.Size(35, 16);
             this.dex_mod_label.TabIndex = 8;
+            this.dex_mod_label.TabStop = false;
             this.dex_mod_label.Text = "+0";
             this.dex_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1003,6 +1008,7 @@
             this.con_mod_label.ReadOnly = true;
             this.con_mod_label.Size = new System.Drawing.Size(35, 16);
             this.con_mod_label.TabIndex = 8;
+            this.con_mod_label.TabStop = false;
             this.con_mod_label.Text = "+0";
             this.con_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1019,6 +1025,7 @@
             this.int_mod_label.ReadOnly = true;
             this.int_mod_label.Size = new System.Drawing.Size(35, 16);
             this.int_mod_label.TabIndex = 8;
+            this.int_mod_label.TabStop = false;
             this.int_mod_label.Text = "+0";
             this.int_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1035,6 +1042,7 @@
             this.wis_mod_label.ReadOnly = true;
             this.wis_mod_label.Size = new System.Drawing.Size(35, 16);
             this.wis_mod_label.TabIndex = 8;
+            this.wis_mod_label.TabStop = false;
             this.wis_mod_label.Text = "+0";
             this.wis_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1051,6 +1059,7 @@
             this.cha_mod_label.ReadOnly = true;
             this.cha_mod_label.Size = new System.Drawing.Size(35, 16);
             this.cha_mod_label.TabIndex = 8;
+            this.cha_mod_label.TabStop = false;
             this.cha_mod_label.Text = "+0";
             this.cha_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1078,7 +1087,7 @@
             this.ff_ac_box.Location = new System.Drawing.Point(4, 4);
             this.ff_ac_box.Name = "ff_ac_box";
             this.ff_ac_box.Size = new System.Drawing.Size(61, 15);
-            this.ff_ac_box.TabIndex = 5;
+            this.ff_ac_box.TabIndex = 24;
             this.ff_ac_box.Text = "0";
             this.ff_ac_box.TextChanged += new System.EventHandler(this.ff_ac_box_TextChanged);
             // 
@@ -1091,7 +1100,7 @@
             this.touch_ac_box.Location = new System.Drawing.Point(72, 4);
             this.touch_ac_box.Name = "touch_ac_box";
             this.touch_ac_box.Size = new System.Drawing.Size(66, 15);
-            this.touch_ac_box.TabIndex = 5;
+            this.touch_ac_box.TabIndex = 25;
             this.touch_ac_box.Text = "0";
             this.touch_ac_box.TextChanged += new System.EventHandler(this.touch_ac_box_TextChanged);
             // 
@@ -1137,7 +1146,7 @@
             this.init_box.Margin = new System.Windows.Forms.Padding(4);
             this.init_box.Name = "init_box";
             this.init_box.Size = new System.Drawing.Size(35, 21);
-            this.init_box.TabIndex = 6;
+            this.init_box.TabIndex = 21;
             this.init_box.Text = "+0";
             this.init_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.init_box.TextChanged += new System.EventHandler(this.init_box_TextChanged);
@@ -1153,7 +1162,7 @@
             this.ac_box.Margin = new System.Windows.Forms.Padding(4);
             this.ac_box.Name = "ac_box";
             this.ac_box.Size = new System.Drawing.Size(35, 30);
-            this.ac_box.TabIndex = 6;
+            this.ac_box.TabIndex = 23;
             this.ac_box.Text = "10";
             this.ac_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ac_box.TextChanged += new System.EventHandler(this.ac_box_TextChanged);
@@ -1164,11 +1173,11 @@
             this.classes_table.ColumnCount = 1;
             this.classes_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.classes_table.Controls.Add(this.class_table_1, 0, 1);
-            this.classes_table.Controls.Add(this.classes_label, 0, 0);
             this.classes_table.Controls.Add(this.class_table_2, 0, 2);
             this.classes_table.Controls.Add(this.class_table_3, 0, 3);
             this.classes_table.Controls.Add(this.class_table_4, 0, 4);
             this.classes_table.Controls.Add(this.class_table_5, 0, 5);
+            this.classes_table.Controls.Add(this.classes_label, 0, 0);
             this.classes_table.Location = new System.Drawing.Point(143, 164);
             this.classes_table.Name = "classes_table";
             this.classes_table.RowCount = 6;
@@ -1178,6 +1187,7 @@
             this.classes_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.classes_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.classes_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.classes_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.classes_table.Size = new System.Drawing.Size(236, 181);
             this.classes_table.TabIndex = 5;
             // 
@@ -1189,7 +1199,7 @@
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.class_table_1.Controls.Add(this.f_class_1, 0, 0);
             this.class_table_1.Controls.Add(this.class_level_box_1, 2, 0);
             this.class_table_1.Controls.Add(this.class_hd_box_1, 3, 0);
@@ -1227,7 +1237,7 @@
             this.class_level_box_1.Location = new System.Drawing.Point(126, 6);
             this.class_level_box_1.Name = "class_level_box_1";
             this.class_level_box_1.Size = new System.Drawing.Size(19, 14);
-            this.class_level_box_1.TabIndex = 5;
+            this.class_level_box_1.TabIndex = 18;
             this.class_level_box_1.Text = "0";
             this.class_level_box_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.class_level_box_1.TextChanged += new System.EventHandler(this.class_level_box_1_TextChanged);
@@ -1241,7 +1251,7 @@
             this.class_hd_box_1.Location = new System.Drawing.Point(152, 6);
             this.class_hd_box_1.Name = "class_hd_box_1";
             this.class_hd_box_1.Size = new System.Drawing.Size(43, 14);
-            this.class_hd_box_1.TabIndex = 5;
+            this.class_hd_box_1.TabIndex = 19;
             this.class_hd_box_1.Text = "hitDie1";
             this.class_hd_box_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.class_hd_box_1.TextChanged += new System.EventHandler(this.class_hd_box_1_TextChanged);
@@ -1255,7 +1265,7 @@
             this.class_name_box_1.Location = new System.Drawing.Point(29, 6);
             this.class_name_box_1.Name = "class_name_box_1";
             this.class_name_box_1.Size = new System.Drawing.Size(85, 15);
-            this.class_name_box_1.TabIndex = 5;
+            this.class_name_box_1.TabIndex = 17;
             this.class_name_box_1.Text = "className1";
             this.class_name_box_1.TextChanged += new System.EventHandler(this.class_name_box_1_TextChanged);
             // 
@@ -1268,25 +1278,10 @@
             this.class_skill_box_1.Location = new System.Drawing.Point(202, 6);
             this.class_skill_box_1.Name = "class_skill_box_1";
             this.class_skill_box_1.Size = new System.Drawing.Size(24, 14);
-            this.class_skill_box_1.TabIndex = 5;
+            this.class_skill_box_1.TabIndex = 20;
             this.class_skill_box_1.Text = "0";
             this.class_skill_box_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.class_skill_box_1.TextChanged += new System.EventHandler(this.class_skill_box_1_TextChanged);
-            // 
-            // classes_label
-            // 
-            this.classes_label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.classes_label.BackColor = System.Drawing.Color.Gainsboro;
-            this.classes_label.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.classes_label.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.classes_label.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.classes_label.Location = new System.Drawing.Point(4, 9);
-            this.classes_label.Name = "classes_label";
-            this.classes_label.ReadOnly = true;
-            this.classes_label.Size = new System.Drawing.Size(228, 14);
-            this.classes_label.TabIndex = 4;
-            this.classes_label.Text = "Classes                                        Level     Hit Die       Skill     " +
-    " ";
             // 
             // class_table_2
             // 
@@ -1296,7 +1291,7 @@
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.class_table_2.Controls.Add(this.f_class_2, 0, 0);
             this.class_table_2.Controls.Add(this.class_level_box_2, 2, 0);
             this.class_table_2.Controls.Add(this.class_hd_box_2, 3, 0);
@@ -1388,7 +1383,7 @@
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.class_table_3.Controls.Add(this.f_class_3, 0, 0);
             this.class_table_3.Controls.Add(this.class_level_box_3, 2, 0);
             this.class_table_3.Controls.Add(this.class_hd_box_3, 3, 0);
@@ -1480,7 +1475,7 @@
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.class_table_4.Controls.Add(this.f_class_4, 0, 0);
             this.class_table_4.Controls.Add(this.class_level_box_4, 2, 0);
             this.class_table_4.Controls.Add(this.class_hd_box_4, 3, 0);
@@ -1572,7 +1567,7 @@
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 113F));
+            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
             this.class_table_5.Controls.Add(this.f_class_5, 0, 0);
             this.class_table_5.Controls.Add(this.class_level_box_5, 2, 0);
             this.class_table_5.Controls.Add(this.class_hd_box_5, 3, 0);
@@ -1656,6 +1651,22 @@
             this.class_skill_box_5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.class_skill_box_5.TextChanged += new System.EventHandler(this.class_skill_box_5_TextChanged);
             // 
+            // classes_label
+            // 
+            this.classes_label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.classes_label.AutoSize = true;
+            this.classes_label.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.classes_label.ForeColor = System.Drawing.Color.Black;
+            this.classes_label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.classes_label.Location = new System.Drawing.Point(2, 12);
+            this.classes_label.Margin = new System.Windows.Forms.Padding(1);
+            this.classes_label.Name = "classes_label";
+            this.classes_label.Size = new System.Drawing.Size(232, 13);
+            this.classes_label.TabIndex = 0;
+            this.classes_label.Text = "Classes                                           Lvl           HD             Sk" +
+    "ill";
+            this.classes_label.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // char_panel
             // 
             this.char_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1677,7 +1688,7 @@
             this.subtitle_box.Location = new System.Drawing.Point(139, 35);
             this.subtitle_box.Name = "subtitle_box";
             this.subtitle_box.Size = new System.Drawing.Size(225, 14);
-            this.subtitle_box.TabIndex = 5;
+            this.subtitle_box.TabIndex = 2;
             this.subtitle_box.Text = "subtitle";
             this.subtitle_box.TextChanged += new System.EventHandler(this.subtitle_box_TextChanged);
             // 
@@ -1689,7 +1700,7 @@
             this.char_name_box.Location = new System.Drawing.Point(139, 11);
             this.char_name_box.Name = "char_name_box";
             this.char_name_box.Size = new System.Drawing.Size(225, 23);
-            this.char_name_box.TabIndex = 4;
+            this.char_name_box.TabIndex = 1;
             this.char_name_box.Text = "CharacterName";
             this.char_name_box.TextChanged += new System.EventHandler(this.char_name_box_TextChanged);
             // 
@@ -1736,7 +1747,7 @@
             this.gender_box.Margin = new System.Windows.Forms.Padding(0);
             this.gender_box.Name = "gender_box";
             this.gender_box.Size = new System.Drawing.Size(72, 14);
-            this.gender_box.TabIndex = 8;
+            this.gender_box.TabIndex = 5;
             this.gender_box.Text = "gender";
             this.gender_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gender_box.TextChanged += new System.EventHandler(this.gender_box_TextChanged);
@@ -1751,7 +1762,7 @@
             this.size_box.Margin = new System.Windows.Forms.Padding(0);
             this.size_box.Name = "size_box";
             this.size_box.Size = new System.Drawing.Size(72, 14);
-            this.size_box.TabIndex = 7;
+            this.size_box.TabIndex = 4;
             this.size_box.Text = "size";
             this.size_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.size_box.TextChanged += new System.EventHandler(this.size_box_TextChanged);
@@ -1766,7 +1777,7 @@
             this.race_box.Margin = new System.Windows.Forms.Padding(0);
             this.race_box.Name = "race_box";
             this.race_box.Size = new System.Drawing.Size(75, 14);
-            this.race_box.TabIndex = 6;
+            this.race_box.TabIndex = 3;
             this.race_box.Text = "race";
             this.race_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.race_box.TextChanged += new System.EventHandler(this.race_box_TextChanged);
@@ -1794,7 +1805,7 @@
             this.alignment_box.Location = new System.Drawing.Point(94, 5);
             this.alignment_box.Name = "alignment_box";
             this.alignment_box.Size = new System.Drawing.Size(122, 20);
-            this.alignment_box.TabIndex = 5;
+            this.alignment_box.TabIndex = 7;
             this.alignment_box.Text = "Alignment";
             this.alignment_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.alignment_box.TextChanged += new System.EventHandler(this.alignment_box_TextChanged);
@@ -1838,7 +1849,7 @@
             this.char_level_box.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.char_level_box.Name = "char_level_box";
             this.char_level_box.Size = new System.Drawing.Size(40, 26);
-            this.char_level_box.TabIndex = 5;
+            this.char_level_box.TabIndex = 6;
             this.char_level_box.Text = "0";
             this.char_level_box.TextChanged += new System.EventHandler(this.char_level_box_TextChanged);
             // 
@@ -1863,6 +1874,20 @@
             this.char_image.TabIndex = 0;
             this.char_image.TabStop = false;
             this.char_image.Click += new System.EventHandler(this.char_image_Click);
+            // 
+            // skill_clear_butt
+            // 
+            this.skill_clear_butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.skill_clear_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.skill_clear_butt.ForeColor = System.Drawing.Color.White;
+            this.skill_clear_butt.Location = new System.Drawing.Point(331, 3);
+            this.skill_clear_butt.Name = "skill_clear_butt";
+            this.skill_clear_butt.Size = new System.Drawing.Size(68, 21);
+            this.skill_clear_butt.TabIndex = 14;
+            this.skill_clear_butt.Text = "Clear...";
+            this.skill_clear_butt.UseVisualStyleBackColor = false;
+            this.skill_clear_butt.Visible = false;
+            this.skill_clear_butt.Click += new System.EventHandler(this.skill_clear_butt_Click);
             // 
             // CharacterWindow
             // 
@@ -1978,7 +2003,6 @@
         private System.Windows.Forms.TextBox class_hd_box_1;
         private System.Windows.Forms.TextBox class_name_box_1;
         private System.Windows.Forms.TextBox class_skill_box_1;
-        private System.Windows.Forms.TextBox classes_label;
         private System.Windows.Forms.TableLayoutPanel class_table_2;
         private System.Windows.Forms.CheckBox f_class_2;
         private System.Windows.Forms.TextBox class_level_box_2;
@@ -2045,5 +2069,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newCharacterToolStripMenuItem;
+        private System.Windows.Forms.Label classes_label;
+        private System.Windows.Forms.Button skill_clear_butt;
     }
 }

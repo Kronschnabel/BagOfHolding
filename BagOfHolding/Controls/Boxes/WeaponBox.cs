@@ -78,6 +78,13 @@ namespace BagOfHolding
             size_box.BackColor = b;
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(this.DisplayRectangle);
+            hoverArea.Inflate(-8, -8);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Get & Set methods
         public Weapon getWeapon() {
             return weapon;
@@ -158,6 +165,17 @@ namespace BagOfHolding
         private void size_box_TextChanged(object sender, EventArgs e) {
             weapon.setSize(size_box.Text);
         }
-#endregion
+
+        private void weapon_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition)) 
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+        #endregion
     }
 }

@@ -138,7 +138,7 @@ namespace BagOfHolding
             File.WriteAllLines(path, file);
         }
 
-        public void saveSpells(string path) {
+        public void saveSpellbook(string path) {
             List<string> file = new List<string>();
 
             foreach(Spell s in spellbook)
@@ -361,7 +361,58 @@ namespace BagOfHolding
         }
 
         public void loadInv(string path, bool overwrite) {
+            if(overwrite) {
+                inv.Clear();
+                weapons.Clear();
+                armor.Clear();
+            }
 
+            foreach(string line in System.IO.File.ReadAllLines(path)) {
+                string[] sLine = line.Split('>');
+
+                if(sLine.Length == 2) {
+                    switch(sLine[0]) {
+                        case "item": {
+                                Item i = new Item();
+                                i.fromString(sLine[1]);
+                                inv.Add(i);
+                                break;
+                            }
+                        case "weapon": {
+                                Weapon w = new Weapon();
+                                w.fromString(sLine[1]);
+                                weapons.Add(w);
+                                break;
+                            }
+                        case "armor": {
+                                Armor a = new Armor();
+                                a.fromString(sLine[1]);
+                                armor.Add(a);
+                                break;
+                            }
+                    }
+                }
+            }
+        }
+
+        public void loadSpellbook(string path, bool overwrite) {
+            if(overwrite)
+                spellbook.Clear();
+
+            foreach(string line in File.ReadAllLines(path)) {
+                string[] sLine = line.Split('>');
+
+                if(sLine.Length == 2) {
+                    switch(sLine[0]) {
+                        case "spell": {
+                                Spell s = new Spell();
+                                s.fromString(sLine[1]);
+                                spellbook.Add(s);
+                                break;
+                            }
+                    }
+                }
+            }
         }
 
         private void setBlankChar() {

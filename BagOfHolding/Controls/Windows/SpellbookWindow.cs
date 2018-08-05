@@ -109,6 +109,57 @@ namespace BagOfHolding
         private void newItemToolStripMenuItem_Click(object sender, EventArgs e) {
             addNewSpell();
         }
-#endregion
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            updateCharData();
+            updateUIData();
+        }
+
+        private void saveCharacterAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog saveWindow = new SaveFileDialog();
+            saveWindow.Filter = "Character Files ('*.char') | *.char";
+            saveWindow.DefaultExt = "char";
+
+            if(saveWindow.ShowDialog() == DialogResult.OK) {
+                character.saveChar(saveWindow.FileName);
+            }
+        }
+
+        private void saveSpellbookAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog saveWindow = new SaveFileDialog();
+            saveWindow.Filter = "Spell Files ('*.spl') | *.spl";
+            saveWindow.DefaultExt = "spl";
+
+            if(saveWindow.ShowDialog() == DialogResult.OK) {
+                character.saveSpellbook(saveWindow.FileName);
+            }
+        }
+
+        private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
+            character.saveChar();
+        }
+
+        private void appendSpellbookToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog loadWindow = new OpenFileDialog();
+            loadWindow.Filter = "Spell Files ('*.spl') | *.spl";
+            loadWindow.DefaultExt = "spl";
+
+            if(loadWindow.ShowDialog() == DialogResult.OK) {
+                character.loadSpellbook(loadWindow.FileName, false);
+                updateUIData();
+            }
+        }
+
+        private void overwriteSpellbookToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog loadWindow = new OpenFileDialog();
+            loadWindow.Filter = "Spell Files ('*.spl') | *.spl";
+            loadWindow.DefaultExt = "spl";
+
+            if(loadWindow.ShowDialog() == DialogResult.OK) {
+                character.loadSpellbook(loadWindow.FileName, true);
+                updateUIData();
+            }
+        }
+        #endregion
     }
 }

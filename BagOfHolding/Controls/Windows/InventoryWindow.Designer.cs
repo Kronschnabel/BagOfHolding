@@ -37,11 +37,15 @@
             this.newItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overwriteInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appendInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCharacterAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveItemListAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.overwriteInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appendInventoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +64,7 @@
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(701, 469);
             this.main_panel.TabIndex = 1;
+            this.main_panel.MouseEnter += new System.EventHandler(this.main_panel_MouseEnter);
             // 
             // armor_butt
             // 
@@ -134,7 +139,8 @@
             // 
             this.menu_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
             this.menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menu_strip.Location = new System.Drawing.Point(0, 0);
             this.menu_strip.Margin = new System.Windows.Forms.Padding(3);
             this.menu_strip.Name = "menu_strip";
@@ -147,7 +153,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.loadToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.saveToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
@@ -182,28 +189,7 @@
             this.loadCharacterToolStripMenuItem.Name = "loadCharacterToolStripMenuItem";
             this.loadCharacterToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.loadCharacterToolStripMenuItem.Text = "Load Character...";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveCharacterAsToolStripMenuItem,
-            this.saveItemListAsToolStripMenuItem});
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // saveCharacterAsToolStripMenuItem
-            // 
-            this.saveCharacterAsToolStripMenuItem.Name = "saveCharacterAsToolStripMenuItem";
-            this.saveCharacterAsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.saveCharacterAsToolStripMenuItem.Text = "Save Character as...";
-            // 
-            // saveItemListAsToolStripMenuItem
-            // 
-            this.saveItemListAsToolStripMenuItem.Name = "saveItemListAsToolStripMenuItem";
-            this.saveItemListAsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
-            this.saveItemListAsToolStripMenuItem.Text = "Save Inventory as...";
-            this.saveItemListAsToolStripMenuItem.Click += new System.EventHandler(this.saveInventoryAsToolStripMenuItem_Click);
+            this.loadCharacterToolStripMenuItem.Click += new System.EventHandler(this.loadCharacterToolStripMenuItem_Click);
             // 
             // overwriteInventoryToolStripMenuItem
             // 
@@ -217,6 +203,60 @@
             this.appendInventoryToolStripMenuItem.Name = "appendInventoryToolStripMenuItem";
             this.appendInventoryToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.appendInventoryToolStripMenuItem.Text = "Append Inventory...";
+            this.appendInventoryToolStripMenuItem.Click += new System.EventHandler(this.appendInventoryToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveCharacterAsToolStripMenuItem,
+            this.saveItemListAsToolStripMenuItem});
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save As";
+            // 
+            // saveCharacterAsToolStripMenuItem
+            // 
+            this.saveCharacterAsToolStripMenuItem.Name = "saveCharacterAsToolStripMenuItem";
+            this.saveCharacterAsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveCharacterAsToolStripMenuItem.Text = "Save Character as...";
+            this.saveCharacterAsToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterAsToolStripMenuItem_Click);
+            // 
+            // saveItemListAsToolStripMenuItem
+            // 
+            this.saveItemListAsToolStripMenuItem.Name = "saveItemListAsToolStripMenuItem";
+            this.saveItemListAsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.saveItemListAsToolStripMenuItem.Text = "Save Inventory as...";
+            this.saveItemListAsToolStripMenuItem.Click += new System.EventHandler(this.saveInventoryAsToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem1
+            // 
+            this.saveToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveCharacterToolStripMenuItem});
+            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem1.Text = "Save";
+            // 
+            // saveCharacterToolStripMenuItem
+            // 
+            this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
+            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.saveCharacterToolStripMenuItem.Text = "Save Character...";
+            this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
             // 
             // InventoryWindow
             // 
@@ -254,5 +294,9 @@
         private System.Windows.Forms.ToolStripMenuItem saveItemListAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overwriteInventoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appendInventoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem saveCharacterToolStripMenuItem;
     }
 }

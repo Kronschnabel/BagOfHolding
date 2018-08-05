@@ -26,8 +26,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.back_panel = new System.Windows.Forms.Panel();
-            this.close_butt = new System.Windows.Forms.Button();
             this.main_panel = new System.Windows.Forms.Panel();
+            this.close_butt = new System.Windows.Forms.Button();
             this.back_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,21 +51,6 @@
             this.back_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseMove);
             this.back_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseUp);
             // 
-            // close_butt
-            // 
-            this.close_butt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.close_butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.close_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.close_butt.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.close_butt.ForeColor = System.Drawing.Color.White;
-            this.close_butt.Location = new System.Drawing.Point(872, 3);
-            this.close_butt.Name = "close_butt";
-            this.close_butt.Size = new System.Drawing.Size(23, 23);
-            this.close_butt.TabIndex = 1;
-            this.close_butt.Text = "X";
-            this.close_butt.UseVisualStyleBackColor = false;
-            this.close_butt.Click += new System.EventHandler(this.closeB_Click);
-            // 
             // main_panel
             // 
             this.main_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(175)))));
@@ -75,6 +60,23 @@
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(892, 465);
             this.main_panel.TabIndex = 0;
+            this.main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.main_panel_Paint);
+            // 
+            // close_butt
+            // 
+            this.close_butt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.close_butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.close_butt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.close_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.close_butt.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.close_butt.ForeColor = System.Drawing.Color.White;
+            this.close_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
+            this.close_butt.Location = new System.Drawing.Point(872, 3);
+            this.close_butt.Name = "close_butt";
+            this.close_butt.Size = new System.Drawing.Size(23, 23);
+            this.close_butt.TabIndex = 1;
+            this.close_butt.UseVisualStyleBackColor = false;
+            this.close_butt.Click += new System.EventHandler(this.closeB_Click);
             // 
             // Window
             // 

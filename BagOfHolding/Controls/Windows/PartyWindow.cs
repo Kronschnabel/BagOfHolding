@@ -97,9 +97,9 @@ namespace BagOfHolding
                     Character c = new Character();
                     c.loadChar(f);
                     party.Add(c);
-                    updateUIData();
                 }
-                
+
+                updateUIData();
             }
         }
 

@@ -60,6 +60,13 @@ namespace BagOfHolding
             }
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(DisplayRectangle);
+            hoverArea.Inflate(-3, -3);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Get & Set methods
         public Skill getSkill() {
             return skill;
@@ -131,34 +138,45 @@ namespace BagOfHolding
             skill.setClassSkill(class_skill_box.Checked);
             updateUIData();
         }
-        #endregion
+
+        private void skill_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
 
         private void ability_box_Leave(object sender, EventArgs e) {
             switch(ability_box.Text.ToUpper()) {
-                case "STR": 
-                        skill.setAbilityType(0);
-                        break;
-                case "DEX": 
-                        skill.setAbilityType(1);
-                        break;
+                case "STR":
+                    skill.setAbilityType(0);
+                    break;
+                case "DEX":
+                    skill.setAbilityType(1);
+                    break;
                 case "CON":
-                        skill.setAbilityType(2);
-                        break;
+                    skill.setAbilityType(2);
+                    break;
                 case "INT":
-                        skill.setAbilityType(3);
-                        break;
+                    skill.setAbilityType(3);
+                    break;
                 case "WIS":
-                        skill.setAbilityType(4);
-                        break;
+                    skill.setAbilityType(4);
+                    break;
                 case "CHA":
-                        skill.setAbilityType(5);
-                        break;
+                    skill.setAbilityType(5);
+                    break;
                 default: {
                         ability_box.Text = "STR";
                         skill.setAbilityType(0);
                         break;
-                    }   
+                    }
             }
         }
+        #endregion
     }
 }

@@ -54,6 +54,13 @@ namespace BagOfHolding
             notes_box.BackColor = b;
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(DisplayRectangle);
+            hoverArea.Inflate(-8, -8);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Event Handlers
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
@@ -90,6 +97,17 @@ namespace BagOfHolding
         private void equipped_box_CheckedChanged(object sender, EventArgs e) {
             item.setEquipped(equipped_box.Checked);
         }
+
+        private void item_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
         #endregion
 
         #region Get & Set methods
@@ -100,6 +118,6 @@ namespace BagOfHolding
         public void setItem(Item i) {
             item = i;
         }
-#endregion
+        #endregion
     }
 }

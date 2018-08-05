@@ -181,6 +181,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Controls\Boxes\SkillBox.resx">
       <DependentUpon>SkillBox.cs</DependentUpon>
@@ -220,6 +221,8 @@
     <Content Include="DefaultCharImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\skillclose_icon.png" />
+    <None Include="Resources\close_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
