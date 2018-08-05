@@ -26,8 +26,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.skill_table = new System.Windows.Forms.TableLayoutPanel();
-            this.class_skill_box = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.del_butt = new System.Windows.Forms.Button();
             this.skill_name_box = new System.Windows.Forms.TextBox();
+            this.class_skill_box = new System.Windows.Forms.CheckBox();
             this.ability_box = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.total_box = new System.Windows.Forms.TextBox();
@@ -37,6 +39,7 @@
             this.ranks_box = new System.Windows.Forms.NumericUpDown();
             this.ability_mod_box = new System.Windows.Forms.TextBox();
             this.skill_table.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ranks_box)).BeginInit();
             this.SuspendLayout();
@@ -49,9 +52,9 @@
             this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.33898F));
             this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.66102F));
             this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 215F));
+            this.skill_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
+            this.skill_table.Controls.Add(this.panel1, 1, 0);
             this.skill_table.Controls.Add(this.class_skill_box, 0, 0);
-            this.skill_table.Controls.Add(this.skill_name_box, 1, 0);
             this.skill_table.Controls.Add(this.ability_box, 2, 0);
             this.skill_table.Controls.Add(this.tableLayoutPanel2, 3, 0);
             this.skill_table.Location = new System.Drawing.Point(0, 0);
@@ -59,8 +62,48 @@
             this.skill_table.Name = "skill_table";
             this.skill_table.RowCount = 1;
             this.skill_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.skill_table.Size = new System.Drawing.Size(370, 29);
+            this.skill_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.skill_table.Size = new System.Drawing.Size(402, 29);
             this.skill_table.TabIndex = 2;
+            this.skill_table.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skill_table_MouseMove);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.del_butt);
+            this.panel1.Controls.Add(this.skill_name_box);
+            this.panel1.Location = new System.Drawing.Point(34, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(107, 21);
+            this.panel1.TabIndex = 3;
+            // 
+            // del_butt
+            // 
+            this.del_butt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.del_butt.BackColor = System.Drawing.Color.DarkGray;
+            this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.del_butt.Image = global::BagOfHolding.Properties.Resources.skillclose_icon;
+            this.del_butt.Location = new System.Drawing.Point(91, 4);
+            this.del_butt.Name = "del_butt";
+            this.del_butt.Size = new System.Drawing.Size(15, 15);
+            this.del_butt.TabIndex = 7;
+            this.del_butt.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.del_butt.UseVisualStyleBackColor = false;
+            this.del_butt.Visible = false;
+            this.del_butt.Click += new System.EventHandler(this.del_butt_Click);
+            // 
+            // skill_name_box
+            // 
+            this.skill_name_box.BackColor = System.Drawing.Color.Gainsboro;
+            this.skill_name_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.skill_name_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skill_name_box.Location = new System.Drawing.Point(3, 3);
+            this.skill_name_box.Name = "skill_name_box";
+            this.skill_name_box.Size = new System.Drawing.Size(111, 15);
+            this.skill_name_box.TabIndex = 6;
+            this.skill_name_box.Text = "skillName";
+            this.skill_name_box.TextChanged += new System.EventHandler(this.skill_name_box_TextChanged);
             // 
             // class_skill_box
             // 
@@ -71,23 +114,10 @@
             this.class_skill_box.ForeColor = System.Drawing.Color.Black;
             this.class_skill_box.Location = new System.Drawing.Point(4, 4);
             this.class_skill_box.Name = "class_skill_box";
-            this.class_skill_box.Size = new System.Drawing.Size(18, 21);
+            this.class_skill_box.Size = new System.Drawing.Size(23, 21);
             this.class_skill_box.TabIndex = 1;
             this.class_skill_box.UseVisualStyleBackColor = true;
             this.class_skill_box.CheckedChanged += new System.EventHandler(this.class_skill_box_CheckedChanged);
-            // 
-            // skill_name_box
-            // 
-            this.skill_name_box.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.skill_name_box.BackColor = System.Drawing.Color.Gainsboro;
-            this.skill_name_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.skill_name_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skill_name_box.Location = new System.Drawing.Point(29, 7);
-            this.skill_name_box.Name = "skill_name_box";
-            this.skill_name_box.Size = new System.Drawing.Size(88, 15);
-            this.skill_name_box.TabIndex = 6;
-            this.skill_name_box.Text = "skillName";
-            this.skill_name_box.TextChanged += new System.EventHandler(this.skill_name_box_TextChanged);
             // 
             // ability_box
             // 
@@ -96,7 +126,7 @@
             this.ability_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ability_box.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ability_box.ForeColor = System.Drawing.Color.DarkGray;
-            this.ability_box.Location = new System.Drawing.Point(124, 4);
+            this.ability_box.Location = new System.Drawing.Point(148, 4);
             this.ability_box.Name = "ability_box";
             this.ability_box.Size = new System.Drawing.Size(25, 23);
             this.ability_box.TabIndex = 6;
@@ -121,11 +151,11 @@
             this.tableLayoutPanel2.Controls.Add(this.ranks_box, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.ability_mod_box, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(156, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(180, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(210, 21);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(218, 21);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // total_box
@@ -149,7 +179,7 @@
             this.trained_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.trained_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.trained_box.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.trained_box.Location = new System.Drawing.Point(117, 4);
+            this.trained_box.Location = new System.Drawing.Point(122, 4);
             this.trained_box.Name = "trained_box";
             this.trained_box.ReadOnly = true;
             this.trained_box.Size = new System.Drawing.Size(22, 15);
@@ -164,7 +194,7 @@
             this.miscMod1_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.miscMod1_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.miscMod1_box.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.miscMod1_box.Location = new System.Drawing.Point(148, 4);
+            this.miscMod1_box.Location = new System.Drawing.Point(154, 4);
             this.miscMod1_box.Name = "miscMod1_box";
             this.miscMod1_box.Size = new System.Drawing.Size(22, 15);
             this.miscMod1_box.TabIndex = 7;
@@ -179,7 +209,7 @@
             this.miscMod2_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.miscMod2_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.miscMod2_box.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.miscMod2_box.Location = new System.Drawing.Point(179, 4);
+            this.miscMod2_box.Location = new System.Drawing.Point(186, 4);
             this.miscMod2_box.Name = "miscMod2_box";
             this.miscMod2_box.Size = new System.Drawing.Size(24, 15);
             this.miscMod2_box.TabIndex = 7;
@@ -194,7 +224,7 @@
             this.ranks_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ranks_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ranks_box.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ranks_box.Location = new System.Drawing.Point(46, 2);
+            this.ranks_box.Location = new System.Drawing.Point(49, 2);
             this.ranks_box.Margin = new System.Windows.Forms.Padding(0);
             this.ranks_box.Name = "ranks_box";
             this.ranks_box.Size = new System.Drawing.Size(32, 18);
@@ -210,7 +240,7 @@
             this.ability_mod_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ability_mod_box.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ability_mod_box.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ability_mod_box.Location = new System.Drawing.Point(86, 4);
+            this.ability_mod_box.Location = new System.Drawing.Point(90, 4);
             this.ability_mod_box.Name = "ability_mod_box";
             this.ability_mod_box.ReadOnly = true;
             this.ability_mod_box.Size = new System.Drawing.Size(22, 15);
@@ -224,9 +254,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.skill_table);
             this.Name = "SkillBox";
-            this.Size = new System.Drawing.Size(370, 29);
+            this.Size = new System.Drawing.Size(402, 29);
             this.skill_table.ResumeLayout(false);
             this.skill_table.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ranks_box)).EndInit();
@@ -247,5 +279,7 @@
         private System.Windows.Forms.TextBox miscMod2_box;
         private System.Windows.Forms.NumericUpDown ranks_box;
         private System.Windows.Forms.TextBox ability_mod_box;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button del_butt;
     }
 }

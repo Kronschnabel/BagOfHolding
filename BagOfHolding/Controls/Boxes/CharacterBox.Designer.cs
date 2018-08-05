@@ -98,6 +98,7 @@
             this.exp_box = new System.Windows.Forms.TextBox();
             this.max_exp_box = new System.Windows.Forms.TextBox();
             this.exp_slash_label = new System.Windows.Forms.Label();
+            this.del_butt = new System.Windows.Forms.Button();
             this.char_panel.SuspendLayout();
             this.char_info_table.SuspendLayout();
             this.rsg_table.SuspendLayout();
@@ -119,6 +120,7 @@
             // char_panel
             // 
             this.char_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.char_panel.Controls.Add(this.del_butt);
             this.char_panel.Controls.Add(this.subtitle_box);
             this.char_panel.Controls.Add(this.char_name_box);
             this.char_panel.Controls.Add(this.char_info_table);
@@ -128,6 +130,7 @@
             this.char_panel.Name = "char_panel";
             this.char_panel.Size = new System.Drawing.Size(358, 107);
             this.char_panel.TabIndex = 0;
+            this.char_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.char_panel_MouseMove);
             // 
             // subtitle_box
             // 
@@ -615,6 +618,7 @@
             this.str_mod_label.ReadOnly = true;
             this.str_mod_label.Size = new System.Drawing.Size(35, 16);
             this.str_mod_label.TabIndex = 8;
+            this.str_mod_label.TabStop = false;
             this.str_mod_label.Text = "+0";
             this.str_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -631,6 +635,7 @@
             this.dex_mod_label.ReadOnly = true;
             this.dex_mod_label.Size = new System.Drawing.Size(35, 16);
             this.dex_mod_label.TabIndex = 8;
+            this.dex_mod_label.TabStop = false;
             this.dex_mod_label.Text = "+0";
             this.dex_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -647,6 +652,7 @@
             this.con_mod_label.ReadOnly = true;
             this.con_mod_label.Size = new System.Drawing.Size(35, 16);
             this.con_mod_label.TabIndex = 8;
+            this.con_mod_label.TabStop = false;
             this.con_mod_label.Text = "+0";
             this.con_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -663,6 +669,7 @@
             this.int_mod_label.ReadOnly = true;
             this.int_mod_label.Size = new System.Drawing.Size(35, 16);
             this.int_mod_label.TabIndex = 8;
+            this.int_mod_label.TabStop = false;
             this.int_mod_label.Text = "+0";
             this.int_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -679,6 +686,7 @@
             this.wis_mod_label.ReadOnly = true;
             this.wis_mod_label.Size = new System.Drawing.Size(35, 16);
             this.wis_mod_label.TabIndex = 8;
+            this.wis_mod_label.TabStop = false;
             this.wis_mod_label.Text = "+0";
             this.wis_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -695,6 +703,7 @@
             this.cha_mod_label.ReadOnly = true;
             this.cha_mod_label.Size = new System.Drawing.Size(35, 16);
             this.cha_mod_label.TabIndex = 8;
+            this.cha_mod_label.TabStop = false;
             this.cha_mod_label.Text = "+0";
             this.cha_mod_label.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1154,6 +1163,22 @@
             this.exp_slash_label.TabIndex = 36;
             this.exp_slash_label.Text = "/";
             // 
+            // del_butt
+            // 
+            this.del_butt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.del_butt.BackColor = System.Drawing.Color.DarkGray;
+            this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
+            this.del_butt.Location = new System.Drawing.Point(328, 6);
+            this.del_butt.Name = "del_butt";
+            this.del_butt.Size = new System.Drawing.Size(21, 21);
+            this.del_butt.TabIndex = 8;
+            this.del_butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.del_butt.UseVisualStyleBackColor = false;
+            this.del_butt.Visible = false;
+            this.del_butt.Click += new System.EventHandler(this.del_butt_Click);
+            // 
             // CharacterBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1270,5 +1295,6 @@
         private System.Windows.Forms.TextBox exp_box;
         private System.Windows.Forms.TextBox max_exp_box;
         private System.Windows.Forms.Label exp_slash_label;
+        private System.Windows.Forms.Button del_butt;
     }
 }

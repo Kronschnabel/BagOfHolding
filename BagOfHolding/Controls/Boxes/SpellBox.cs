@@ -51,6 +51,13 @@ namespace BagOfHolding
             notes_box.BackColor = b;
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(DisplayRectangle);
+            hoverArea.Inflate(-8, -8);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Get & Set methods
         public Spell getSpell() {
             return spell;
@@ -107,6 +114,17 @@ namespace BagOfHolding
 
         private void prepared_box_CheckedChanged(object sender, EventArgs e) {
             spell.setPrepared(prepared_box.Checked);
+        }
+
+        private void spell_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
         }
         #endregion
     }

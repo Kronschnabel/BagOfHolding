@@ -87,6 +87,13 @@ namespace BagOfHolding
             spell_fail_box.BackColor = b;
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(this.DisplayRectangle);
+            hoverArea.Inflate(-8, -8);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Get & Set methods
         public Armor getArmor() {
             return armor;
@@ -184,6 +191,17 @@ namespace BagOfHolding
             else
                 armor.setSpellFail(0);
         }
-#endregion
+
+        private void armor_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+        #endregion
     }
 }

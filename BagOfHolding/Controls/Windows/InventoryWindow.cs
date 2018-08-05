@@ -90,8 +90,6 @@ namespace BagOfHolding
             else if(mode == 'a') {
                 character.getArmor().Add(new Armor());
             }
-
-            updateUIData();
         }
 
         #region Get & Set methods
@@ -125,6 +123,17 @@ namespace BagOfHolding
 
         private void newItemToolStripMenuItem_Click(object sender, EventArgs e) {
             addNewItem();
+            updateUIData();
+        }
+
+        private void saveCharacterAsToolStripMenuItem_Click(object sender, EventArgs e) {
+            SaveFileDialog saveWindow = new SaveFileDialog();
+            saveWindow.Filter = "Character Files ('*.char') | *.char";
+            saveWindow.DefaultExt = "char";
+
+            if(saveWindow.ShowDialog() == DialogResult.OK) {
+                character.saveChar(saveWindow.FileName);
+            }
         }
 
         private void saveInventoryAsToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -136,18 +145,54 @@ namespace BagOfHolding
                 character.saveInv(saveWindow.FileName);
             }
         }
-        #endregion
 
-        private void overwriteInventoryToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void loadCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
             OpenFileDialog loadWindow = new OpenFileDialog();
-            loadWindow.Filter = "Inventory Files ('*.inv') | *.inv";
+            loadWindow.Filter = "Character Files ('*.char') | *.char";
             loadWindow.DefaultExt = "char";
 
             if(loadWindow.ShowDialog() == DialogResult.OK) {
                 character.loadChar(loadWindow.FileName);
                 updateUIData();
-                updateSkillUI();
             }
         }
+
+        private void overwriteInventoryToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog loadWindow = new OpenFileDialog();
+            loadWindow.Filter = "Inventory Files ('*.inv') | *.inv";
+            loadWindow.DefaultExt = "inv";
+
+            if(loadWindow.ShowDialog() == DialogResult.OK) {
+                character.loadInv(loadWindow.FileName, true);
+                updateUIData();
+            }
+        }
+
+        private void appendInventoryToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpenFileDialog loadWindow = new OpenFileDialog();
+            loadWindow.Filter = "Inventory Files ('*.inv') | *.inv";
+            loadWindow.DefaultExt = "inv";
+
+            if(loadWindow.ShowDialog() == DialogResult.OK) {
+                character.loadInv(loadWindow.FileName, false);
+                updateUIData();
+            }
+        }
+
+
+        private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
+            character.saveChar();
+        }
+
+        private void main_panel_MouseEnter(object sender, EventArgs e) {
+            updateCharData();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            updateCharData();
+            updateUIData();
+        }
+
+        #endregion
     }
 }

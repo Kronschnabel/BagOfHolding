@@ -162,6 +162,13 @@ namespace BagOfHolding
             }
         }
 
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(char_panel.Bounds);
+            hoverArea.Inflate(-4, -4);
+
+            return hoverArea.Contains(p);
+        }
+
         #region Event Handlers
         private void avatar_panel_Click(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
@@ -423,6 +430,17 @@ namespace BagOfHolding
 
         private void char_name_box_DoubleClick(object sender, EventArgs e) {
             openCharWindow();
+        }
+
+        private void char_panel_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
         }
         #endregion
 

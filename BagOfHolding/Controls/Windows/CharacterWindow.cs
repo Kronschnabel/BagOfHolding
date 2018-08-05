@@ -221,7 +221,16 @@ namespace BagOfHolding
                 character.getSkills().Add(s.getSkill());
             }
         }
-#endregion
+
+        private bool checkHover(Point p) {
+            Rectangle hoverArea = RectangleToScreen(skill_panel_back.Bounds);
+            hoverArea.Inflate(-3, -3);
+
+            return hoverArea.Contains(p);
+        }
+
+
+        #endregion
 
         private void tryDeleteImage(string path) {
             try {
@@ -285,6 +294,7 @@ namespace BagOfHolding
         }
 
         private void newSkillToolStripMenuItem_Click(object sender, EventArgs e) {
+            updateCharSkills();
             character.getSkills().Add(new Skill());
             updateSkillUI();
         }
@@ -308,6 +318,7 @@ namespace BagOfHolding
         }
 
         private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
+            updateCharSkills();
             character.saveChar();
         }
 
@@ -317,14 +328,25 @@ namespace BagOfHolding
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            updateCharSkills();
             updateUIData();
             updateSkillUI();
         }
 
+        private void skill_panel_back_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                skill_clear_butt.Visible = true;
+            else
+                skill_clear_butt.Visible = false;
+        }
+
+        private void skill_clear_butt_Click(object sender, EventArgs e) {
+            skill_panel.Controls.Clear();
+        }
 
         #region TextChanged Event Handlers
         //These methods are purely responsible for updating character's data to match the UI's
-        
+
         private void char_name_box_TextChanged(object sender, EventArgs e) {
             character.setName(char_name_box.Text);
         }

@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.spell_table = new System.Windows.Forms.TableLayoutPanel();
+            this.del_butt = new System.Windows.Forms.Button();
             this.spell_info_table = new System.Windows.Forms.TableLayoutPanel();
             this.school_box = new System.Windows.Forms.TextBox();
             this.level_box = new System.Windows.Forms.TextBox();
@@ -42,7 +43,8 @@
             this.spell_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.spell_table.ColumnCount = 2;
             this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 389F));
+            this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 393F));
+            this.spell_table.Controls.Add(this.del_butt, 0, 1);
             this.spell_table.Controls.Add(this.spell_info_table, 1, 0);
             this.spell_table.Controls.Add(this.notes_box, 1, 1);
             this.spell_table.Controls.Add(this.prepared_box, 0, 0);
@@ -55,6 +57,23 @@
             this.spell_table.Size = new System.Drawing.Size(452, 261);
             this.spell_table.TabIndex = 3;
             this.spell_table.DoubleClick += new System.EventHandler(this.spell_table_DoubleClick);
+            this.spell_table.MouseMove += new System.Windows.Forms.MouseEventHandler(this.spell_table_MouseMove);
+            // 
+            // del_butt
+            // 
+            this.del_butt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.del_butt.BackColor = System.Drawing.Color.DarkGray;
+            this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
+            this.del_butt.Location = new System.Drawing.Point(18, 153);
+            this.del_butt.Name = "del_butt";
+            this.del_butt.Size = new System.Drawing.Size(21, 21);
+            this.del_butt.TabIndex = 7;
+            this.del_butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.del_butt.UseVisualStyleBackColor = false;
+            this.del_butt.Visible = false;
+            this.del_butt.Click += new System.EventHandler(this.del_butt_Click);
             // 
             // spell_info_table
             // 
@@ -65,7 +84,7 @@
             this.spell_info_table.Controls.Add(this.school_box, 0, 1);
             this.spell_info_table.Controls.Add(this.level_box, 1, 1);
             this.spell_info_table.Controls.Add(this.spell_name_box, 0, 0);
-            this.spell_info_table.Location = new System.Drawing.Point(65, 4);
+            this.spell_info_table.Location = new System.Drawing.Point(61, 4);
             this.spell_info_table.Name = "spell_info_table";
             this.spell_info_table.RowCount = 2;
             this.spell_info_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -119,7 +138,7 @@
             this.notes_box.BackColor = System.Drawing.Color.Gainsboro;
             this.notes_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.notes_box.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notes_box.Location = new System.Drawing.Point(65, 71);
+            this.notes_box.Location = new System.Drawing.Point(61, 71);
             this.notes_box.Name = "notes_box";
             this.notes_box.Size = new System.Drawing.Size(383, 186);
             this.notes_box.TabIndex = 5;
@@ -130,7 +149,7 @@
             // 
             this.prepared_box.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.prepared_box.AutoSize = true;
-            this.prepared_box.Location = new System.Drawing.Point(20, 22);
+            this.prepared_box.Location = new System.Drawing.Point(18, 22);
             this.prepared_box.Name = "prepared_box";
             this.prepared_box.Padding = new System.Windows.Forms.Padding(4, 7, 3, 3);
             this.prepared_box.Size = new System.Drawing.Size(22, 24);
@@ -162,5 +181,6 @@
         private System.Windows.Forms.TextBox spell_name_box;
         private System.Windows.Forms.RichTextBox notes_box;
         private System.Windows.Forms.CheckBox prepared_box;
+        private System.Windows.Forms.Button del_butt;
     }
 }

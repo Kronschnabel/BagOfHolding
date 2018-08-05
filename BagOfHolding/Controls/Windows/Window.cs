@@ -184,5 +184,9 @@ namespace BagOfHolding
             BringToFront();
         }
         #endregion
+
+        private void main_panel_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 }
