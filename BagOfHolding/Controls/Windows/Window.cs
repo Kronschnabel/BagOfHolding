@@ -51,7 +51,7 @@ namespace BagOfHolding
 
             if(type.Equals("char")) {
                 Location = new Point(100, 100);
-                Size = new Size(new Point(800, 580));
+                Size = new Size(new Point(832, 580));
                 resizeControlsActive = false;
             }
             else if(type.Equals("inv")) {

@@ -61,6 +61,7 @@
             this.hp_slash_label = new System.Windows.Forms.Label();
             this.char_notes_box = new System.Windows.Forms.RichTextBox();
             this.skill_panel_back = new System.Windows.Forms.Panel();
+            this.skill_clear_butt = new System.Windows.Forms.Button();
             this.skills_label = new System.Windows.Forms.Label();
             this.skill_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.touch_ac_label = new System.Windows.Forms.Label();
@@ -148,7 +149,6 @@
             this.char_level_box = new System.Windows.Forms.TextBox();
             this.avatar_panel = new System.Windows.Forms.Panel();
             this.char_image = new System.Windows.Forms.PictureBox();
-            this.skill_clear_butt = new System.Windows.Forms.Button();
             this.main_panel.SuspendLayout();
             this.bab_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
@@ -206,7 +206,7 @@
             this.main_panel.ForeColor = System.Drawing.Color.Gainsboro;
             this.main_panel.Location = new System.Drawing.Point(0, 0);
             this.main_panel.Name = "main_panel";
-            this.main_panel.Size = new System.Drawing.Size(790, 540);
+            this.main_panel.Size = new System.Drawing.Size(822, 540);
             this.main_panel.TabIndex = 1;
             // 
             // health_bar
@@ -262,7 +262,7 @@
             this.exp_bar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.exp_bar.Location = new System.Drawing.Point(0, 525);
             this.exp_bar.Name = "exp_bar";
-            this.exp_bar.Size = new System.Drawing.Size(790, 15);
+            this.exp_bar.Size = new System.Drawing.Size(822, 15);
             this.exp_bar.TabIndex = 26;
             // 
             // bab_panel
@@ -364,7 +364,7 @@
             this.menu_strip.Location = new System.Drawing.Point(0, 0);
             this.menu_strip.Margin = new System.Windows.Forms.Padding(3);
             this.menu_strip.Name = "menu_strip";
-            this.menu_strip.Size = new System.Drawing.Size(790, 24);
+            this.menu_strip.Size = new System.Drawing.Size(822, 24);
             this.menu_strip.TabIndex = 24;
             this.menu_strip.Text = "menuStrip1";
             // 
@@ -564,7 +564,7 @@
             this.char_notes_box.BackColor = System.Drawing.Color.Gainsboro;
             this.char_notes_box.Location = new System.Drawing.Point(385, 29);
             this.char_notes_box.Name = "char_notes_box";
-            this.char_notes_box.Size = new System.Drawing.Size(402, 141);
+            this.char_notes_box.Size = new System.Drawing.Size(433, 141);
             this.char_notes_box.TabIndex = 32;
             this.char_notes_box.Text = "";
             this.char_notes_box.TextChanged += new System.EventHandler(this.char_notes_box_TextChanged);
@@ -577,16 +577,30 @@
             this.skill_panel_back.Controls.Add(this.skill_panel);
             this.skill_panel_back.Location = new System.Drawing.Point(385, 176);
             this.skill_panel_back.Name = "skill_panel_back";
-            this.skill_panel_back.Size = new System.Drawing.Size(402, 341);
+            this.skill_panel_back.Size = new System.Drawing.Size(433, 341);
             this.skill_panel_back.TabIndex = 14;
             this.skill_panel_back.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skill_panel_back_MouseMove);
+            // 
+            // skill_clear_butt
+            // 
+            this.skill_clear_butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.skill_clear_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.skill_clear_butt.ForeColor = System.Drawing.Color.White;
+            this.skill_clear_butt.Location = new System.Drawing.Point(362, 3);
+            this.skill_clear_butt.Name = "skill_clear_butt";
+            this.skill_clear_butt.Size = new System.Drawing.Size(68, 22);
+            this.skill_clear_butt.TabIndex = 14;
+            this.skill_clear_butt.Text = "Clear...";
+            this.skill_clear_butt.UseVisualStyleBackColor = false;
+            this.skill_clear_butt.Visible = false;
+            this.skill_clear_butt.Click += new System.EventHandler(this.skill_clear_butt_Click);
             // 
             // skills_label
             // 
             this.skills_label.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.skills_label.AutoSize = true;
             this.skills_label.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.skills_label.Location = new System.Drawing.Point(175, 1);
+            this.skills_label.Location = new System.Drawing.Point(190, 1);
             this.skills_label.Name = "skills_label";
             this.skills_label.Size = new System.Drawing.Size(59, 23);
             this.skills_label.TabIndex = 8;
@@ -601,7 +615,7 @@
             this.skill_panel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.skill_panel.Location = new System.Drawing.Point(3, 27);
             this.skill_panel.Name = "skill_panel";
-            this.skill_panel.Size = new System.Drawing.Size(396, 311);
+            this.skill_panel.Size = new System.Drawing.Size(427, 311);
             this.skill_panel.TabIndex = 13;
             this.skill_panel.WrapContents = false;
             // 
@@ -1199,7 +1213,7 @@
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.class_table_1.Controls.Add(this.f_class_1, 0, 0);
             this.class_table_1.Controls.Add(this.class_level_box_1, 2, 0);
             this.class_table_1.Controls.Add(this.class_hd_box_1, 3, 0);
@@ -1291,7 +1305,7 @@
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.class_table_2.Controls.Add(this.f_class_2, 0, 0);
             this.class_table_2.Controls.Add(this.class_level_box_2, 2, 0);
             this.class_table_2.Controls.Add(this.class_hd_box_2, 3, 0);
@@ -1383,7 +1397,7 @@
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.class_table_3.Controls.Add(this.f_class_3, 0, 0);
             this.class_table_3.Controls.Add(this.class_level_box_3, 2, 0);
             this.class_table_3.Controls.Add(this.class_hd_box_3, 3, 0);
@@ -1475,7 +1489,7 @@
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.class_table_4.Controls.Add(this.f_class_4, 0, 0);
             this.class_table_4.Controls.Add(this.class_level_box_4, 2, 0);
             this.class_table_4.Controls.Add(this.class_hd_box_4, 3, 0);
@@ -1567,7 +1581,7 @@
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
+            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.class_table_5.Controls.Add(this.f_class_5, 0, 0);
             this.class_table_5.Controls.Add(this.class_level_box_5, 2, 0);
             this.class_table_5.Controls.Add(this.class_hd_box_5, 3, 0);
@@ -1875,27 +1889,13 @@
             this.char_image.TabStop = false;
             this.char_image.Click += new System.EventHandler(this.char_image_Click);
             // 
-            // skill_clear_butt
-            // 
-            this.skill_clear_butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.skill_clear_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.skill_clear_butt.ForeColor = System.Drawing.Color.White;
-            this.skill_clear_butt.Location = new System.Drawing.Point(331, 3);
-            this.skill_clear_butt.Name = "skill_clear_butt";
-            this.skill_clear_butt.Size = new System.Drawing.Size(68, 21);
-            this.skill_clear_butt.TabIndex = 14;
-            this.skill_clear_butt.Text = "Clear...";
-            this.skill_clear_butt.UseVisualStyleBackColor = false;
-            this.skill_clear_butt.Visible = false;
-            this.skill_clear_butt.Click += new System.EventHandler(this.skill_clear_butt_Click);
-            // 
             // CharacterWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.main_panel);
             this.Name = "CharacterWindow";
-            this.Size = new System.Drawing.Size(790, 540);
+            this.Size = new System.Drawing.Size(822, 540);
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
             this.bab_panel.ResumeLayout(false);

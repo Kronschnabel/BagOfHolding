@@ -43,16 +43,28 @@ namespace BagOfHolding
             item_panel.Controls.Clear();
 
             if(mode == 'i') {
+                item_butt.BackColor = Color.Pink;
+                weapon_butt.BackColor = Color.Gainsboro;
+                armor_butt.BackColor = Color.Gainsboro;
+
                 foreach(Item i in character.getInv()) {
                     item_panel.Controls.Add(new ItemBox(i));
                 }
             }
             else if(mode == 'w') {
+                item_butt.BackColor = Color.Gainsboro;
+                weapon_butt.BackColor = Color.LightGreen;
+                armor_butt.BackColor = Color.Gainsboro;
+
                 foreach(Weapon w in character.getWeapons()) {
                     item_panel.Controls.Add(new WeaponBox(w));
                 }
             }
             else if(mode == 'a') {
+                item_butt.BackColor = Color.Gainsboro;
+                weapon_butt.BackColor = Color.Gainsboro;
+                armor_butt.BackColor = Color.LightBlue;
+
                 foreach(Armor a in character.getArmor()) {
                     item_panel.Controls.Add(new ArmorBox(a));
                 }

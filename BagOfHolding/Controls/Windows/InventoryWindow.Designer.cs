@@ -42,10 +42,10 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCharacterAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveItemListAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
             this.SuspendLayout();
@@ -164,7 +164,7 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newItemToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // newItemToolStripMenuItem
@@ -181,7 +181,7 @@
             this.overwriteInventoryToolStripMenuItem,
             this.appendInventoryToolStripMenuItem});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // loadCharacterToolStripMenuItem
@@ -211,7 +211,7 @@
             this.saveCharacterAsToolStripMenuItem,
             this.saveItemListAsToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem.Text = "Save As";
             // 
             // saveCharacterAsToolStripMenuItem
@@ -228,6 +228,21 @@
             this.saveItemListAsToolStripMenuItem.Text = "Save Inventory as...";
             this.saveItemListAsToolStripMenuItem.Click += new System.EventHandler(this.saveInventoryAsToolStripMenuItem_Click);
             // 
+            // saveToolStripMenuItem1
+            // 
+            this.saveToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveCharacterToolStripMenuItem});
+            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem1.Text = "Save";
+            // 
+            // saveCharacterToolStripMenuItem
+            // 
+            this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
+            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.saveCharacterToolStripMenuItem.Text = "Save Character...";
+            this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -239,24 +254,9 @@
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem1
-            // 
-            this.saveToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveCharacterToolStripMenuItem});
-            this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.saveToolStripMenuItem1.Text = "Save";
-            // 
-            // saveCharacterToolStripMenuItem
-            // 
-            this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
-            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.saveCharacterToolStripMenuItem.Text = "Save Character...";
-            this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
             // 
             // InventoryWindow
             // 
