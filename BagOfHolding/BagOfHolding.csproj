@@ -221,6 +221,13 @@
     <Content Include="DefaultCharImage.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\DCI_younglady.png" />
+    <None Include="Resources\DCI_orcguy.png" />
+    <None Include="Resources\DCI_madguy.png" />
+    <None Include="Resources\DCI_hoodguy.png" />
+    <None Include="Resources\DCI_guy.png" />
+    <None Include="Resources\DCI_derpguy.png" />
+    <None Include="Resources\DCI_beardguy.png" />
     <None Include="Resources\skillclose_icon.png" />
     <None Include="Resources\close_icon.png" />
   </ItemGroup>

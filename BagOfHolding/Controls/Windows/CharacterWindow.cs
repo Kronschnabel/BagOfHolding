@@ -203,6 +203,7 @@ namespace BagOfHolding
             char_level_box.Text = character.getLevel().ToString();
             avatar_panel.BackColor = character.getColor();
             char_image.Image = character.getImage();
+            char_image.BackColor = character.getIBC();
         }
 
         private void updateSkillUI() {
