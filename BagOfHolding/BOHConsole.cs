@@ -22,7 +22,7 @@
 //          getChar()
 //
 //Command Utility methods: These methods handle processing the commands that the user enters.
-//          processCommand()
+//          processInput()
 //          processDieCommand()
 //          processHelpCommand()
 //
@@ -66,6 +66,8 @@ namespace BagOfHolding
 
         List<string> cmdHistory;
         int historyIndex;
+
+        Die d = new Die();
 
         public BOHConsole() {
             startup();
@@ -117,6 +119,9 @@ namespace BagOfHolding
         #endregion
 
         #region Misc. Utility methods
+        private void print(string text) {
+            console_box.AppendText(text);
+        }
 
         private void printLine(string line) {
             console_box.AppendText("\n" + line);
@@ -168,16 +173,62 @@ namespace BagOfHolding
 
             return null;
         }
-        #endregion
 
-        #region Command utility methods
+        private List<Character> charsFromCmd(Command cmd) {
+            List<Character> referencedChars = new List<Character>();
 
-        private void processCommand(string line) {
-            if(line != null && !line.Equals("")) { 
+            foreach(string command in cmd.getSLine()) {
+                Character testChar = getChar(command);
+                if(testChar != null)
+                    referencedChars.Add(getChar(command));
+            }
 
-                string[] sLine = line.Split(' ');
+            return referencedChars;
+        }
+
+        private void fillRollResults(Command cmd, Die d, ref List<int> rolls, ref int total) {
+            int mod = cmd.getMod();
+
+            if(cmd.getMultiRoll()) {
+                for(int rollCount = 0; rollCount < cmd.getRollCount(); rollCount++) {
+                    int roll = d.roll(cmd.getSides());
+                    rolls.Add(roll);
+                    total += roll;
+                }
+
+                if(cmd.getMultiMod())
+                    total += (mod * cmd.getRollCount());
+                else
+                    total += mod;
+            }
+            else {
+                int roll = d.roll(cmd.getSides());
+                rolls.Add(roll);
+                total += (roll + mod);
+            }
+        }
+
+        private void editCharStats(Command cmd, int total, ref Character referencedChar) {
+            char op = cmd.getVar()[cmd.getVar().Length - 1];
+            string var = cmd.getVar().Remove(cmd.getVar().Length - 1).ToLower();
+            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
+
+            int preEdit = 0;
+            int postEdit = 0;
+
+            referencedChar.statEditFromCommand(var, op, total, ref preEdit, ref postEdit);
+
+            party_control.updateUIData();
+            print(string.Format(composite, var, preEdit, postEdit));
+        }
+            #endregion
+
+            #region Command utility methods
+
+        private void processInput(string line) {
+            if(line != null && !line.Equals("")) {
+                Command cmd = new Command(line);
                 cmdHistory.Add(line);
-                Character c = getChar(sLine[0]);
 
                 if(cmdHistory.Count > 1)
                     historyIndex = cmdHistory.Count - 1;
@@ -188,73 +239,75 @@ namespace BagOfHolding
                 else if(line.Equals("party")) {
                     openPartyWindow();
                 }
-                else if(sLine[0].Equals("help")) {
-                    processHelpCommand(sLine);
+                else if(cmd.getSLine()[0].Equals("help")) {
+                    processHelpCommand(cmd.getSLine());
                 }
                 else if(line.Equals("quit")) {
                     Dispose();
                 }
+                else {
+                    processCommand(cmd);
+                }
 
-                if(c != null) {
+                /*if(c != null) {
                     char_control.setChar(ref c);
                     openCharWindow();
                 }
                 else if(sLine[0][0] == 'd' || sLine[0][0] == 'D') {
                     processDieCommand(sLine);
-                }
+                } */
             }
         }
 
-        private void processDieCommand(string[] sLine) {
-            bool multiRoll = false;
-            bool sum = false;
-            int sides;
-            int rollCount = 1;
+        private void processCommand(Command cmd) {
+            List<Character> referencedChars;
+            printLine("");
 
-            sLine[0] = sLine[0].Remove(0, 1);
-            string[] diceString = sLine[0].Split('*');
-            sides = int.Parse(diceString[0]);
-
-            if(diceString.Length == 2)
-                rollCount = int.Parse(diceString[1]);
-
-            if(rollCount <= 1)
-                rollCount = 1;
+            if(cmd.getParty())
+                referencedChars = party;
             else
-                multiRoll = true;
+                referencedChars = charsFromCmd(cmd);
 
-
-            foreach(string s in sLine) {
-                if(multiRoll)
-                    if(s.Equals("sum") || s.Equals("s"))
-                        sum = true;
-            }
-
-            Die d = new Die(2494);
-
-            if(rollCount == 1) {
-                printLine("\nD" + sides + " Roll: " + d.roll(sides));
-            }
-            else if(sum) {
-                int total = 0;
-
-                printLine("\nD" + sides + " x" + rollCount + ":");
-                while(rollCount > 0) {
-                    int roll = d.roll(sides);
-                    total += roll;
-                    printLine("           " + roll);
-                    rollCount -= 1;
-                }
-
-                printLine("\nTotal: " + total);
-            }
-            else {
-                printLine("\nD" + sides + " x" + rollCount + ":");
-                while(rollCount > 0) {
-                    printLine("          " + d.roll(sides));
-                    rollCount -= 1;
+            if(referencedChars.Count > 0) {
+                foreach(Character c in referencedChars) {
+                    if(cmd.getModded())
+                        cmd.calcMod(c);
+                        
+                    if(cmd.getDie()) {
+                        processDieCommand(cmd, d, c);
+                    }
                 }
             }
+            else if(cmd.getDie()) {
+                if(cmd.getModded())
+                    cmd.calcMod();
+
+                processDieCommand(cmd, d);
+            }
+
+        }
+
+        private void processDieCommand(Command cmd, Die d) {
+            List<int> rolls = new List<int>();
+            int total = 0;
+            int mod = cmd.getMod();
+
+            fillRollResults(cmd, d, ref rolls, ref total);
+            printDieResults(cmd, rolls, total);
+        }
+
+        private void processDieCommand(Command cmd, Die d, Character c) {
+            List<int> rolls = new List<int>();
+            int total = 0;
+            int mod = cmd.getMod();
+
+            fillRollResults(cmd, d, ref rolls, ref total);
+            printLine(c.getName() + "'s roll results: ");
+
+            if(cmd.getVarEdit()) 
+                editCharStats(cmd, total, ref c);
+
+            printDieResults(cmd, rolls, total);
         }
 
         private void processHelpCommand(string[] sLine) {
@@ -286,6 +339,43 @@ namespace BagOfHolding
         #endregion
 
         #region Print statement methods
+
+        private void printDieResults(Command cmd, List<int> rolls, int total) {
+            string composite;
+            int moddedRoll;
+
+            printLine(cmd.getRollCount() + " D" + cmd.getSides() + " Roll(s):");
+
+            if((cmd.getModded() && !cmd.getSum()) || (cmd.getMultiMod() && cmd.getSum())) {
+                print("                 Mod {" + cmd.getMod() + "}:\n");
+                composite = "                 {0, -25}{1, 0}";
+            }
+            else {
+                printLine("");
+                composite = "                 {0, -25}";
+            }
+
+            foreach(int r in rolls) {
+                if(cmd.getMultiMod() || (cmd.getModded() && !cmd.getSum()))
+                    moddedRoll = r + cmd.getMod();
+                else
+                    moddedRoll = r;
+
+                if(r == 1)
+                    print(string.Format(composite, "**" + r + "**", moddedRoll));
+                else if(r == cmd.getSides())
+                    print(string.Format(composite, "!!" + r + "!!", moddedRoll));
+                else
+                    print(string.Format(composite, r, moddedRoll));
+
+                if(rolls.Count > 1)
+                    printLine("");
+            }
+            if(cmd.getSum()) {
+                printLine("\nTotal: " + (total - cmd.getMod()) + " (+" + cmd.getMod() + ") = " + total);
+            }
+            printLine("");
+        }
 
         private void printOpeningStatement() {
             printFile("BOHTitle.txt");
@@ -393,7 +483,7 @@ namespace BagOfHolding
             else if(e.KeyCode == Keys.Enter) {
                 string command = getCurrentLine();
                 resetCaretPos();
-                processCommand(command);
+                processInput(command);
             }
             else if(e.KeyCode == Keys.Back && getCurrentLine().Length < 1) {
                 e.SuppressKeyPress = true;

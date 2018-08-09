@@ -481,6 +481,216 @@ namespace BagOfHolding
             spellbook.Clear();
         }
 
+        public void statEditFromCommand(string var, char op, int total, ref int preEdit, ref int postEdit) {
+            if(op == '-')
+                total *= -1;
+
+            switch(var) {
+                case "exp": {
+                        preEdit = exp;
+                        if(op == '=')
+                            exp = 0;
+
+                        exp += total;
+                        postEdit = exp;
+                        break;
+                    }
+                case "expt": {
+                        preEdit = expToAdvance;
+                        if(op == '=')
+                            expToAdvance = 0;
+
+                        expToAdvance += total;
+                        postEdit = expToAdvance;
+                        break;
+                    }
+                case "level": {
+                        preEdit = level;
+                        if(op == '=')
+                            level = 0;
+
+                        level += total;
+                        postEdit = level;
+                        break;
+                    }
+                case "strt": {
+                        preEdit = strength.getTotal();
+                        if(op == '=')
+                            strength.setTotal(0);
+
+                        strength.addToTotal(total);
+                        postEdit = strength.getTotal();
+                        break;
+                    }
+                case "dext": {
+                        preEdit = dexterity.getTotal();
+                        if(op == '=')
+                            dexterity.setTotal(0);
+
+                        dexterity.addToTotal(total);
+                        postEdit = dexterity.getTotal();
+                        break;
+                    }
+                case "cont": {
+                        preEdit = constitution.getTotal();
+                        if(op == '=')
+                            constitution.setTotal(0);
+
+                        constitution.addToTotal(total);
+                        postEdit = constitution.getTotal();
+                        break;
+                    }
+                case "intt": {
+                        preEdit = intelligence.getTotal();
+                        if(op == '=')
+                            intelligence.setTotal(0);
+
+                        intelligence.addToTotal(total);
+                        postEdit = intelligence.getTotal();
+                        break;
+                    }
+                case "wist": {
+                        preEdit = wisdom.getTotal();
+                        if(op == '=')
+                            wisdom.setTotal(0);
+
+                        wisdom.addToTotal(total);
+                        postEdit = wisdom.getTotal();
+                        break;
+                    }
+                case "chat": {
+                        preEdit = charisma.getTotal();
+                        if(op == '=')
+                            charisma.setTotal(0);
+
+                        charisma.addToTotal(total);
+                        postEdit = charisma.getTotal();
+                        break;
+                    }
+                case "will": {
+                        preEdit = will;
+                        if(op == '=')
+                            will = 0;
+
+                        will += total;
+                        postEdit = will;
+                        break;
+                    }
+                case "ref": {
+                        preEdit = reflex;
+                        if(op == '=')
+                            reflex = 0;
+
+                        reflex += total;
+                        postEdit = reflex;
+                        break;
+                    }
+                case "fort": {
+                        preEdit = fortitude;
+                        if(op == '=')
+                            fortitude = 0;
+
+                        will += fortitude;
+                        postEdit = fortitude;
+                        break;
+                    }
+                case "bab": {
+                        preEdit = bab;
+                        if(op == '=')
+                            bab = 0;
+
+                        bab += total;
+                        postEdit = bab;
+                        break;
+                    }
+                case "mel": {
+                        preEdit = melee;
+                        if(op == '=')
+                            melee = 0;
+
+                        melee += total;
+                        postEdit = melee;
+                        break;
+                    }
+                case "ran": {
+                        preEdit = ranged;
+                        if(op == '=')
+                            ranged = 0;
+
+                        ranged += total;
+                        postEdit = ranged;
+                        break;
+                    }
+                case "ac": {
+                        preEdit = ac;
+                        if(op == '=')
+                            ac = 0;
+
+                        ac += total;
+                        postEdit = ac;
+                        break;
+                    }
+                case "ff": {
+                        preEdit = flatFooted;
+                        if(op == '=')
+                            flatFooted = 0;
+
+                        flatFooted += total;
+                        postEdit = flatFooted;
+                        break;
+                    }
+                case "touch": {
+                        preEdit = touch;
+                        if(op == '=')
+                            touch = 0;
+
+                        touch += total;
+                        postEdit = touch;
+                        break;
+                    }
+                case "init": {
+                        preEdit = initiative;
+                        if(op == '=')
+                            initiative = 0;
+
+                        initiative += total;
+                        postEdit = initiative;
+                        break;
+                    }
+                case "spd": {
+                        preEdit = speed;
+                        if(op == '=')
+                            speed = 0;
+
+                        speed += total;
+                        postEdit = speed;
+                        break;
+                    }
+                case "hp": {
+                        preEdit = hp;
+                        if(op == '=')
+                            hp = 0;
+
+                        hp += total;
+                        postEdit = hp;
+                        break;
+                    }
+                case "hpt": {
+                        preEdit = maxHP;
+                        if(op == '=')
+                            maxHP = 0;
+
+                        maxHP += total;
+                        postEdit = maxHP;
+                        break;
+                    }
+                default: {
+
+                        break;
+                    }
+            }
+        }
+
         private void createLists() {
             notes = new List<string>();
             classes = new List<Klass>();

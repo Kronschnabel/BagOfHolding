@@ -251,8 +251,6 @@ namespace BagOfHolding
                 character.getStr().setTotal(strT);
             else
                 character.getStr().setTotal(0);
-
-            updateUIData();
         }
 
         private void dex_box_TextChanged(object sender, EventArgs e) {
@@ -261,8 +259,6 @@ namespace BagOfHolding
                 character.getDex().setTotal(dexT);
             else
                 character.getDex().setTotal(0);
-
-            updateUIData();
         }
 
         private void con_box_TextChanged(object sender, EventArgs e) {
@@ -271,8 +267,6 @@ namespace BagOfHolding
                 character.getCon().setTotal(conT);
             else
                 character.getCon().setTotal(0);
-
-            updateUIData();
         }
 
         private void int_box_TextChanged(object sender, EventArgs e) {
@@ -281,8 +275,6 @@ namespace BagOfHolding
                 character.getInt().setTotal(intT);
             else
                 character.getInt().setTotal(0);
-
-            updateUIData();
         }
 
         private void wis_box_TextChanged(object sender, EventArgs e) {
@@ -291,8 +283,6 @@ namespace BagOfHolding
                 character.getWis().setTotal(wisT);
             else
                 character.getWis().setTotal(0);
-
-            updateUIData();
         }
 
         private void cha_box_TextChanged(object sender, EventArgs e) {
@@ -301,8 +291,6 @@ namespace BagOfHolding
                 character.getCha().setTotal(chaT);
             else
                 character.getCha().setTotal(0);
-
-            updateUIData();
         }
 
         private void exp_box_TextChanged(object sender, EventArgs e) {

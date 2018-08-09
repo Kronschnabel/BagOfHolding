@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectClasses\Command.cs" />
     <Compile Include="ObjectClasses\AbilityScore.cs" />
     <Compile Include="ObjectClasses\Armor.cs" />
     <Compile Include="Controls\Boxes\ArmorBox.cs">

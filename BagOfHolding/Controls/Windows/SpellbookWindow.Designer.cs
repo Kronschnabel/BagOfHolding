@@ -34,6 +34,9 @@
             this.loadCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appendSpellbookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overwriteSpellbookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveCharacterAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveSpellbookAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCharacterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,9 +64,6 @@
             this.lvl9_box = new System.Windows.Forms.NumericUpDown();
             this.spell_book_label = new System.Windows.Forms.Label();
             this.spell_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveSpellbookAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveCharacterAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
             this.spell_counter_table.SuspendLayout();
@@ -121,7 +121,7 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newItemToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.newToolStripMenuItem.Text = "New";
             // 
             // newItemToolStripMenuItem
@@ -138,7 +138,7 @@
             this.appendSpellbookToolStripMenuItem,
             this.overwriteSpellbookToolStripMenuItem});
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // loadCharacterToolStripMenuItem
@@ -161,18 +161,41 @@
             this.overwriteSpellbookToolStripMenuItem.Text = "Overwrite Spellbook...";
             this.overwriteSpellbookToolStripMenuItem.Click += new System.EventHandler(this.overwriteSpellbookToolStripMenuItem_Click);
             // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveCharacterAsToolStripMenuItem,
+            this.saveSpellbookAsToolStripMenuItem});
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            // 
+            // saveCharacterAsToolStripMenuItem
+            // 
+            this.saveCharacterAsToolStripMenuItem.Name = "saveCharacterAsToolStripMenuItem";
+            this.saveCharacterAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.saveCharacterAsToolStripMenuItem.Text = "Save Character as...";
+            this.saveCharacterAsToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterAsToolStripMenuItem_Click);
+            // 
+            // saveSpellbookAsToolStripMenuItem
+            // 
+            this.saveSpellbookAsToolStripMenuItem.Name = "saveSpellbookAsToolStripMenuItem";
+            this.saveSpellbookAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.saveSpellbookAsToolStripMenuItem.Text = "Save Spellbook as...";
+            this.saveSpellbookAsToolStripMenuItem.Click += new System.EventHandler(this.saveSpellbookAsToolStripMenuItem_Click);
+            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveCharacterToolStripMenuItem});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveCharacterToolStripMenuItem
             // 
             this.saveCharacterToolStripMenuItem.Name = "saveCharacterToolStripMenuItem";
-            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.saveCharacterToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.saveCharacterToolStripMenuItem.Text = "Save Character...";
             this.saveCharacterToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterToolStripMenuItem_Click);
             // 
@@ -517,28 +540,6 @@
             this.spell_panel.Name = "spell_panel";
             this.spell_panel.Size = new System.Drawing.Size(876, 366);
             this.spell_panel.TabIndex = 0;
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveCharacterAsToolStripMenuItem,
-            this.saveSpellbookAsToolStripMenuItem});
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As";
-            // 
-            // saveSpellbookAsToolStripMenuItem
-            // 
-            this.saveSpellbookAsToolStripMenuItem.Name = "saveSpellbookAsToolStripMenuItem";
-            this.saveSpellbookAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.saveSpellbookAsToolStripMenuItem.Text = "Save Spellbook as...";
-            // 
-            // saveCharacterAsToolStripMenuItem
-            // 
-            this.saveCharacterAsToolStripMenuItem.Name = "saveCharacterAsToolStripMenuItem";
-            this.saveCharacterAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.saveCharacterAsToolStripMenuItem.Text = "Save Character as...";
-            this.saveCharacterAsToolStripMenuItem.Click += new System.EventHandler(this.saveCharacterAsToolStripMenuItem_Click);
             // 
             // SpellbookWindow
             // 
