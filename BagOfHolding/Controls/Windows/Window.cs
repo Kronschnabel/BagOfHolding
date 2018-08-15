@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace BagOfHolding
@@ -16,15 +16,10 @@ namespace BagOfHolding
         bool initialized;
         List<UserControl> pendingControls;
 
+       delegate void Drag();
         Point dragStartPos;
 
         bool windowDrag;
-        bool resizeDrag;
-        bool mRightEdge;
-        bool mLeftEdge;
-        bool mBottomEdge;
-
-        bool resizeControlsActive = true;
 
         public Window(string t) {
             type = t;
@@ -52,22 +47,18 @@ namespace BagOfHolding
             if(type.Equals("char")) {
                 Location = new Point(100, 100);
                 Size = new Size(new Point(832, 580));
-                resizeControlsActive = false;
             }
             else if(type.Equals("inv")) {
                 Location = new Point(30, 30);
                 Size = new Size(new Point(1250, 680));
-                resizeControlsActive = false;
             }
             else if(type.Equals("spellbook")) {
                 Location = new Point(50, 50);
                 Size = new Size(new Point(950, 700));
-                resizeControlsActive = false;
             }
             else if(type.Equals("party")) {
                 Location = new Point(20, 20);
                 Size = new Size(new Point(1200, 633));
-                resizeControlsActive = false;
             }
         }
 
@@ -79,101 +70,33 @@ namespace BagOfHolding
         }
 
         private void dragWindow(Point m) {
-            Point newLocation;
-
-            if(resizeDrag) {
-                newLocation = new Point(Location.X + (m.X - dragStartPos.X), Location.Y);
-            }
-            else {
-                newLocation = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
-            }
-
-            Location = newLocation;
-        }
-
-        private void dragEdge(Point m) {
-            if(resizeControlsActive) {
-                if(mRightEdge) {
-                    Width = m.X;
-                }
-                else if(mLeftEdge) {
-                    dragWindow(m);
-                    Width -= m.X - dragStartPos.X;
-                }
-
-                if(mBottomEdge) {
-                    Height = m.Y;
-                }
-            }
-        }
-
-        private void checkEdges(Point m) {
-            if(m.X < 5) {
-                mLeftEdge = true;
-                mRightEdge = false;
-            }
-            else if(m.X > Width - 5) {
-                mLeftEdge = false;
-                mRightEdge = true;
-            }
-            else {
-                mLeftEdge = false;
-                mRightEdge = false;
-            }
-
-            if(m.Y > Height - 5) {
-                mBottomEdge = true;
-            }
-            else {
-                mBottomEdge = false;
-            }
-                 
+            Location = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
         }
 
         #region Event Handlers
 
         private void back_panel_MouseDown(object sender, MouseEventArgs eArgs) {
-            checkEdges(eArgs.Location);
-            
-            if(mRightEdge || mLeftEdge || mBottomEdge) {
-                resizeDrag = true;
-                dragStartPos = eArgs.Location;
-            }
-            else {
-                BringToFront();
-                windowDrag = true;
-                dragStartPos = eArgs.Location;
-            }
+            BringToFront();
+            windowDrag = true;
+            dragStartPos = eArgs.Location;
         }
 
         private void back_panel_MouseUp(object sender, MouseEventArgs eArgs) {
             windowDrag = false;
-            resizeDrag = false;
         }
 
         private void back_panel_MouseMove(object sender, MouseEventArgs eArgs) {
-            if(windowDrag) {
+            if(windowDrag) 
                 dragWindow(eArgs.Location);
-            }
-            else if(resizeDrag) {
-                dragEdge(eArgs.Location);
-            }
-            else
-                checkEdges(eArgs.Location);
         }
 
         private void back_panel_MouseEnter(object sender, EventArgs eArgs) {
-
+            BringToFront();
         }
 
         private void back_panel_MouseLeave(object sender, EventArgs eArgs) {
-            if(windowDrag) {
+            if(windowDrag) 
                 dragWindow(back_panel.PointToClient(MousePosition));
-            }
-            
-            if(resizeDrag) {
-                dragEdge(back_panel.PointToClient(MousePosition));
-            }
         }
 
         private void closeB_Click(object sender, EventArgs eArgs) {
@@ -184,9 +107,5 @@ namespace BagOfHolding
             BringToFront();
         }
         #endregion
-
-        private void main_panel_Paint(object sender, PaintEventArgs e) {
-
-        }
     }
 }

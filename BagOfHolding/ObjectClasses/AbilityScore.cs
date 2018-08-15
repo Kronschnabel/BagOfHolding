@@ -24,6 +24,10 @@ namespace BagOfHolding
             mod = (mod / 2) - 5;
         }
 
+        public void addToTotal(int t) {
+            total += t;
+        }
+
         #region To\From string 
         public string toString() {
             return total + "|" + mod;

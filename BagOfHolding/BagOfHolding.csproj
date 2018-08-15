@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectClasses\Command.cs" />
     <Compile Include="ObjectClasses\AbilityScore.cs" />
     <Compile Include="ObjectClasses\Armor.cs" />
     <Compile Include="Controls\Boxes\ArmorBox.cs">
@@ -218,9 +219,17 @@
     <Content Include="BOHTitle.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="DefaultCharImage.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="helpFiles\commandexamples.txt" />
+    <Content Include="helpFiles\commandinfo.txt" />
+    <Content Include="helpFiles\editstathelp.txt" />
+    <Content Include="helpFiles\modhelp.txt" />
+    <None Include="Resources\DCI_younglady.png" />
+    <None Include="Resources\DCI_orcguy.png" />
+    <None Include="Resources\DCI_madguy.png" />
+    <None Include="Resources\DCI_hoodguy.png" />
+    <None Include="Resources\DCI_guy.png" />
+    <None Include="Resources\DCI_derpguy.png" />
+    <None Include="Resources\DCI_beardguy.png" />
     <None Include="Resources\skillclose_icon.png" />
     <None Include="Resources\close_icon.png" />
   </ItemGroup>
@@ -242,6 +251,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(ProjectDir)basePFSkills.txt $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>copy $(ProjectDir)basePFSkills.txt $(TargetDir)
+copy $(ProjectDir)helpFiles $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
 </Project>

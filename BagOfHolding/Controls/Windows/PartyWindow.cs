@@ -50,7 +50,7 @@ namespace BagOfHolding
             }
         }
 
-        private void updateUIData() {
+        public void updateUIData() {
             party_panel.Controls.Clear();
 
             foreach(Character c in party) {
@@ -127,7 +127,11 @@ namespace BagOfHolding
         }
 
         private void PartyWindow_KeyPress(object sender, KeyPressEventArgs e) {
+            
+        }
 
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
+            updatePartyData();
         }
 
         private void clearWithoutSavingToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -140,5 +144,6 @@ namespace BagOfHolding
             party.Clear();
             updateUIData();
         }
+
     }
 }

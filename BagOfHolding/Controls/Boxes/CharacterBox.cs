@@ -150,6 +150,14 @@ namespace BagOfHolding
             char_level_box.Text = character.getLevel().ToString();
             avatar_panel.BackColor = character.getColor();
             char_image.Image = character.getImage();
+            char_image.BackColor = character.getIBC();
+
+            health_bar.setCurrent(character.getHP());
+            health_bar.setMax(character.getMaxHP());
+            exp_bar.setCurrent(character.getExp());
+            exp_bar.setMax(character.getExpToAdvance());
+            health_bar.updateBar();
+            exp_bar.updateBar();
         }
 
         private void tryDeleteImage(string path) {
@@ -250,8 +258,6 @@ namespace BagOfHolding
                 character.getStr().setTotal(strT);
             else
                 character.getStr().setTotal(0);
-
-            updateUIData();
         }
 
         private void dex_box_TextChanged(object sender, EventArgs e) {
@@ -260,8 +266,6 @@ namespace BagOfHolding
                 character.getDex().setTotal(dexT);
             else
                 character.getDex().setTotal(0);
-
-            updateUIData();
         }
 
         private void con_box_TextChanged(object sender, EventArgs e) {
@@ -270,8 +274,6 @@ namespace BagOfHolding
                 character.getCon().setTotal(conT);
             else
                 character.getCon().setTotal(0);
-
-            updateUIData();
         }
 
         private void int_box_TextChanged(object sender, EventArgs e) {
@@ -280,8 +282,6 @@ namespace BagOfHolding
                 character.getInt().setTotal(intT);
             else
                 character.getInt().setTotal(0);
-
-            updateUIData();
         }
 
         private void wis_box_TextChanged(object sender, EventArgs e) {
@@ -290,8 +290,6 @@ namespace BagOfHolding
                 character.getWis().setTotal(wisT);
             else
                 character.getWis().setTotal(0);
-
-            updateUIData();
         }
 
         private void cha_box_TextChanged(object sender, EventArgs e) {
@@ -300,8 +298,6 @@ namespace BagOfHolding
                 character.getCha().setTotal(chaT);
             else
                 character.getCha().setTotal(0);
-
-            updateUIData();
         }
 
         private void exp_box_TextChanged(object sender, EventArgs e) {

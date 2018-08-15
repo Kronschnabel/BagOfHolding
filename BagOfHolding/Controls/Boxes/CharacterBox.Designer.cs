@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.char_panel = new System.Windows.Forms.Panel();
+            this.del_butt = new System.Windows.Forms.Button();
             this.subtitle_box = new System.Windows.Forms.TextBox();
             this.char_name_box = new System.Windows.Forms.TextBox();
             this.char_info_table = new System.Windows.Forms.TableLayoutPanel();
@@ -98,7 +99,6 @@
             this.exp_box = new System.Windows.Forms.TextBox();
             this.max_exp_box = new System.Windows.Forms.TextBox();
             this.exp_slash_label = new System.Windows.Forms.Label();
-            this.del_butt = new System.Windows.Forms.Button();
             this.char_panel.SuspendLayout();
             this.char_info_table.SuspendLayout();
             this.rsg_table.SuspendLayout();
@@ -131,6 +131,22 @@
             this.char_panel.Size = new System.Drawing.Size(358, 107);
             this.char_panel.TabIndex = 0;
             this.char_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.char_panel_MouseMove);
+            // 
+            // del_butt
+            // 
+            this.del_butt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.del_butt.BackColor = System.Drawing.Color.DarkGray;
+            this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
+            this.del_butt.Location = new System.Drawing.Point(328, 6);
+            this.del_butt.Name = "del_butt";
+            this.del_butt.Size = new System.Drawing.Size(21, 21);
+            this.del_butt.TabIndex = 8;
+            this.del_butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.del_butt.UseVisualStyleBackColor = false;
+            this.del_butt.Visible = false;
+            this.del_butt.Click += new System.EventHandler(this.del_butt_Click);
             // 
             // subtitle_box
             // 
@@ -1162,22 +1178,6 @@
             this.exp_slash_label.Size = new System.Drawing.Size(11, 13);
             this.exp_slash_label.TabIndex = 36;
             this.exp_slash_label.Text = "/";
-            // 
-            // del_butt
-            // 
-            this.del_butt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.del_butt.BackColor = System.Drawing.Color.DarkGray;
-            this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
-            this.del_butt.Location = new System.Drawing.Point(328, 6);
-            this.del_butt.Name = "del_butt";
-            this.del_butt.Size = new System.Drawing.Size(21, 21);
-            this.del_butt.TabIndex = 8;
-            this.del_butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.del_butt.UseVisualStyleBackColor = false;
-            this.del_butt.Visible = false;
-            this.del_butt.Click += new System.EventHandler(this.del_butt_Click);
             // 
             // CharacterBox
             // 

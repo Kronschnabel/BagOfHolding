@@ -21,6 +21,7 @@ namespace BagOfHolding
 
         Color charColor;
         Image charImage;
+        Color imageBackColor;
 
         AbilityScore strength;
         AbilityScore dexterity;
@@ -70,6 +71,7 @@ namespace BagOfHolding
             trySaveImage(name + ".jpg");
 
             file.Add("image>" + name + ".jpg");
+            file.Add("imageBC>" + imageBackColor.ToArgb());
             file.Add("name>" + name);
             file.Add("subtitle>" + subtitle);
             foreach(string n in notes)
@@ -162,7 +164,7 @@ namespace BagOfHolding
                 charImage = Image.FromFile(path);
             }
             catch(Exception ex) {
-                charImage = Image.FromFile("DefaultCharImage.jpg");
+                charImage = getRandomDCI();
             }
             
         }
@@ -173,7 +175,7 @@ namespace BagOfHolding
             this.path = path;
             int bC;
 
-            foreach(string line in System.IO.File.ReadAllLines(path)) {
+            foreach(string line in File.ReadAllLines(path)) {
                 string[] sLine = line.Split('>');
 
                 if(sLine.Length == 2) {
@@ -181,6 +183,12 @@ namespace BagOfHolding
                     
                         case "image":
                             tryLoadImage(sLine[1]);
+                            break;
+                        case "imageBC":
+                            if(int.TryParse(sLine[1], out bC))
+                                imageBackColor = Color.FromArgb(bC);
+                            else
+                                setRandBackColor();
                             break;
                         case "name":
                             name = sLine[1];
@@ -367,7 +375,7 @@ namespace BagOfHolding
                 armor.Clear();
             }
 
-            foreach(string line in System.IO.File.ReadAllLines(path)) {
+            foreach(string line in File.ReadAllLines(path)) {
                 string[] sLine = line.Split('>');
 
                 if(sLine.Length == 2) {
@@ -426,7 +434,8 @@ namespace BagOfHolding
             alignment = "";
 
             charColor = Color.ForestGreen;
-            charImage = Image.FromFile("DefaultCharImage.jpg");
+            charImage = getRandomDCI();
+            setRandBackColor();
 
             strength = new AbilityScore();
             dexterity = new AbilityScore();
@@ -472,6 +481,216 @@ namespace BagOfHolding
             spellbook.Clear();
         }
 
+        public void statEditFromCommand(string var, char op, int total, ref int preEdit, ref int postEdit) {
+            if(op == '-')
+                total *= -1;
+
+            switch(var) {
+                case "exp": {
+                        preEdit = exp;
+                        if(op == '=')
+                            exp = 0;
+
+                        exp += total;
+                        postEdit = exp;
+                        break;
+                    }
+                case "expt": {
+                        preEdit = expToAdvance;
+                        if(op == '=')
+                            expToAdvance = 0;
+
+                        expToAdvance += total;
+                        postEdit = expToAdvance;
+                        break;
+                    }
+                case "level": {
+                        preEdit = level;
+                        if(op == '=')
+                            level = 0;
+
+                        level += total;
+                        postEdit = level;
+                        break;
+                    }
+                case "strt": {
+                        preEdit = strength.getTotal();
+                        if(op == '=')
+                            strength.setTotal(0);
+
+                        strength.addToTotal(total);
+                        postEdit = strength.getTotal();
+                        break;
+                    }
+                case "dext": {
+                        preEdit = dexterity.getTotal();
+                        if(op == '=')
+                            dexterity.setTotal(0);
+
+                        dexterity.addToTotal(total);
+                        postEdit = dexterity.getTotal();
+                        break;
+                    }
+                case "cont": {
+                        preEdit = constitution.getTotal();
+                        if(op == '=')
+                            constitution.setTotal(0);
+
+                        constitution.addToTotal(total);
+                        postEdit = constitution.getTotal();
+                        break;
+                    }
+                case "intt": {
+                        preEdit = intelligence.getTotal();
+                        if(op == '=')
+                            intelligence.setTotal(0);
+
+                        intelligence.addToTotal(total);
+                        postEdit = intelligence.getTotal();
+                        break;
+                    }
+                case "wist": {
+                        preEdit = wisdom.getTotal();
+                        if(op == '=')
+                            wisdom.setTotal(0);
+
+                        wisdom.addToTotal(total);
+                        postEdit = wisdom.getTotal();
+                        break;
+                    }
+                case "chat": {
+                        preEdit = charisma.getTotal();
+                        if(op == '=')
+                            charisma.setTotal(0);
+
+                        charisma.addToTotal(total);
+                        postEdit = charisma.getTotal();
+                        break;
+                    }
+                case "will": {
+                        preEdit = will;
+                        if(op == '=')
+                            will = 0;
+
+                        will += total;
+                        postEdit = will;
+                        break;
+                    }
+                case "ref": {
+                        preEdit = reflex;
+                        if(op == '=')
+                            reflex = 0;
+
+                        reflex += total;
+                        postEdit = reflex;
+                        break;
+                    }
+                case "fort": {
+                        preEdit = fortitude;
+                        if(op == '=')
+                            fortitude = 0;
+
+                        will += fortitude;
+                        postEdit = fortitude;
+                        break;
+                    }
+                case "bab": {
+                        preEdit = bab;
+                        if(op == '=')
+                            bab = 0;
+
+                        bab += total;
+                        postEdit = bab;
+                        break;
+                    }
+                case "mel": {
+                        preEdit = melee;
+                        if(op == '=')
+                            melee = 0;
+
+                        melee += total;
+                        postEdit = melee;
+                        break;
+                    }
+                case "ran": {
+                        preEdit = ranged;
+                        if(op == '=')
+                            ranged = 0;
+
+                        ranged += total;
+                        postEdit = ranged;
+                        break;
+                    }
+                case "ac": {
+                        preEdit = ac;
+                        if(op == '=')
+                            ac = 0;
+
+                        ac += total;
+                        postEdit = ac;
+                        break;
+                    }
+                case "ff": {
+                        preEdit = flatFooted;
+                        if(op == '=')
+                            flatFooted = 0;
+
+                        flatFooted += total;
+                        postEdit = flatFooted;
+                        break;
+                    }
+                case "touch": {
+                        preEdit = touch;
+                        if(op == '=')
+                            touch = 0;
+
+                        touch += total;
+                        postEdit = touch;
+                        break;
+                    }
+                case "init": {
+                        preEdit = initiative;
+                        if(op == '=')
+                            initiative = 0;
+
+                        initiative += total;
+                        postEdit = initiative;
+                        break;
+                    }
+                case "spd": {
+                        preEdit = speed;
+                        if(op == '=')
+                            speed = 0;
+
+                        speed += total;
+                        postEdit = speed;
+                        break;
+                    }
+                case "hp": {
+                        preEdit = hp;
+                        if(op == '=')
+                            hp = 0;
+
+                        hp += total;
+                        postEdit = hp;
+                        break;
+                    }
+                case "hpt": {
+                        preEdit = maxHP;
+                        if(op == '=')
+                            maxHP = 0;
+
+                        maxHP += total;
+                        postEdit = maxHP;
+                        break;
+                    }
+                default: {
+
+                        break;
+                    }
+            }
+        }
+
         private void createLists() {
             notes = new List<string>();
             classes = new List<Klass>();
@@ -482,6 +701,67 @@ namespace BagOfHolding
             spellbook = new List<Spell>();
             spellsLeft = new int[10];
         }
+
+        private Bitmap getRandomDCI() {
+            Die DCI = new Die();
+
+            switch(DCI.roll(7)) {
+                case 1:
+                    return Properties.Resources.DCI_guy;
+                case 2:
+                    return Properties.Resources.DCI_derpguy;
+                case 3:
+                    return Properties.Resources.DCI_beardguy;
+                case 4:
+                    return Properties.Resources.DCI_younglady;
+                case 5:
+                    return Properties.Resources.DCI_hoodguy;
+                case 6:
+                    return Properties.Resources.DCI_orcguy;
+                case 7:
+                    return Properties.Resources.DCI_madguy;
+                default:
+                    return Properties.Resources.DCI_guy;
+            }
+        }
+
+        private void setRandBackColor() {
+            Die randColor = new Die();
+
+            switch(randColor.roll(10)) {
+                case 1:
+                    imageBackColor = Color.FromArgb(165, 55, 55);
+                    break;
+                case 2:
+                    imageBackColor = Color.FromArgb(55, 165, 55);
+                    break;
+                case 3:
+                    imageBackColor = Color.FromArgb(55, 55, 165);
+                    break;
+                case 4:
+                    imageBackColor = Color.FromArgb(165, 165, 55);
+                    break;
+                case 5:
+                    imageBackColor = Color.FromArgb(165, 55, 165);
+                    break;
+                case 6:
+                    imageBackColor = Color.FromArgb(55, 165, 165);
+                    break;
+                case 7:
+                    imageBackColor = Color.FromArgb(165, 55, 130);
+                    break;
+                case 8:
+                    imageBackColor = Color.FromArgb(165, 130, 55);
+                    break;
+                case 9:
+                    imageBackColor = Color.FromArgb(130, 165, 55);
+                    break;
+                case 10:
+                    imageBackColor = Color.FromArgb(55, 165, 130);
+                    break;
+            }
+        }
+
 
         public void setSkillMods() {
             foreach(Skill s in skills) {
@@ -584,6 +864,10 @@ namespace BagOfHolding
 
         public Image getImage() {
             return charImage;
+        }
+
+        public Color getIBC() {
+            return imageBackColor;
         }
 
         public AbilityScore getStr() {
@@ -744,6 +1028,10 @@ namespace BagOfHolding
 
         public void setImage(Image i) {
             charImage = i;
+        }
+        
+        public void setIBC(Color c) {
+            imageBackColor = c;
         }
 
         public void setStr(AbilityScore str) {

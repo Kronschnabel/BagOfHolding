@@ -1,0 +1,13 @@
+﻿Die\Character commands can contain any of the following 4 elements. Order does not matter.
+
+	[character ref] : Establishes which characters are associated with the roll\edit. 
+		-It can be the entire party ("p", or "party") or specific names. 
+
+	[die] : Specifies the die and how many times to roll it. Syntax:
+		d[sides](*[rollcount])      () optional.
+
+	[mod] : Adds some constant or character stat to roll result. Syntax:
+		[operator][constant or stat](*)  () optional.
+
+	[stat edit] : Edits each character's selected stat. Syntax:
+		[stat][operator]

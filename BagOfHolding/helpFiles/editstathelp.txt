@@ -1,0 +1,34 @@
+﻿
+EDIT STATS:
+==================================================================
+Syntax:		[stat][operator]
+----------------------------------
+Operators:	(+) : Add to existing
+
+		(-) : Subtract from existing
+
+		(=) : Set Equal to
+
+----------------------------------
+Stats:	exp		Current Experience
+	expT		Experience to next level
+	hp		Current HP
+	hpT		Max HP
+	init		Initiative
+	level		Current level
+	strT		Strength Total
+	dexT		Dexterity Total
+	conT		Constitution Total
+	intT		Intelligence Total
+	wisT		Wisdom Total
+	chaT		Charisma Total
+	will		Will Save
+	ref		Reflex Save
+	fort		Fortitude Save
+	bab		Base Attack Bonus
+	mel		Melee Attack Bonus
+	ran		Ranged Attack Bonus
+	ac		Armor Class
+	ff		Flat Footed AC
+	touch		Touch AC
+==================================================================		
