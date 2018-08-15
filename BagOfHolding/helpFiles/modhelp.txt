@@ -1,0 +1,40 @@
+﻿	
+MODIFIERS
+==================================================================
+Syntax:		[operator][constant or stat](*)  () optional.
+----------------------------------
+Operators:	(+)(-) : Add or subtract.
+
+		(*) : Adding an asterisk to the end will apply the
+			modifier to each roll, as opposed to just
+			once.
+
+----------------------------------
+Constant can be any integer.
+----------------------------------
+Stats:	str		Strength Mod
+	dex		Dexterity Mod
+	con		Constitution Mod
+	int		Intelligence Mod
+	wis		Wisdom Mod
+	cha		Charisma Mod
+	strT		Strength Total
+	dexT		Dexterity Total
+	conT		Constitution Total
+	intT		Intelligence Total
+	wisT		Wisdom Total
+	chaT		Charisma Total
+	will		Will Save
+	ref		Reflex Save
+	fort		Fortitute Save
+	bab		Base Attack Bonus
+	mel		Melee Attack Bonus
+	ran		Ranged Attack Bonus
+	ac		Armor Class
+	ff		Flat Footed AC
+	touch		Touch AC
+	init		Initiative
+	spd		Speed
+	hp		Current HP
+	hpT		Max HP
+==================================================================

@@ -1,0 +1,35 @@
+﻿EXAMPLES:
+=================================================================
+Input:				|	Result:							
+				|		Each party member rolls		
+	party hp- D8*2 +3*	|		2 D8, adds 6, and subtracts
+				|		total from their current hp.
+				|										
+				|		Oden and Goblin roll a d20
+	oden goblin d20 +ref	|		and add their reflex save.
+				|		(chars must be in party)
+				|										
+				|		Each party member rolls a
+	p d20 +ran +2 		|		d20 and adds their ranged 
+				|		attack modifier. +2.
+				|									
+				|									
+				|		Sets party extToAdvance to
+	+10000 expt= p		|		10000. 
+				|		
+				|
+				|		Party rolls d20 and adds 
+	d20 +cha p		|		charisma modifier.
+				|			
+				|
+				|		Rolls 1-100 twice for each
+	d100*2 p		|		party member.
+				|		
+				|
+				|		For each party member. Gets
+	D543 +150 p exp+	|		a random number between 1-543.
+				|		Adds 150 to it. Adds the total
+				|		to the character's current exp.
+				|										
+=================================================================
+

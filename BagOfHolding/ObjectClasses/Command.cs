@@ -15,7 +15,6 @@ namespace BagOfHolding
         bool die;
         bool sum;
         bool modded;
-        bool chars;
         bool party;
         bool varEdit;
         bool multiRoll;
@@ -240,10 +239,6 @@ namespace BagOfHolding
 
         public bool getModded() {
             return modded;
-        }
-
-        public bool getChars() {
-            return chars;
         }
 
         public bool getParty() {

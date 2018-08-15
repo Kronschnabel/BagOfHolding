@@ -229,6 +229,7 @@ namespace BagOfHolding
             if(line != null && !line.Equals("")) {
                 Command cmd = new Command(line);
                 cmdHistory.Add(line);
+                printLine("=========================================================");
 
                 if(cmdHistory.Count > 1)
                     historyIndex = cmdHistory.Count - 1;
@@ -240,7 +241,7 @@ namespace BagOfHolding
                     openPartyWindow();
                 }
                 else if(cmd.getSLine()[0].Equals("help")) {
-                    processHelpCommand(cmd.getSLine());
+                    processHelpCommand(cmd);
                 }
                 else if(line.Equals("quit")) {
                     Dispose();
@@ -276,6 +277,12 @@ namespace BagOfHolding
                     if(cmd.getDie()) {
                         processDieCommand(cmd, d, c);
                     }
+                    else if(cmd.getVarEdit()) {
+                        Character temp = c;
+                        printLine(temp.getName() + ": ");
+                        editCharStats(cmd, cmd.getMod(), ref temp);
+                        printLine("");
+                    }
                 }
             }
             else if(cmd.getDie()) {
@@ -310,28 +317,38 @@ namespace BagOfHolding
             printDieResults(cmd, rolls, total);
         }
 
-        private void processHelpCommand(string[] sLine) {
+        private void processHelpCommand(Command cmd) {
             printLine("\n");
-            if(sLine.Length == 1) {
+            if(cmd.getSLine().Length == 1) {
                 printHelpStatement();
             }
-            else if(sLine[1].Equals("char")) {
+            else if(cmd.getSLine()[1].Equals("char")) {
                 printCharHelpStatement();
             }
-            else if(sLine[1].Equals("party")) {
+            else if(cmd.getSLine()[1].Equals("party")) {
                 printPartyHelpStatement();
             }
-            else if(sLine[1].Equals("inv")) {
+            else if(cmd.getSLine()[1].Equals("inv")) {
                 printInvHelpStatement();
             }
-            else if(sLine[1].Equals("spellbook")) {
+            else if(cmd.getSLine()[1].Equals("spellbook")) {
                 printSpellbookHelpStatement();
             }
-            else if(sLine[1].Equals("files")) {
+            else if(cmd.getSLine()[1].Equals("files")) {
                 printFilesHelpStatement();
             }
-            else if(sLine[1][0] == 'd' || sLine[1][0] == 'D') {
-                printDieHelpStatement();
+            else if(cmd.getSLine()[1].Equals("e") || cmd.getSLine()[1].Contains("example")) {
+                printFile("commandexamples.txt");
+            }
+            else {
+                printFile("commandinfo.txt");
+                printFile("commandexamples.txt");
+
+                if(cmd.getVarEdit())
+                    printFile("editstathelp.txt");
+
+                if(cmd.getModded())
+                    printFile("modhelp.txt");  
             }
 
             printLine("\n");

@@ -204,6 +204,13 @@ namespace BagOfHolding
             avatar_panel.BackColor = character.getColor();
             char_image.Image = character.getImage();
             char_image.BackColor = character.getIBC();
+
+            health_bar.setCurrent(character.getHP());
+            health_bar.setMax(character.getMaxHP());
+            exp_bar.setCurrent(character.getExp());
+            exp_bar.setMax(character.getExpToAdvance());
+            health_bar.updateBar();
+            exp_bar.updateBar();
         }
 
         private void updateSkillUI() {
