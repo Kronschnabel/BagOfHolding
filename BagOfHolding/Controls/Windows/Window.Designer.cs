@@ -46,7 +46,6 @@
             this.back_panel.TabIndex = 0;
             this.back_panel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseDoubleClick);
             this.back_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseDown);
-            this.back_panel.MouseEnter += new System.EventHandler(this.back_panel_MouseEnter);
             this.back_panel.MouseLeave += new System.EventHandler(this.back_panel_MouseLeave);
             this.back_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseMove);
             this.back_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.back_panel_MouseUp);

@@ -74,7 +74,7 @@ namespace BagOfHolding
             printOpeningStatement();
         }
 
-        #region Open Window(s) methods
+        #region Start Up methods
 
         private void startup() {
             InitializeComponent();
@@ -107,6 +107,10 @@ namespace BagOfHolding
             party_control.setParty(ref party);
         }
 
+        #endregion
+
+        #region Open Window methods
+
         private void openPartyWindow() {
             party_win.open();
             party_control.open();
@@ -116,23 +120,10 @@ namespace BagOfHolding
             character_win.open();
             char_control.open();
         }
+
         #endregion
 
         #region Misc. Utility methods
-        private void print(string text) {
-            console_box.AppendText(text);
-        }
-
-        private void printLine(string line) {
-            console_box.AppendText("\n" + line);
-        }
-
-        private void printFile(string path) {
-            foreach(string line in System.IO.File.ReadAllLines(path)) {
-                printLine(line);
-            }
-        }
-
         private bool caretPosInvalid() {
             if(console_box.SelectionStart < (console_box.TextLength - console_box.Lines[console_box.Lines.Length - 1].Length))
                 return true;
@@ -186,6 +177,25 @@ namespace BagOfHolding
             return referencedChars;
         }
 
+            #region Print to Console methods
+        private void print(string text) {
+            console_box.AppendText(text);
+        }
+
+        private void printLine(string line) {
+            console_box.AppendText("\n" + line);
+        }
+
+        private void printFile(string path) {
+            foreach(string line in System.IO.File.ReadAllLines(path)) {
+                printLine(line);
+            }
+        }
+        #endregion
+        #endregion
+
+        #region Command utility methods
+
         private void fillRollResults(Command cmd, Die d, ref List<int> rolls, ref int total) {
             int mod = cmd.getMod();
 
@@ -221,9 +231,6 @@ namespace BagOfHolding
             party_control.updateUIData();
             print(string.Format(composite, var, preEdit, postEdit));
         }
-            #endregion
-
-            #region Command utility methods
 
         private void processInput(string line) {
             if(line != null && !line.Equals("")) {
@@ -242,6 +249,9 @@ namespace BagOfHolding
                 }
                 else if(line.Equals("init")) {
                     processCommand(new Command("p d20 +init"));
+                }
+                else if(line.Equals("heal")) {
+                    processCommand(new Command("p hp= +hpT"));
                 }
                 else if(cmd.getSLine()[0].Equals("help")) {
                     processHelpCommand(cmd);

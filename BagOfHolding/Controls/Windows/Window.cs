@@ -90,10 +90,6 @@ namespace BagOfHolding
                 dragWindow(eArgs.Location);
         }
 
-        private void back_panel_MouseEnter(object sender, EventArgs eArgs) {
-            BringToFront();
-        }
-
         private void back_panel_MouseLeave(object sender, EventArgs eArgs) {
             if(windowDrag) 
                 dragWindow(back_panel.PointToClient(MousePosition));
