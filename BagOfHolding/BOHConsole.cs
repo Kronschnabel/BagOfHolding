@@ -240,6 +240,9 @@ namespace BagOfHolding
                 else if(line.Equals("party")) {
                     openPartyWindow();
                 }
+                else if(line.Equals("init")) {
+                    processCommand(new Command("p d20 +init"));
+                }
                 else if(cmd.getSLine()[0].Equals("help")) {
                     processHelpCommand(cmd);
                 }
@@ -290,6 +293,9 @@ namespace BagOfHolding
                     cmd.calcMod();
 
                 processDieCommand(cmd, d);
+            }
+            else {
+                printLine("Command not recognized.");
             }
 
         }
@@ -396,7 +402,7 @@ namespace BagOfHolding
 
         private void printOpeningStatement() {
             printFile("BOHTitle.txt");
-            printLine("\nBag of Holding Roleplaying console v1.0");
+            printLine("\nBag of Holding Roleplaying console v1.1");
             printLine("Developed by Matt Kronschnabel");
             printLine("------------------------------------------");
             printLine("Enter 'help' if you don't know what to do.\n");
