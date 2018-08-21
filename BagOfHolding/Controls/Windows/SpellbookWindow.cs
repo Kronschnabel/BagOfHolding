@@ -16,7 +16,6 @@ namespace BagOfHolding
         Character character;
 
         public SpellbookWindow() {
-            Dock = DockStyle.Fill;
             character = new Character();
         }
 
@@ -24,22 +23,25 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             Show();
             Visible = true;
             BringToFront();
             IsAccessible = true;
-            Height += 1;
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
         }
 
         private void updateUIData() {
             spell_book_label.Text = character.getName() + "'s Spellbook";
             spell_panel.Controls.Clear();
+
             foreach(Spell s in character.getSpellbook()) {
                 spell_panel.Controls.Add(new SpellBox(s));
             }
@@ -89,6 +91,10 @@ namespace BagOfHolding
             updateUIData();
         }
 
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
+
         #region Get & Set methods
         public Character getChar() {
             return character;
@@ -101,6 +107,9 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void spells_left_ValueChanged(object sender, EventArgs e) {
             character.setSpellsLeft(getSpellsLeftValues());

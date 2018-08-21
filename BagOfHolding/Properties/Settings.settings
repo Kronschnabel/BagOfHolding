@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BagOfHolding.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="consoleBackColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="consoleForeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">InactiveBorder</Value>
+    </Setting>
+    <Setting Name="windowContColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkSlateBlue</Value>
+    </Setting>
+    <Setting Name="windowButtColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">230, 100, 100</Value>
+    </Setting>
+    <Setting Name="windowToolColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 255, 128</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

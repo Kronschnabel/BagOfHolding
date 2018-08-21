@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Windows\SettingsWindow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Windows\SettingsWindow.Designer.cs">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjectClasses\Command.cs" />
     <Compile Include="ObjectClasses\AbilityScore.cs" />
     <Compile Include="ObjectClasses\Armor.cs" />
@@ -150,6 +156,7 @@
     <Compile Include="Controls\Windows\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Controls\Boxes\ArmorBox.resx">
       <DependentUpon>ArmorBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Windows\PartyWindow.resx">
       <DependentUpon>PartyWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Windows\SettingsWindow.resx">
+      <DependentUpon>SettingsWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -200,7 +210,7 @@
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -252,6 +262,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>copy $(ProjectDir)basePFSkills.txt $(TargetDir)
+copy $(ProjectDir)colorSettings.txt $(TargetDir)
 copy $(ProjectDir)helpFiles $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
 </Project>

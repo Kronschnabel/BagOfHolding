@@ -60,6 +60,8 @@ namespace BagOfHolding
         PartyWindow party_control;
         Window character_win;
         CharacterWindow char_control;
+        Window settings_win;
+        SettingsWindow settings_control;
 
         List<Character> party;
         List<Character> npcs;
@@ -78,6 +80,7 @@ namespace BagOfHolding
 
         private void startup() {
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
             Show();
             IsAccessible = true;
             BringToFront();
@@ -85,6 +88,7 @@ namespace BagOfHolding
             cmdHistory = new List<string>();
             console_box.Size = Screen.PrimaryScreen.WorkingArea.Size;
 
+            setColors();
             createCharLists();
             createWindows();
         }
@@ -105,6 +109,11 @@ namespace BagOfHolding
             party_win.addControl(party_control);
             Controls.Add(party_win);
             party_control.setParty(ref party);
+
+            settings_win = new Window("settings");
+            settings_control = new SettingsWindow();
+            settings_win.addControl(settings_control);
+            Controls.Add(settings_win);
         }
 
         #endregion
@@ -121,6 +130,10 @@ namespace BagOfHolding
             char_control.open();
         }
 
+        private void openSettingsWindow() {
+            settings_win.open();
+            settings_control.open();
+        }
         #endregion
 
         #region Misc. Utility methods
@@ -175,6 +188,15 @@ namespace BagOfHolding
             }
 
             return referencedChars;
+        }
+
+        private void setColors() {
+            Color bC = Properties.Settings.Default.consoleBackColor;
+            Color fC = Properties.Settings.Default.consoleForeColor;
+
+            BackColor = bC;
+            console_box.BackColor = bC;
+            console_box.ForeColor = fC;
         }
 
             #region Print to Console methods
@@ -256,20 +278,15 @@ namespace BagOfHolding
                 else if(cmd.getSLine()[0].Equals("help")) {
                     processHelpCommand(cmd);
                 }
+                else if(cmd.getSLine()[0].Equals("color")) {
+                    openSettingsWindow();
+                }
                 else if(line.Equals("quit")) {
                     Dispose();
                 }
                 else {
                     processCommand(cmd);
                 }
-
-                /*if(c != null) {
-                    char_control.setChar(ref c);
-                    openCharWindow();
-                }
-                else if(sLine[0][0] == 'd' || sLine[0][0] == 'D') {
-                    processDieCommand(sLine);
-                } */
             }
         }
 
@@ -404,8 +421,12 @@ namespace BagOfHolding
                 if(rolls.Count > 1)
                     printLine("");
             }
+
             if(cmd.getSum()) {
-                printLine("\nTotal: " + (total - cmd.getMod()) + " (+" + cmd.getMod() + ") = " + total);
+                if(cmd.getMultiMod())
+                    printLine("\nTotal: " + (total - (cmd.getMod() * cmd.getRollCount())) + " (+" + cmd.getMod() + ")* = " + total);
+                else
+                    printLine("\nTotal: " + (total - cmd.getMod()) + " (+" + cmd.getMod() + ") = " + total);
             }
             printLine("");
         }
@@ -497,6 +518,9 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void console_box_KeyDown(object sender, KeyEventArgs e) {
             if(isArrowKey(e.KeyCode)) {
@@ -527,7 +551,11 @@ namespace BagOfHolding
         }
 
         private void console_box_DoubleClick(object sender, EventArgs e) {
-            BringToFront();
+            foreach(Control c in Controls) {
+                Console.WriteLine(c.Name);
+                if(c.Name.Equals("Window"))
+                    c.Visible = false;
+            }
         }
         #endregion
     }

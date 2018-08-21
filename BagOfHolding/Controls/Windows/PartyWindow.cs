@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BagOfHolding
 {
@@ -18,12 +19,10 @@ namespace BagOfHolding
         bool ctrlDown;
 
         public PartyWindow() {
-            Dock = DockStyle.Fill;
             party = new List<Character>();
         }
 
         public PartyWindow(ref List<Character> p) {
-            Dock = DockStyle.Fill;
             party = p;
         }
 
@@ -31,17 +30,19 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             Show();
             Visible = true;
             BringToFront();
             IsAccessible = true;
-            Width += 1;
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
         }
 
         private void saveParty() {
@@ -68,6 +69,10 @@ namespace BagOfHolding
             }
         }
 
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
+
         #region Get & Set methods
         public List<Character> getParty() {
             return party;
@@ -77,6 +82,10 @@ namespace BagOfHolding
             party = p;
         }
         #endregion
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
             updatePartyData();
@@ -145,5 +154,16 @@ namespace BagOfHolding
             updateUIData();
         }
 
+        private void party_panel_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void main_panel_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void party_label_Click(object sender, EventArgs e) {
+
+        }
     }
 }

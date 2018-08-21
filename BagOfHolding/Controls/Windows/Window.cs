@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BagOfHolding
 {
@@ -16,9 +17,7 @@ namespace BagOfHolding
         bool initialized;
         List<UserControl> pendingControls;
 
-       delegate void Drag();
         Point dragStartPos;
-
         bool windowDrag;
 
         public Window(string t) {
@@ -34,11 +33,13 @@ namespace BagOfHolding
             Visible = true;
             BringToFront();
             IsAccessible = true;
+            setColors();
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
 
             foreach(UserControl c in pendingControls)
                 addControl(c);
@@ -60,6 +61,10 @@ namespace BagOfHolding
                 Location = new Point(20, 20);
                 Size = new Size(new Point(1200, 633));
             }
+            else if(type.Equals("settings")) {
+                Location = new Point(300, 200);
+                Size = new Size(new Point(290, 320));
+            }
         }
 
         public void addControl(UserControl cont) {
@@ -69,11 +74,27 @@ namespace BagOfHolding
                 pendingControls.Add(cont);
         }
 
+        public void setBackPanel(Color c) {
+            back_panel.BackColor = c;
+        }
+
+        public void setButtColor(Color c) {
+            close_butt.BackColor = c;
+        }
+
+        private void setColors() {
+            back_panel.BackColor = Properties.Settings.Default.windowContColor;
+            close_butt.BackColor = Properties.Settings.Default.windowButtColor;
+        }
+
         private void dragWindow(Point m) {
             Location = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
         }
 
         #region Event Handlers
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void back_panel_MouseDown(object sender, MouseEventArgs eArgs) {
             BringToFront();

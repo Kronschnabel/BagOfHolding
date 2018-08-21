@@ -30,6 +30,7 @@
             // 
             this.console_box.BackColor = System.Drawing.Color.Black;
             this.console_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.console_box.DetectUrls = false;
             this.console_box.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.console_box.Location = new System.Drawing.Point(13, 13);
             this.console_box.Name = "console_box";

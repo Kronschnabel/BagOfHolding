@@ -35,12 +35,12 @@
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.savePartyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearPartyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearWithoutSavingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAndSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.party_label = new System.Windows.Forms.Label();
             this.party_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
             this.SuspendLayout();
@@ -57,19 +57,20 @@
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(853, 507);
             this.main_panel.TabIndex = 1;
+            this.main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.main_panel_Paint);
             // 
             // menu_strip
             // 
-            this.menu_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
+            this.menu_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
+            this.menu_strip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu_strip.Location = new System.Drawing.Point(0, 0);
             this.menu_strip.Margin = new System.Windows.Forms.Padding(3);
             this.menu_strip.Name = "menu_strip";
             this.menu_strip.Size = new System.Drawing.Size(853, 24);
             this.menu_strip.TabIndex = 25;
-            this.menu_strip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -135,13 +136,20 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // clearPartyToolStripMenuItem
             // 
             this.clearPartyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearWithoutSavingToolStripMenuItem,
             this.clearAndSaveToolStripMenuItem});
             this.clearPartyToolStripMenuItem.Name = "clearPartyToolStripMenuItem";
-            this.clearPartyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearPartyToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.clearPartyToolStripMenuItem.Text = "Clear Party";
             // 
             // clearWithoutSavingToolStripMenuItem
@@ -171,6 +179,7 @@
             this.party_label.Size = new System.Drawing.Size(55, 23);
             this.party_label.TabIndex = 2;
             this.party_label.Text = "Party";
+            this.party_label.Click += new System.EventHandler(this.party_label_Click);
             // 
             // party_panel
             // 
@@ -184,13 +193,7 @@
             this.party_panel.Size = new System.Drawing.Size(853, 443);
             this.party_panel.TabIndex = 0;
             this.party_panel.WrapContents = false;
-            // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.party_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.party_panel_Paint);
             // 
             // PartyWindow
             // 

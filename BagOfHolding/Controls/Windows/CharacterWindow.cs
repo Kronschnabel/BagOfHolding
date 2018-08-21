@@ -55,7 +55,6 @@ namespace BagOfHolding
         Color expBackColor = Color.Gray;
      
         public CharacterWindow() {
-            Dock = DockStyle.Fill;
             character = new Character();
         }
 
@@ -65,6 +64,7 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             updateSkillUI();
             Show();
@@ -76,6 +76,8 @@ namespace BagOfHolding
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
             createWindows();
             health_bar.setColors(hpForeColor, hpBackColor);
             exp_bar.setColors(expForeColor, expBackColor);
@@ -237,7 +239,9 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
-
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
         #endregion
 
         private void tryDeleteImage(string path) {
@@ -250,6 +254,11 @@ namespace BagOfHolding
         }
 
         #region Event Handlers
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
+
         private void avatar_panel_Click(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -724,5 +733,9 @@ namespace BagOfHolding
             character = c;
         }
         #endregion
+
+        private void menu_strip_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
     }
 }

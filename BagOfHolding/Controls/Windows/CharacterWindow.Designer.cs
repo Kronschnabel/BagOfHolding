@@ -365,6 +365,7 @@
             this.menu_strip.Margin = new System.Windows.Forms.Padding(3);
             this.menu_strip.Name = "menu_strip";
             this.menu_strip.Size = new System.Drawing.Size(822, 24);
+            this.menu_strip.Stretch = false;
             this.menu_strip.TabIndex = 24;
             this.menu_strip.Text = "menuStrip1";
             // 
@@ -1213,7 +1214,7 @@
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.class_table_1.Controls.Add(this.f_class_1, 0, 0);
             this.class_table_1.Controls.Add(this.class_level_box_1, 2, 0);
             this.class_table_1.Controls.Add(this.class_hd_box_1, 3, 0);
@@ -1305,7 +1306,7 @@
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.class_table_2.Controls.Add(this.f_class_2, 0, 0);
             this.class_table_2.Controls.Add(this.class_level_box_2, 2, 0);
             this.class_table_2.Controls.Add(this.class_hd_box_2, 3, 0);
@@ -1397,7 +1398,7 @@
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.class_table_3.Controls.Add(this.f_class_3, 0, 0);
             this.class_table_3.Controls.Add(this.class_level_box_3, 2, 0);
             this.class_table_3.Controls.Add(this.class_hd_box_3, 3, 0);
@@ -1489,7 +1490,7 @@
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.class_table_4.Controls.Add(this.f_class_4, 0, 0);
             this.class_table_4.Controls.Add(this.class_level_box_4, 2, 0);
             this.class_table_4.Controls.Add(this.class_hd_box_4, 3, 0);
@@ -1581,7 +1582,7 @@
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 123F));
+            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.class_table_5.Controls.Add(this.f_class_5, 0, 0);
             this.class_table_5.Controls.Add(this.class_level_box_5, 2, 0);
             this.class_table_5.Controls.Add(this.class_hd_box_5, 3, 0);
@@ -2042,7 +2043,6 @@
         private System.Windows.Forms.TextBox char_level_box;
         private System.Windows.Forms.Panel avatar_panel;
         private System.Windows.Forms.PictureBox char_image;
-        private System.Windows.Forms.MenuStrip menu_strip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
@@ -2071,5 +2071,6 @@
         private System.Windows.Forms.ToolStripMenuItem newCharacterToolStripMenuItem;
         private System.Windows.Forms.Label classes_label;
         private System.Windows.Forms.Button skill_clear_butt;
+        private System.Windows.Forms.MenuStrip menu_strip;
     }
 }
