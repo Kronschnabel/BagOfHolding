@@ -449,6 +449,7 @@ namespace BagOfHolding
             printLine("Enter 'd#' to simulate a #-sided die roll.");
             printLine("Enter 'party' to open up the Party Window.");
             printLine("Enter 'char' to open up the Character Window.");
+            printLine("Enter 'color' to change your color settings.");
             printLine("Enter 'quit' to close the program.");
 
         }
