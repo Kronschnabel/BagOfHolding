@@ -36,6 +36,8 @@ namespace BagOfHolding
             setBackColor(spell.getBackColor());
         }
 
+        #region Utility methods
+
         private void setForeColor(Color f) {
             spell_name_box.ForeColor = f;
             school_box.ForeColor = f;
@@ -58,6 +60,8 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
         #region Get & Set methods
         public Spell getSpell() {
             return spell;
@@ -69,6 +73,7 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
+
         private void spell_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -85,16 +90,18 @@ namespace BagOfHolding
             }
         }
 
-
-        private void spell_image_DoubleClick(object sender, EventArgs e) {
-            OpenFileDialog imageSelect = new OpenFileDialog();
-            imageSelect.Filter = "Image Files ('*.jpg') | *.jpg";
-
-            if(imageSelect.ShowDialog() == DialogResult.OK) {
-                spell.setImage(Image.FromFile(imageSelect.FileName));
-                updateUIData();
-            }
+        private void spell_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
         }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+
+        #region ValueChanged events
 
         private void spell_name_box_TextChanged(object sender, EventArgs e) {
             spell.setName(spell_name_box.Text);
@@ -116,16 +123,8 @@ namespace BagOfHolding
             spell.setPrepared(prepared_box.Checked);
         }
 
-        private void spell_table_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition))
-                del_butt.Visible = true;
-            else
-                del_butt.Visible = false;
-        }
+        #endregion
 
-        private void del_butt_Click(object sender, EventArgs e) {
-            Dispose();
-        }
         #endregion
     }
 }

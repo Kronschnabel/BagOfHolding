@@ -49,6 +49,8 @@ namespace BagOfHolding
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
 
+        #region Event Handlers
+
         private void settingsChanged(object sender, PropertyChangedEventArgs e) {
             setColors();
         }
@@ -92,5 +94,7 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
+        #endregion
     }
 }

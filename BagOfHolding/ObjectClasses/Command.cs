@@ -217,6 +217,8 @@ namespace BagOfHolding
             }
         }
 
+        #region Get & Set methods
+
         public string[] getSLine() {
             return sLine;
         }
@@ -268,5 +270,63 @@ namespace BagOfHolding
         public int getRollCount() {
             return rollCount;
         }
+
+        public void setSLine(string[] c) {
+            sLine = c;
+        }
+
+        public void setSLine(string c) {
+            sLine = c.Split(' ');
+        }
+
+        public void setVar(string v) {
+            var = v;
+        }
+
+        public void setModVar(List<string> m) {
+            modVar = m;
+        }
+
+        public void setDie(bool d) {
+            die = d;
+        }
+
+        public void setSum(bool s) {
+            sum = s;
+        }
+
+        public void setModded(bool m) {
+            modded = m;
+        }
+
+        public void setParty(bool p) {
+            party = p;
+        }
+
+        public void setVarEdit(bool v) {
+            varEdit = v;
+        }
+
+        public void setMultiRoll(bool m) {
+            multiRoll = m;
+        }
+
+        public void setMultiMod(bool m) {
+            multiMod = m;
+        }
+
+        public void setMod(int m) {
+            mod = m;
+        }
+
+        public void setSides(int s) {
+            sides = s;
+        }
+
+        public void setRollCount(int r) {
+            rollCount = r;
+        }
+
+#endregion
     }
 }

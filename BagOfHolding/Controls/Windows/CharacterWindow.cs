@@ -58,20 +58,7 @@ namespace BagOfHolding
             character = new Character();
         }
 
-        #region Open window(s) methods
-
-        public void open() {
-            if(!initialized)
-                startup();
-
-            setColors();
-            updateUIData();
-            updateSkillUI();
-            Show();
-            Visible = true;
-            BringToFront();
-            IsAccessible = true;
-        }
+        #region Startup methods
 
         private void startup() {
             initialized = true;
@@ -97,6 +84,23 @@ namespace BagOfHolding
             Parent.Parent.Parent.Parent.Controls.Add(spellbook_win);
         }
 
+        #endregion
+
+        #region Open methods
+
+        public void open() {
+            if(!initialized)
+                startup();
+
+            setColors();
+            updateUIData();
+            updateSkillUI();
+            Show();
+            Visible = true;
+            BringToFront();
+            IsAccessible = true;
+        }
+
         private void openInvWindow() {
             inv_control.setChar(ref character);
             inv_win.open();
@@ -108,6 +112,7 @@ namespace BagOfHolding
             spellbook_win.open();
             spellbook_control.open();
         }
+
         #endregion
 
         #region UI update\skills methods
@@ -232,6 +237,10 @@ namespace BagOfHolding
             }
         }
 
+        #endregion
+
+        #region Utility methods
+
         private bool checkHover(Point p) {
             Rectangle hoverArea = RectangleToScreen(skill_panel_back.Bounds);
             hoverArea.Inflate(-3, -3);
@@ -242,7 +251,6 @@ namespace BagOfHolding
         private void setColors() {
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
-        #endregion
 
         private void tryDeleteImage(string path) {
             try {
@@ -252,6 +260,8 @@ namespace BagOfHolding
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        #endregion
 
         #region Event Handlers
 
@@ -278,7 +288,6 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
-
 
         private void saveCharacterAsToolStripMenuItem_Click(object sender, EventArgs e) {
             SaveFileDialog saveWindow = new SaveFileDialog();
@@ -733,9 +742,5 @@ namespace BagOfHolding
             character = c;
         }
         #endregion
-
-        private void menu_strip_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
-
-        }
     }
 }

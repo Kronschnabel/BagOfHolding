@@ -14,7 +14,6 @@ namespace BagOfHolding
     {
         bool initialized;
         Character character;
-
         char mode = 'i';
 
         public InventoryWindow() {
@@ -94,6 +93,8 @@ namespace BagOfHolding
             }
         }
 
+        #region Utility methods
+
         private void addNewItem() {
             if(mode == 'i') {
                 character.getInv().Add(new Item());
@@ -110,7 +111,10 @@ namespace BagOfHolding
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public Character getChar() {
             return character;
         }
@@ -118,6 +122,7 @@ namespace BagOfHolding
         public void setChar(ref Character c) {
             character = c;
         }
+
         #endregion
 
         #region Event Handlers
@@ -200,7 +205,6 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
-
 
         private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
             character.saveChar();

@@ -27,6 +27,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public string toString() {
             return name + "|" + level + "|" + hitDie + "|" + skillRanks + "|" + favored;
         }
@@ -43,9 +44,11 @@ namespace BagOfHolding
             if(!bool.TryParse(sLine[4], out favored))
                 favored = false;
         }
+
 #endregion
 
         #region Get & Set methods
+
         public string getName() {
             return name;
         }
@@ -85,6 +88,7 @@ namespace BagOfHolding
         public void setFavored(bool f) {
             favored = f;
         }
+
 #endregion
     }
 }

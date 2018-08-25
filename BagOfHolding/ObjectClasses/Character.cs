@@ -66,6 +66,8 @@ namespace BagOfHolding
             setBlankChar();
         }
 
+        #region Save\Load Character Data
+
         public void saveChar() {
             List<string> file = new List<string>();
             trySaveImage(name + ".jpg");
@@ -423,6 +425,10 @@ namespace BagOfHolding
             }
         }
 
+        #endregion
+
+        #region Character Utility methods
+
         private void setBlankChar() {
             path = "";
             charID = "";
@@ -762,7 +768,6 @@ namespace BagOfHolding
             }
         }
 
-
         public void setSkillMods() {
             foreach(Skill s in skills) {
                 switch(s.getAbilityType()) {
@@ -790,6 +795,10 @@ namespace BagOfHolding
                 }
             }
         }
+
+        #endregion
+
+        #region Spells-Left methods
 
         private void setSpellsLeft(string l) {
             string[] sLine = l.Split('|');
@@ -821,7 +830,10 @@ namespace BagOfHolding
             return spellsLeft[0] + "|" + spellsLeft[1] + "|" + spellsLeft[2] + "|" + spellsLeft[3] + "|" + spellsLeft[4] + "|" + spellsLeft[5] + "|" + spellsLeft[6] + "|" + spellsLeft[7] + "|" + spellsLeft[8] + "|" + spellsLeft[9];
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public string getPath() {
             return path;
         }
@@ -1149,6 +1161,7 @@ namespace BagOfHolding
         public void setSpellsLeft(int[] s) {
             spellsLeft = s;
         }
+
         #endregion
     }
 }

@@ -33,6 +33,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public string toString() {
             return name + "|" + school + "|" + level  + "|" + prepared + "|" + foreColor.ToArgb() + "|" + backColor.ToArgb() + notesToString();
         }
@@ -70,6 +71,7 @@ namespace BagOfHolding
 
             return retString;
         }
+
         #endregion
 
         #region Get & Set methods
@@ -137,6 +139,7 @@ namespace BagOfHolding
         public void setImage(Image i) {
             spellImage = i;
         }
+
         #endregion
     }
 }

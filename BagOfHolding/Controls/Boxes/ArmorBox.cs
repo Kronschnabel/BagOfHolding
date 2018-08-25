@@ -54,6 +54,8 @@ namespace BagOfHolding
             setBackColor(armor.getBackColor());
         }
 
+        #region Utility methods
+
         private void setForeColor(Color f) {
             item_name_box.ForeColor = f;
             weight_box.ForeColor = f;
@@ -94,7 +96,10 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public Armor getArmor() {
             return armor;
         }
@@ -106,6 +111,18 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
+
+        private void armor_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -131,6 +148,8 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
+        #region TextChanged events
 
         private void item_name_box_TextChanged(object sender, EventArgs e) {
             armor.setName(item_name_box.Text);
@@ -192,16 +211,8 @@ namespace BagOfHolding
                 armor.setSpellFail(0);
         }
 
-        private void armor_table_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition))
-                del_butt.Visible = true;
-            else
-                del_butt.Visible = false;
-        }
+        #endregion
 
-        private void del_butt_Click(object sender, EventArgs e) {
-            Dispose();
-        }
         #endregion
     }
 }

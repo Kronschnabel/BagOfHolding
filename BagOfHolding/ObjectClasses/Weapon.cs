@@ -32,6 +32,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public new string toString() {
             return getName() + "|" + getWeight() + "|" + getCost() + "|" + getEquipped() + "|" + category + "|" + size + "|" + critRange + "|" + range + "|" + dmg + "|" + dmgType + "|" + getForeColor().ToArgb() + "|" + getBackColor().ToArgb() + notesToString();
         }
@@ -70,9 +71,11 @@ namespace BagOfHolding
             }
             setNotes(tempNotes);
         }
+
         #endregion
 
         #region Get & Set methods
+
         public string getCategory() {
             return category;
         }
@@ -128,6 +131,7 @@ namespace BagOfHolding
         public void setImage(Image i) {
             weaponImage = i;
         }
+
 #endregion
     }
 }

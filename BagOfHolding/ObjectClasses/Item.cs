@@ -32,6 +32,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public string toString() {
             return name + "|" + weight + "|" + cost + "|" + equipped + "|" + foreColor.ToArgb() + "|" + backColor.ToArgb() + notesToString();
         }
@@ -71,9 +72,11 @@ namespace BagOfHolding
 
             return retString;
         }
+
 #endregion
 
         #region Get & Set methods
+
         public string getName() {
             return name;
         }

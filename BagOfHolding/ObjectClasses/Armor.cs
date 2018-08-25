@@ -32,6 +32,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public new string toString() {
             return getName() + "|" + getWeight() + "|" + getCost() + "|" + getEquipped() + "|" + size + "|" + speed + "|" + acBonus + "|" + maxDex + "|" + armorCheckPenalty + "|" + spellFail + "|" + getForeColor().ToArgb() + "|" + getBackColor().ToArgb() + notesToString();
         }
@@ -72,9 +73,11 @@ namespace BagOfHolding
                 getNotes().Add(n);
             }
         }
+
 #endregion
 
         #region Get & Set methods
+
         public string getSize() {
             return size;
         }

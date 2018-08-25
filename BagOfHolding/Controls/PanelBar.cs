@@ -36,6 +36,7 @@ namespace BagOfHolding
         }
 
         #region Get & Set methods
+
         public float getBaseWidth() {
             return baseWidth;
         }
@@ -59,6 +60,7 @@ namespace BagOfHolding
         public void setMax(float m) {
             max = m;
         }
+
 #endregion
     }
 }

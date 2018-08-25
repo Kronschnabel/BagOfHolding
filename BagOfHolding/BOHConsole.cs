@@ -19,7 +19,7 @@
 //          getCurrentLine()
 //          setCurrentLine()
 //          isArrowKey()
-//          getChar()
+//          getCharacter()
 //
 //Command Utility methods: These methods handle processing the commands that the user enters.
 //          processInput()
@@ -73,14 +73,12 @@ namespace BagOfHolding
 
         public BOHConsole() {
             startup();
-            printOpeningStatement();
         }
 
         #region Start Up methods
 
         private void startup() {
             InitializeComponent();
-            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
             Show();
             IsAccessible = true;
             BringToFront();
@@ -88,9 +86,12 @@ namespace BagOfHolding
             cmdHistory = new List<string>();
             console_box.Size = Screen.PrimaryScreen.WorkingArea.Size;
 
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+
             setColors();
             createCharLists();
             createWindows();
+            printOpeningStatement();
         }
 
         private void createCharLists() {
@@ -134,9 +135,11 @@ namespace BagOfHolding
             settings_win.open();
             settings_control.open();
         }
+
         #endregion
 
         #region Misc. Utility methods
+
         private bool caretPosInvalid() {
             if(console_box.SelectionStart < (console_box.TextLength - console_box.Lines[console_box.Lines.Length - 1].Length))
                 return true;
@@ -165,7 +168,7 @@ namespace BagOfHolding
             return false;
         }
 
-        private Character getChar(string s) {
+        private Character getCharacter(string s) {
             s = s.ToLower();
             string[] splitName;
 
@@ -182,9 +185,9 @@ namespace BagOfHolding
             List<Character> referencedChars = new List<Character>();
 
             foreach(string command in cmd.getSLine()) {
-                Character testChar = getChar(command);
+                Character testChar = getCharacter(command);
                 if(testChar != null)
-                    referencedChars.Add(getChar(command));
+                    referencedChars.Add(getCharacter(command));
             }
 
             return referencedChars;
@@ -199,7 +202,7 @@ namespace BagOfHolding
             console_box.ForeColor = fC;
         }
 
-            #region Print to Console methods
+        #region Print to Console methods
         private void print(string text) {
             console_box.AppendText(text);
         }
@@ -214,45 +217,10 @@ namespace BagOfHolding
             }
         }
         #endregion
+
         #endregion
 
         #region Command utility methods
-
-        private void fillRollResults(Command cmd, Die d, ref List<int> rolls, ref int total) {
-            int mod = cmd.getMod();
-
-            if(cmd.getMultiRoll()) {
-                for(int rollCount = 0; rollCount < cmd.getRollCount(); rollCount++) {
-                    int roll = d.roll(cmd.getSides());
-                    rolls.Add(roll);
-                    total += roll;
-                }
-
-                if(cmd.getMultiMod())
-                    total += (mod * cmd.getRollCount());
-                else
-                    total += mod;
-            }
-            else {
-                int roll = d.roll(cmd.getSides());
-                rolls.Add(roll);
-                total += (roll + mod);
-            }
-        }
-
-        private void editCharStats(Command cmd, int total, ref Character referencedChar) {
-            char op = cmd.getVar()[cmd.getVar().Length - 1];
-            string var = cmd.getVar().Remove(cmd.getVar().Length - 1).ToLower();
-            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
-
-            int preEdit = 0;
-            int postEdit = 0;
-
-            referencedChar.statEditFromCommand(var, op, total, ref preEdit, ref postEdit);
-
-            party_control.updateUIData();
-            print(string.Format(composite, var, preEdit, postEdit));
-        }
 
         private void processInput(string line) {
             if(line != null && !line.Equals("")) {
@@ -260,8 +228,8 @@ namespace BagOfHolding
                 cmdHistory.Add(line);
                 printLine("=========================================================");
 
-                if(cmdHistory.Count > 1)
-                    historyIndex = cmdHistory.Count - 1;
+                if(cmdHistory.Count >= 1)
+                    historyIndex = cmdHistory.Count;
 
                 if(line.Equals("char")) {
                     openCharWindow();
@@ -303,7 +271,7 @@ namespace BagOfHolding
                 foreach(Character c in referencedChars) {
                     if(cmd.getModded())
                         cmd.calcMod(c);
-                        
+
                     if(cmd.getDie()) {
                         processDieCommand(cmd, d, c);
                     }
@@ -325,6 +293,42 @@ namespace BagOfHolding
                 printLine("Command not recognized.");
             }
 
+        }
+
+        private void fillRollResults(Command cmd, Die d, ref List<int> rolls, ref int total) {
+            int mod = cmd.getMod();
+
+            if(cmd.getMultiRoll()) {
+                for(int rollCount = 0; rollCount < cmd.getRollCount(); rollCount++) {
+                    int roll = d.roll(cmd.getSides());
+                    rolls.Add(roll);
+                    total += roll;
+                }
+
+                if(cmd.getMultiMod())
+                    total += (mod * cmd.getRollCount());
+                else
+                    total += mod;
+            }
+            else {
+                int roll = d.roll(cmd.getSides());
+                rolls.Add(roll);
+                total += (roll + mod);
+            }
+        }
+
+        private void editCharStats(Command cmd, int total, ref Character referencedChar) {
+            char op = cmd.getVar()[cmd.getVar().Length - 1];
+            string var = cmd.getVar().Remove(cmd.getVar().Length - 1).ToLower();
+            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
+
+            int preEdit = 0;
+            int postEdit = 0;
+
+            referencedChar.statEditFromCommand(var, op, total, ref preEdit, ref postEdit);
+
+            party_control.updateUIData();
+            print(string.Format(composite, var, preEdit, postEdit));
         }
 
         private void processDieCommand(Command cmd, Die d) {
@@ -386,6 +390,7 @@ namespace BagOfHolding
 
             printLine("\n");
         }
+
         #endregion
 
         #region Print statement methods
@@ -516,9 +521,11 @@ namespace BagOfHolding
             printLine("     'D4500*5 s : Returns 5 numbers between [1-4500], as well as their sum.");
             printLine("     'd2*23 sum : Returns 23 numbers between [1-2], as well as their sum.");
         }
+
         #endregion
 
         #region Event Handlers
+
         private void settingsChanged(object sender, PropertyChangedEventArgs e) {
             setColors();
         }
@@ -531,11 +538,25 @@ namespace BagOfHolding
                 }
                 else if(e.KeyCode == Keys.Up && historyIndex >= 0) {
                     e.SuppressKeyPress = true;
-                    setCurrentLine(cmdHistory[historyIndex--]);
+
+                    if(cmdHistory.Count > 0) {
+                        if(historyIndex > 0)
+                            historyIndex -= 1;
+
+                        setCurrentLine(cmdHistory[historyIndex]);
+                    }
                 }
-                else if(e.KeyCode == Keys.Down && historyIndex < cmdHistory.Count - 1) {
+                else if(e.KeyCode == Keys.Down) {
                     e.SuppressKeyPress = true;
-                    setCurrentLine(cmdHistory[historyIndex++]);
+
+                    if(historyIndex < cmdHistory.Count) {
+                        historyIndex += 1;
+
+                        if(historyIndex == cmdHistory.Count)
+                            setCurrentLine("");
+                        else
+                            setCurrentLine(cmdHistory[historyIndex]);
+                    }
                 }
             }
             else if(e.KeyCode == Keys.Enter) {
@@ -558,6 +579,7 @@ namespace BagOfHolding
                     c.Visible = false;
             }
         }
+
         #endregion
     }
 }

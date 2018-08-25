@@ -39,6 +39,8 @@ namespace BagOfHolding
             setBackColor(item.getBackColor());
         }
 
+        #region Utility methods
+
         private void setForeColor(Color f) {
             item_name_box.ForeColor = f;
             weight_box.ForeColor = f;
@@ -61,7 +63,22 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
+        #region Get & Set methods
+
+        public Item getItem() {
+            return item;
+        }
+
+        public void setItem(Item i) {
+            item = i;
+        }
+
+        #endregion
+
         #region Event Handlers
+
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -77,6 +94,23 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
+        private void equipped_box_CheckedChanged(object sender, EventArgs e) {
+            item.setEquipped(equipped_box.Checked);
+        }
+
+        private void item_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+
+        #region TextChanged events
 
         private void item_name_box_TextChanged(object sender, EventArgs e) {
             item.setName(item_name_box.Text);
@@ -94,30 +128,9 @@ namespace BagOfHolding
             item.setNotes(notes_box.Lines.ToList());
         }
 
-        private void equipped_box_CheckedChanged(object sender, EventArgs e) {
-            item.setEquipped(equipped_box.Checked);
-        }
-
-        private void item_table_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition))
-                del_butt.Visible = true;
-            else
-                del_butt.Visible = false;
-        }
-
-        private void del_butt_Click(object sender, EventArgs e) {
-            Dispose();
-        }
         #endregion
 
-        #region Get & Set methods
-        public Item getItem() {
-            return item;
-        }
-
-        public void setItem(Item i) {
-            item = i;
-        }
         #endregion
+
     }
 }

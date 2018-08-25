@@ -67,12 +67,20 @@ namespace BagOfHolding
             }
         }
 
+        #region Utility methods
+
         public void addControl(UserControl cont) {
             if(initialized)
                 main_panel.Controls.Add(cont);
             else
                 pendingControls.Add(cont);
         }
+
+        private void dragWindow(Point m) {
+            Location = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
+        }
+
+        #region Set Color methods
 
         public void setBackPanel(Color c) {
             back_panel.BackColor = c;
@@ -87,11 +95,11 @@ namespace BagOfHolding
             close_butt.BackColor = Properties.Settings.Default.windowButtColor;
         }
 
-        private void dragWindow(Point m) {
-            Location = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
-        }
+        #endregion
+#endregion
 
         #region Event Handlers
+
         private void settingsChanged(object sender, PropertyChangedEventArgs e) {
             setColors();
         }
@@ -123,6 +131,7 @@ namespace BagOfHolding
         private void back_panel_MouseDoubleClick(object sender, MouseEventArgs e) {
             BringToFront();
         }
+
         #endregion
     }
 }

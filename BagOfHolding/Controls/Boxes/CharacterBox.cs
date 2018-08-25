@@ -40,48 +40,6 @@ namespace BagOfHolding
             updateUIData();
         }
 
-        public void createWindows() {
-            char_win = new Window("char");
-            char_control = new CharacterWindow();
-            char_win.addControl(char_control);
-            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(char_win);
-
-            inv_win = new Window("inv");
-            inv_control = new InventoryWindow();
-            inv_win.addControl(inv_control);
-            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(inv_win);
-
-            spellbook_win = new Window("spellbook");
-            spellbook_control = new SpellbookWindow();
-            spellbook_win.addControl(spellbook_control);
-            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(spellbook_win);
-        }
-
-        public void initializeBars() {
-            health_bar.setColors(hpForeColor, hpBackColor);
-            exp_bar.setColors(expForeColor, expBackColor);
-            exp_bar.setBaseWidth(100);
-            exp_bar.updateBar();
-        }
-
-        private void openCharWindow() {
-            char_control.setChar(ref character);
-            char_win.open();
-            char_control.open();
-        }
-
-        private void openInvWindow() {
-            inv_control.setChar(ref character);
-            inv_win.open();
-            inv_control.open();
-        }
-
-        private void openSpellBookWindow() {
-            spellbook_control.setChar(ref character);
-            spellbook_win.open();
-            spellbook_control.open();
-        }
-
         private void updateUIData() {
             max_hp_box.Text = character.getMaxHP().ToString();
             hp_box.Text = character.getHP().ToString();
@@ -104,7 +62,7 @@ namespace BagOfHolding
                 str_mod_label.Text = character.getStr().getMod().ToString();
             if(character.getDex().getMod() >= 0)
                 dex_mod_label.Text = "+" + character.getDex().getMod().ToString();
-            else 
+            else
                 dex_mod_label.Text = character.getDex().getMod().ToString();
             if(character.getCon().getMod() >= 0)
                 con_mod_label.Text = "+" + character.getCon().getMod().ToString();
@@ -112,7 +70,7 @@ namespace BagOfHolding
                 con_mod_label.Text = character.getCon().getMod().ToString();
             if(character.getInt().getMod() >= 0)
                 int_mod_label.Text = "+" + character.getInt().getMod().ToString();
-            else 
+            else
                 int_mod_label.Text = character.getInt().getMod().ToString();
             if(character.getWis().getMod() >= 0)
                 wis_mod_label.Text = "+" + character.getWis().getMod().ToString();
@@ -160,6 +118,58 @@ namespace BagOfHolding
             exp_bar.updateBar();
         }
 
+        #region Start Up methods
+
+        public void createWindows() {
+            char_win = new Window("char");
+            char_control = new CharacterWindow();
+            char_win.addControl(char_control);
+            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(char_win);
+
+            inv_win = new Window("inv");
+            inv_control = new InventoryWindow();
+            inv_win.addControl(inv_control);
+            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(inv_win);
+
+            spellbook_win = new Window("spellbook");
+            spellbook_control = new SpellbookWindow();
+            spellbook_win.addControl(spellbook_control);
+            Parent.Parent.Parent.Parent.Parent.Parent.Parent.Controls.Add(spellbook_win);
+        }
+
+        public void initializeBars() {
+            health_bar.setColors(hpForeColor, hpBackColor);
+            exp_bar.setColors(expForeColor, expBackColor);
+            exp_bar.setBaseWidth(100);
+            exp_bar.updateBar();
+        }
+
+        #endregion
+
+        #region Open methods
+
+        private void openCharWindow() {
+            char_control.setChar(ref character);
+            char_win.open();
+            char_control.open();
+        }
+
+        private void openInvWindow() {
+            inv_control.setChar(ref character);
+            inv_win.open();
+            inv_control.open();
+        }
+
+        private void openSpellBookWindow() {
+            spellbook_control.setChar(ref character);
+            spellbook_win.open();
+            spellbook_control.open();
+        }
+
+        #endregion
+
+        #region Utility methods
+
         private void tryDeleteImage(string path) {
             try {
                 File.Delete(path);
@@ -177,7 +187,46 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
+        #region Get & Set methods
+
+        public Character getChar() {
+            return character;
+        }
+
+        public void setChar(Character c) {
+            character = c;
+            updateUIData();
+        }
+
+        #endregion
+
         #region Event Handlers
+
+        private void inv_butt_Click(object sender, EventArgs e) {
+            openInvWindow();
+        }
+
+        private void spell_butt_Click(object sender, EventArgs e) {
+            openSpellBookWindow();
+        }
+
+        private void char_name_box_DoubleClick(object sender, EventArgs e) {
+            openCharWindow();
+        }
+
+        private void char_panel_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+
         private void avatar_panel_Click(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -197,6 +246,8 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
+        #region TextChanged events
 
         private void char_name_box_TextChanged(object sender, EventArgs e) {
             character.setName(char_name_box.Text);
@@ -414,41 +465,9 @@ namespace BagOfHolding
             character.setNotes(char_notes_box.Lines.ToList());
         }
 
-
-        private void inv_butt_Click(object sender, EventArgs e) {
-            openInvWindow();
-        }
-
-        private void spell_butt_Click(object sender, EventArgs e) {
-            openSpellBookWindow();
-        }
-
-
-        private void char_name_box_DoubleClick(object sender, EventArgs e) {
-            openCharWindow();
-        }
-
-        private void char_panel_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition))
-                del_butt.Visible = true;
-            else
-                del_butt.Visible = false;
-        }
-
-        private void del_butt_Click(object sender, EventArgs e) {
-            Dispose();
-        }
         #endregion
 
-        #region Get & Set methods
-        public Character getChar() {
-            return character;
-        }
-
-        public void setChar(Character c) {
-            character = c;
-            updateUIData();
-        }
         #endregion
+
     }
 }

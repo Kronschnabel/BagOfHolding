@@ -48,6 +48,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public string toString() {
             return name + "|" + total + "|" + abilityType + "|" + abilityMod + "|" + ranks + "|" + miscMod1 + "|" + miscMod2 + "|" + classSkill + "|" + trained;
         }
@@ -73,9 +74,11 @@ namespace BagOfHolding
             if(!bool.TryParse(sLine[8], out trained))
                 trained = false;
         }
+
 #endregion
 
         #region Get & Set methods
+
         public string getName() {
             return name;
         }
@@ -154,6 +157,7 @@ namespace BagOfHolding
             trained = t;
             resetTotal();
         }
+
 #endregion
     }
 }

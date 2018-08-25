@@ -27,10 +27,9 @@ namespace BagOfHolding
         }
 
         private void updateIncrement() {
-            sIncrement += 3;
+            sIncrement += (sIncrement % 5) + 3;
 
-            if(sIncrement >= 1000)
-                sIncrement = 0;
+            sIncrement %= 132040292;
         }
 
         #region Get & Set methods

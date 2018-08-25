@@ -69,6 +69,8 @@ namespace BagOfHolding
             character.setSpellsLeft(getSpellsLeftValues());
         }
 
+        #region Utility methods
+
         private int[] getSpellsLeftValues() {
             int[] spellsLeft = new int[10];
 
@@ -95,6 +97,8 @@ namespace BagOfHolding
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
 
+        #endregion
+
         #region Get & Set methods
         public Character getChar() {
             return character;
@@ -107,6 +111,7 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
+
         private void settingsChanged(object sender, PropertyChangedEventArgs e) {
             setColors();
         }
@@ -169,6 +174,7 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
         #endregion
     }
 }

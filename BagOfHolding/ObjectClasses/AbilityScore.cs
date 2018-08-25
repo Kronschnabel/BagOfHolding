@@ -29,6 +29,7 @@ namespace BagOfHolding
         }
 
         #region To\From string 
+
         public string toString() {
             return total + "|" + mod;
         }
@@ -41,9 +42,11 @@ namespace BagOfHolding
             if(!int.TryParse(sLine[1], out mod))
                 mod = 0;
         }
+
 #endregion
 
         #region Get & Set methods
+
         public int getTotal() {
             return total;
         }
@@ -60,6 +63,7 @@ namespace BagOfHolding
         public void setMod(int m) {
             mod = m;
         }
+
         #endregion
 
     }

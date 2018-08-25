@@ -15,7 +15,6 @@ namespace BagOfHolding
     {
         bool initialized;
         List<Character> party;
-
         bool ctrlDown;
 
         public PartyWindow() {
@@ -45,12 +44,6 @@ namespace BagOfHolding
             Dock = DockStyle.Fill;
         }
 
-        private void saveParty() {
-            foreach(Character c in party) {
-                c.saveChar();
-            }
-        }
-
         public void updateUIData() {
             party_panel.Controls.Clear();
 
@@ -69,9 +62,19 @@ namespace BagOfHolding
             }
         }
 
+        #region Utility methods
+
+        private void saveParty() {
+            foreach(Character c in party) {
+                c.saveChar();
+            }
+        }
+
         private void setColors() {
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
+
+        #endregion
 
         #region Get & Set methods
         public List<Character> getParty() {
@@ -82,6 +85,8 @@ namespace BagOfHolding
             party = p;
         }
         #endregion
+
+        #region Event Handlers
 
         private void settingsChanged(object sender, PropertyChangedEventArgs e) {
             setColors();
@@ -125,8 +130,7 @@ namespace BagOfHolding
                 ctrlDown = true;
 
             if(ctrlDown && (e.KeyCode == Keys.S)) {
-                saveParty();
-                
+                saveParty(); 
             }
         }
 
@@ -165,5 +169,7 @@ namespace BagOfHolding
         private void party_label_Click(object sender, EventArgs e) {
 
         }
+
+        #endregion
     }
 }

@@ -41,6 +41,8 @@ namespace BagOfHolding
             class_skill_box.Checked = skill.getClassSkill();
         }
 
+        #region Utility methods
+
         private string getAbilityString() {
             switch(skill.getAbilityType()) {
                 case 0:
@@ -67,7 +69,10 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public Skill getSkill() {
             return skill;
         }
@@ -105,39 +110,6 @@ namespace BagOfHolding
         #endregion
 
         #region Event Handlers
-        private void skill_name_box_TextChanged(object sender, EventArgs e) {
-            skill.setName(skill_name_box.Text);
-        }
-
-        private void ranks_box_ValueChanged(object sender, EventArgs e) {
-            skill.setRanks((int) ranks_box.Value);
-            updateUIData();
-        }
-
-        private void miscMod1_box_TextChanged(object sender, EventArgs e) {
-            int m;
-            if(int.TryParse(miscMod1_box.Text, out m))
-                skill.setMiscMod1(m);
-            else
-                skill.setMiscMod1(0);
-
-            updateUIData();
-        }
-
-        private void miscMod2_box_TextChanged(object sender, EventArgs e) {
-            int m;
-            if(int.TryParse(miscMod2_box.Text, out m))
-                skill.setMiscMod2(m);
-            else
-                skill.setMiscMod2(0);
-
-            updateUIData();
-        }
-
-        private void class_skill_box_CheckedChanged(object sender, EventArgs e) {
-            skill.setClassSkill(class_skill_box.Checked);
-            updateUIData();
-        }
 
         private void skill_table_MouseMove(object sender, MouseEventArgs e) {
             if(checkHover(MousePosition))
@@ -177,6 +149,45 @@ namespace BagOfHolding
                     }
             }
         }
+
+        #region ValueChanged events
+
+        private void skill_name_box_TextChanged(object sender, EventArgs e) {
+            skill.setName(skill_name_box.Text);
+        }
+
+        private void ranks_box_ValueChanged(object sender, EventArgs e) {
+            skill.setRanks((int) ranks_box.Value);
+            updateUIData();
+        }
+
+        private void miscMod1_box_TextChanged(object sender, EventArgs e) {
+            int m;
+            if(int.TryParse(miscMod1_box.Text, out m))
+                skill.setMiscMod1(m);
+            else
+                skill.setMiscMod1(0);
+
+            updateUIData();
+        }
+
+        private void miscMod2_box_TextChanged(object sender, EventArgs e) {
+            int m;
+            if(int.TryParse(miscMod2_box.Text, out m))
+                skill.setMiscMod2(m);
+            else
+                skill.setMiscMod2(0);
+
+            updateUIData();
+        }
+
+        private void class_skill_box_CheckedChanged(object sender, EventArgs e) {
+            skill.setClassSkill(class_skill_box.Checked);
+            updateUIData();
+        }
+
+        #endregion
+
         #endregion
     }
 }

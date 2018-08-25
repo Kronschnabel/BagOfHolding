@@ -45,6 +45,8 @@ namespace BagOfHolding
             setBackColor(weapon.getBackColor());
         }
 
+        #region Utility methods
+
         private void setForeColor(Color f) {
             item_name_box.ForeColor = f;
             weight_box.ForeColor = f;
@@ -85,7 +87,10 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public Weapon getWeapon() {
             return weapon;
         }
@@ -93,9 +98,22 @@ namespace BagOfHolding
         public void setWeapon(Weapon w) {
             weapon = w;
         }
+
         #endregion
 
         #region Event Handlers
+
+        private void weapon_table_MouseMove(object sender, MouseEventArgs e) {
+            if(checkHover(MousePosition))
+                del_butt.Visible = true;
+            else
+                del_butt.Visible = false;
+        }
+
+        private void del_butt_Click(object sender, EventArgs e) {
+            Dispose();
+        }
+
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
@@ -121,6 +139,8 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
+        #region ValueChanged events
 
         private void item_name_box_TextChanged(object sender, EventArgs e) {
             weapon.setName(item_name_box.Text);
@@ -166,16 +186,8 @@ namespace BagOfHolding
             weapon.setSize(size_box.Text);
         }
 
-        private void weapon_table_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition)) 
-                del_butt.Visible = true;
-            else
-                del_butt.Visible = false;
-        }
+        #endregion
 
-        private void del_butt_Click(object sender, EventArgs e) {
-            Dispose();
-        }
         #endregion
     }
 }
