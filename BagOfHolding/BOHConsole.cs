@@ -438,9 +438,8 @@ namespace BagOfHolding
 
         private void printOpeningStatement() {
             printFile("BOHTitle.txt");
-            printLine("\nBag of Holding Roleplaying console v1.1");
-            printLine("Developed by Matt Kronschnabel");
-            printLine("------------------------------------------");
+            printLine("\nBag of Holding Roleplaying console v1.2 Beta");
+            printLine("-----------------------------------------------");
             printLine("Enter 'help' if you don't know what to do.\n");
         }
 
