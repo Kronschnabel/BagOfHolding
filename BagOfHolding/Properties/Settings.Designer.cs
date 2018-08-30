@@ -25,7 +25,7 @@ namespace BagOfHolding.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        [global::System.Configuration.DefaultSettingValueAttribute("60, 62, 84")]
         public global::System.Drawing.Color consoleBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["consoleBackColor"]));
@@ -37,7 +37,7 @@ namespace BagOfHolding.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("InactiveBorder")]
+        [global::System.Configuration.DefaultSettingValueAttribute("243, 247, 124")]
         public global::System.Drawing.Color consoleForeColor {
             get {
                 return ((global::System.Drawing.Color)(this["consoleForeColor"]));
@@ -49,7 +49,7 @@ namespace BagOfHolding.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DarkSlateBlue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("169, 66, 76")]
         public global::System.Drawing.Color windowContColor {
             get {
                 return ((global::System.Drawing.Color)(this["windowContColor"]));
@@ -61,7 +61,7 @@ namespace BagOfHolding.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("230, 100, 100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("84, 51, 51")]
         public global::System.Drawing.Color windowButtColor {
             get {
                 return ((global::System.Drawing.Color)(this["windowButtColor"]));
@@ -73,7 +73,7 @@ namespace BagOfHolding.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255, 255, 128")]
+        [global::System.Configuration.DefaultSettingValueAttribute("185, 173, 63")]
         public global::System.Drawing.Color windowToolColor {
             get {
                 return ((global::System.Drawing.Color)(this["windowToolColor"]));

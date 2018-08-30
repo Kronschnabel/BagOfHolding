@@ -18,6 +18,7 @@ namespace BagOfHolding
 
         public PanelBar() {
             InitializeComponent();
+            
         }
 
         public void updateBar() {
@@ -25,8 +26,8 @@ namespace BagOfHolding
             backSize.Width = Width;
             back_bar.Size = backSize;
             Size frontSize = front_bar.Size;
-            frontSize.Width = (int) ((current / max) * (Width - baseWidth));
-            frontSize.Width += (int) baseWidth;
+            frontSize.Width = (int) baseWidth;
+            frontSize.Width += (int) ((current / (max + 1)) * (Width - baseWidth));
             front_bar.Size = frontSize;
         }
 

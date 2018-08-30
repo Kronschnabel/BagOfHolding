@@ -3,19 +3,19 @@
   <Profiles />
   <Settings>
     <Setting Name="consoleBackColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Black</Value>
+      <Value Profile="(Default)">60, 62, 84</Value>
     </Setting>
     <Setting Name="consoleForeColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">InactiveBorder</Value>
+      <Value Profile="(Default)">243, 247, 124</Value>
     </Setting>
     <Setting Name="windowContColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">DarkSlateBlue</Value>
+      <Value Profile="(Default)">169, 66, 76</Value>
     </Setting>
     <Setting Name="windowButtColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">230, 100, 100</Value>
+      <Value Profile="(Default)">84, 51, 51</Value>
     </Setting>
     <Setting Name="windowToolColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">255, 255, 128</Value>
+      <Value Profile="(Default)">185, 173, 63</Value>
     </Setting>
   </Settings>
 </SettingsFile>

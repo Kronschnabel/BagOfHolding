@@ -141,7 +141,6 @@ namespace BagOfHolding
             health_bar.setColors(hpForeColor, hpBackColor);
             exp_bar.setColors(expForeColor, expBackColor);
             exp_bar.setBaseWidth(100);
-            exp_bar.updateBar();
         }
 
         #endregion

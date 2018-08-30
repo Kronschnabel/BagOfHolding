@@ -224,6 +224,7 @@ namespace BagOfHolding
 
         private void processInput(string line) {
             if(line != null && !line.Equals("")) {
+                line = line.ToLower();
                 Command cmd = new Command(line);
                 cmdHistory.Add(line);
                 printLine("=========================================================");
@@ -237,7 +238,7 @@ namespace BagOfHolding
                 else if(line.Equals("party")) {
                     openPartyWindow();
                 }
-                else if(line.Equals("init")) {
+                else if(line.Equals("init") || line.Equals("initiative")) {
                     processCommand(new Command("p d20 +init"));
                 }
                 else if(line.Equals("heal")) {
@@ -281,6 +282,11 @@ namespace BagOfHolding
                         editCharStats(cmd, cmd.getMod(), ref temp);
                         printLine("");
                     }
+                    else {
+                        Character temp = c;
+                        char_control.setChar(ref temp);
+                        openCharWindow();
+                    }
                 }
             }
             else if(cmd.getDie()) {
@@ -319,15 +325,13 @@ namespace BagOfHolding
 
         private void editCharStats(Command cmd, int total, ref Character referencedChar) {
             char op = cmd.getVar()[cmd.getVar().Length - 1];
-            string var = cmd.getVar().Remove(cmd.getVar().Length - 1).ToLower();
-            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
-
+            string var = cmd.getVar().Remove(cmd.getVar().Length - 1);
             int preEdit = 0;
             int postEdit = 0;
 
             referencedChar.statEditFromCommand(var, op, total, ref preEdit, ref postEdit);
 
-            party_control.updateUIData();
+            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
             print(string.Format(composite, var, preEdit, postEdit));
         }
 
