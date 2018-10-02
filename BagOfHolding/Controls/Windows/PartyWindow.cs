@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BagOfHolding
 {
@@ -15,15 +16,12 @@ namespace BagOfHolding
         bool initialized;
         List<Character> party;
 
-        bool ctrlDown;
 
         public PartyWindow() {
-            Dock = DockStyle.Fill;
             party = new List<Character>();
         }
 
         public PartyWindow(ref List<Character> p) {
-            Dock = DockStyle.Fill;
             party = p;
         }
 
@@ -31,18 +29,22 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             Show();
             Visible = true;
             BringToFront();
             IsAccessible = true;
-            Width += 1;
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
         }
+
+        #region Utility methods
 
         private void saveParty() {
             foreach(Character c in party) {
@@ -68,7 +70,14 @@ namespace BagOfHolding
             }
         }
 
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
+
+        #endregion
+
         #region Get & Set methods
+
         public List<Character> getParty() {
             return party;
         }
@@ -76,7 +85,14 @@ namespace BagOfHolding
         public void setParty(ref List<Character> p) {
             party = p;
         }
+
         #endregion
+
+        #region Event Handlers
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void newCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
             updatePartyData();
@@ -111,25 +127,6 @@ namespace BagOfHolding
             saveParty();
         }
 
-        private void PartyWindow_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Control)
-                ctrlDown = true;
-
-            if(ctrlDown && (e.KeyCode == Keys.S)) {
-                saveParty();
-                
-            }
-        }
-
-        private void PartyWindow_KeyUp(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Control)
-                ctrlDown = false;
-        }
-
-        private void PartyWindow_KeyPress(object sender, KeyPressEventArgs e) {
-            
-        }
-
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
             updatePartyData();
         }
@@ -145,5 +142,6 @@ namespace BagOfHolding
             updateUIData();
         }
 
+        #endregion
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace BagOfHolding
 {
@@ -16,10 +17,9 @@ namespace BagOfHolding
         bool initialized;
         List<UserControl> pendingControls;
 
-       delegate void Drag();
         Point dragStartPos;
-
         bool windowDrag;
+        bool test = false;
 
         public Window(string t) {
             type = t;
@@ -34,11 +34,13 @@ namespace BagOfHolding
             Visible = true;
             BringToFront();
             IsAccessible = true;
+            setColors();
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
 
             foreach(UserControl c in pendingControls)
                 addControl(c);
@@ -60,7 +62,13 @@ namespace BagOfHolding
                 Location = new Point(20, 20);
                 Size = new Size(new Point(1200, 633));
             }
+            else if(type.Equals("settings")) {
+                Location = new Point(300, 200);
+                Size = new Size(new Point(290, 320));
+            }
         }
+
+        #region Utility methods
 
         public void addControl(UserControl cont) {
             if(initialized)
@@ -73,7 +81,29 @@ namespace BagOfHolding
             Location = new Point(Location.X + (m.X - dragStartPos.X), Location.Y + (m.Y - dragStartPos.Y));
         }
 
+        #region Set Color methods
+
+        public void setBackPanel(Color c) {
+            back_panel.BackColor = c;
+        }
+
+        public void setButtColor(Color c) {
+            close_butt.BackColor = c;
+        }
+
+        private void setColors() {
+            back_panel.BackColor = Properties.Settings.Default.windowContColor;
+            close_butt.BackColor = Properties.Settings.Default.windowButtColor;
+        }
+
+        #endregion
+#endregion
+
         #region Event Handlers
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void back_panel_MouseDown(object sender, MouseEventArgs eArgs) {
             BringToFront();
@@ -90,10 +120,6 @@ namespace BagOfHolding
                 dragWindow(eArgs.Location);
         }
 
-        private void back_panel_MouseEnter(object sender, EventArgs eArgs) {
-            BringToFront();
-        }
-
         private void back_panel_MouseLeave(object sender, EventArgs eArgs) {
             if(windowDrag) 
                 dragWindow(back_panel.PointToClient(MousePosition));
@@ -106,6 +132,7 @@ namespace BagOfHolding
         private void back_panel_MouseDoubleClick(object sender, MouseEventArgs e) {
             BringToFront();
         }
+
         #endregion
     }
 }

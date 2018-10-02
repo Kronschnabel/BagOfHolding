@@ -35,12 +35,12 @@
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.savePartyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearPartyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearWithoutSavingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearAndSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.party_label = new System.Windows.Forms.Label();
             this.party_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_panel.SuspendLayout();
             this.menu_strip.SuspendLayout();
             this.SuspendLayout();
@@ -60,16 +60,16 @@
             // 
             // menu_strip
             // 
-            this.menu_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(140)))));
+            this.menu_strip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.menu_strip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem});
+            this.menu_strip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menu_strip.Location = new System.Drawing.Point(0, 0);
             this.menu_strip.Margin = new System.Windows.Forms.Padding(3);
             this.menu_strip.Name = "menu_strip";
             this.menu_strip.Size = new System.Drawing.Size(853, 24);
             this.menu_strip.TabIndex = 25;
-            this.menu_strip.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -135,13 +135,20 @@
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
             // clearPartyToolStripMenuItem
             // 
             this.clearPartyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearWithoutSavingToolStripMenuItem,
             this.clearAndSaveToolStripMenuItem});
             this.clearPartyToolStripMenuItem.Name = "clearPartyToolStripMenuItem";
-            this.clearPartyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clearPartyToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.clearPartyToolStripMenuItem.Text = "Clear Party";
             // 
             // clearWithoutSavingToolStripMenuItem
@@ -185,13 +192,6 @@
             this.party_panel.TabIndex = 0;
             this.party_panel.WrapContents = false;
             // 
-            // refreshToolStripMenuItem
-            // 
-            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
-            // 
             // PartyWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,9 +199,6 @@
             this.Controls.Add(this.main_panel);
             this.Name = "PartyWindow";
             this.Size = new System.Drawing.Size(853, 507);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartyWindow_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartyWindow_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartyWindow_KeyUp);
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
             this.menu_strip.ResumeLayout(false);

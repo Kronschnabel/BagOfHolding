@@ -28,12 +28,16 @@
             // 
             // console_box
             // 
+            this.console_box.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.console_box.BackColor = System.Drawing.Color.Black;
             this.console_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.console_box.DetectUrls = false;
             this.console_box.ForeColor = System.Drawing.SystemColors.ScrollBar;
             this.console_box.Location = new System.Drawing.Point(13, 13);
             this.console_box.Name = "console_box";
-            this.console_box.Size = new System.Drawing.Size(891, 470);
+            this.console_box.Size = new System.Drawing.Size(891, 404);
             this.console_box.TabIndex = 0;
             this.console_box.Text = "";
             this.console_box.DoubleClick += new System.EventHandler(this.console_box_DoubleClick);
@@ -43,9 +47,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(916, 495);
             this.Controls.Add(this.console_box);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BOHConsole";

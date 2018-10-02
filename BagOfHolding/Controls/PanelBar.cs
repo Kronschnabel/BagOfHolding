@@ -25,8 +25,8 @@ namespace BagOfHolding
             backSize.Width = Width;
             back_bar.Size = backSize;
             Size frontSize = front_bar.Size;
-            frontSize.Width = (int) ((current / max) * (Width - baseWidth));
-            frontSize.Width += (int) baseWidth;
+            frontSize.Width = (int) baseWidth;
+            frontSize.Width += (int) ((current / max) * (Width - baseWidth));
             front_bar.Size = frontSize;
         }
 
@@ -36,6 +36,7 @@ namespace BagOfHolding
         }
 
         #region Get & Set methods
+
         public float getBaseWidth() {
             return baseWidth;
         }
@@ -57,8 +58,12 @@ namespace BagOfHolding
         }
 
         public void setMax(float m) {
-            max = m;
+            if(m <= 0)
+                max = 1;
+            else
+                max = m;
         }
+
 #endregion
     }
 }

@@ -365,6 +365,7 @@
             this.hp_text_panel.Name = "hp_text_panel";
             this.hp_text_panel.Size = new System.Drawing.Size(101, 18);
             this.hp_text_panel.TabIndex = 22;
+            this.hp_text_panel.DoubleClick += new System.EventHandler(this.hp_text_panel_DoubleClick);
             // 
             // max_hp_box
             // 
@@ -380,6 +381,7 @@
             this.max_hp_box.TabIndex = 1;
             this.max_hp_box.Text = "0";
             this.max_hp_box.TextChanged += new System.EventHandler(this.max_hp_box_TextChanged);
+            this.max_hp_box.DoubleClick += new System.EventHandler(this.max_hp_box_DoubleClick);
             // 
             // hp_box
             // 
@@ -396,6 +398,7 @@
             this.hp_box.Text = "0";
             this.hp_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.hp_box.TextChanged += new System.EventHandler(this.hp_box_TextChanged);
+            this.hp_box.DoubleClick += new System.EventHandler(this.hp_box_DoubleClick);
             // 
             // hp_slash_label
             // 
@@ -410,6 +413,7 @@
             this.hp_slash_label.Size = new System.Drawing.Size(11, 16);
             this.hp_slash_label.TabIndex = 0;
             this.hp_slash_label.Text = "/";
+            this.hp_slash_label.DoubleClick += new System.EventHandler(this.hp_slash_label_DoubleClick);
             // 
             // ability_table
             // 

@@ -48,6 +48,7 @@ namespace BagOfHolding
         }
 
         #region To\From string
+
         public string toString() {
             return name + "|" + total + "|" + abilityType + "|" + abilityMod + "|" + ranks + "|" + miscMod1 + "|" + miscMod2 + "|" + classSkill + "|" + trained;
         }
@@ -73,87 +74,98 @@ namespace BagOfHolding
             if(!bool.TryParse(sLine[8], out trained))
                 trained = false;
         }
-#endregion
+
+        #endregion
 
         #region Get & Set methods
-        public string getName() {
-            return name;
+
+        public string Name {
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
         }
 
-        public int getTotal() {
-            return total;
+        public int Total {
+            get {
+                return total;
+            }
+            set {
+                total = value;
+            }
         }
 
-        public int getAbilityType() {
-            return abilityType;
+        public int AbilityType {
+            get {
+                return abilityType;
+            }
+            set {
+                abilityType = value;
+            }
         }
 
-        public int getAbilityMod() {
-            return abilityMod;
+        public int AbilityMod {
+            get {
+                return abilityMod;
+            }
+            set {
+                abilityMod = value;
+                resetTotal();
+            }
         }
 
-        public int getRanks() {
-            return ranks;
+        public int Ranks {
+            get {
+                return ranks;
+            }
+            set {
+                ranks = value;
+                resetTotal();
+            }
         }
 
-        public int getMiscMod1() {
-            return miscMod1;
+        public int MiscMod1 {
+            get {
+                return miscMod1;
+            }
+            set {
+                miscMod1 = value;
+                resetTotal();
+            }
         }
 
-        public int getMiscMod2() {
-            return miscMod2;
+        public int MiscMod2 {
+            get {
+                return miscMod2;
+            }
+            set {
+                miscMod2 = value;
+                resetTotal();
+            }
         }
 
-        public bool getClassSkill() {
-            return classSkill;
+        public bool ClassSkill {
+            get {
+                return classSkill;
+            }
+            set {
+                classSkill = value;
+                resetTotal();
+            }
         }
 
-        public bool getTrained() {
-            return trained;
+        public bool Trained {
+            get {
+                return trained;
+            }
+            set {
+                trained = value;
+                resetTotal();
+            }
         }
 
-        public void setName(string n) {
-            name = n;
-        }
-
-        public void setTotal(int t) {
-            total = t;
-        }
-
-        public void setAbilityType(int t) {
-            abilityType = t;
-            resetTotal();
-        }
-
-        public void setAbilityMod(int m) {
-            abilityMod = m;
-            resetTotal();
-        }
-
-        public void setRanks(int r) {
-            ranks = r;
-            resetTotal();
-        }
-
-        public void setMiscMod1(int m) {
-            miscMod1 = m;
-            resetTotal();
-        }
-
-        public void setMiscMod2(int m) {
-            miscMod2 = m;
-            resetTotal();
-        }
-
-        public void setClassSkill(bool c) {
-            classSkill = c;
-            resetTotal();
-        }
-
-        public void setTrained(bool t) {
-            trained = t;
-            resetTotal();
-        }
 #endregion
     }
 }

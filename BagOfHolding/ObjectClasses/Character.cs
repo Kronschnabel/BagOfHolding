@@ -37,6 +37,7 @@ namespace BagOfHolding
         int expToAdvance;
         int hp;
         int maxHP;
+        bool hpHidden;
 
         int fortitude;
         int reflex;
@@ -66,6 +67,8 @@ namespace BagOfHolding
             setBlankChar();
         }
 
+        #region Save\Load Character Data
+
         public void saveChar() {
             List<string> file = new List<string>();
             trySaveImage(name + ".jpg");
@@ -94,6 +97,7 @@ namespace BagOfHolding
             file.Add("expToAdvance>" + expToAdvance);
             file.Add("hp>" + hp);
             file.Add("maxHP>" + maxHP);
+            file.Add("hpHidden>" + hpHidden);
             file.Add("fortitude>" + fortitude);
             file.Add("reflex>" + reflex);
             file.Add("will>" + will);
@@ -166,7 +170,7 @@ namespace BagOfHolding
             catch(Exception ex) {
                 charImage = getRandomDCI();
             }
-            
+
         }
 
         public void loadChar(string path) {
@@ -180,7 +184,7 @@ namespace BagOfHolding
 
                 if(sLine.Length == 2) {
                     switch(sLine[0]) {
-                    
+
                         case "image":
                             tryLoadImage(sLine[1]);
                             break;
@@ -269,9 +273,19 @@ namespace BagOfHolding
                                     expToAdvance = 0;
                                 break;
                             }
+                        case "hp": {
+                                if(!int.TryParse(sLine[1], out hp))
+                                    hp = 0;
+                                break;
+                            }
                         case "maxHP": {
                                 if(!int.TryParse(sLine[1], out maxHP))
                                     maxHP = 0;
+                                break;
+                            }
+                        case "hpHidden": {
+                                if(!bool.TryParse(sLine[1], out hpHidden))
+                                    hpHidden = false;
                                 break;
                             }
                         case "fortitude": {
@@ -302,11 +316,6 @@ namespace BagOfHolding
                         case "ranged": {
                                 if(!int.TryParse(sLine[1], out ranged))
                                     ranged = 0;
-                                break;
-                            }
-                        case "hp": {
-                                if(!int.TryParse(sLine[1], out hp))
-                                    hp = 0;
                                 break;
                             }
                         case "ac": {
@@ -358,9 +367,9 @@ namespace BagOfHolding
                                 spellbook.Add(s);
                                 break;
                             }
-                        case "spellsLeft": 
-                                setSpellsLeft(sLine[1]);
-                                break;
+                        case "spellsLeft":
+                            setSpellsLeft(sLine[1]);
+                            break;
                     }
                 }
             }
@@ -423,6 +432,10 @@ namespace BagOfHolding
             }
         }
 
+        #endregion
+
+        #region Character Utility methods
+
         private void setBlankChar() {
             path = "";
             charID = "";
@@ -459,6 +472,7 @@ namespace BagOfHolding
             hp = 0;
             //24,75,87
             maxHP = 0;
+            hpHidden = false;
 
             fortitude = 0;
             reflex = 0;
@@ -514,57 +528,57 @@ namespace BagOfHolding
                         break;
                     }
                 case "strt": {
-                        preEdit = strength.getTotal();
+                        preEdit = strength.Total;
                         if(op == '=')
-                            strength.setTotal(0);
+                            strength.Total = 0;
 
                         strength.addToTotal(total);
-                        postEdit = strength.getTotal();
+                        postEdit = strength.Total;
                         break;
                     }
                 case "dext": {
-                        preEdit = dexterity.getTotal();
+                        preEdit = dexterity.Total;
                         if(op == '=')
-                            dexterity.setTotal(0);
+                            dexterity.Total = 0;
 
                         dexterity.addToTotal(total);
-                        postEdit = dexterity.getTotal();
+                        postEdit = dexterity.Total;
                         break;
                     }
                 case "cont": {
-                        preEdit = constitution.getTotal();
+                        preEdit = constitution.Total;
                         if(op == '=')
-                            constitution.setTotal(0);
+                            constitution.Total = 0;
 
                         constitution.addToTotal(total);
-                        postEdit = constitution.getTotal();
+                        postEdit = constitution.Total;
                         break;
                     }
                 case "intt": {
-                        preEdit = intelligence.getTotal();
+                        preEdit = intelligence.Total;
                         if(op == '=')
-                            intelligence.setTotal(0);
+                            intelligence.Total = 0;
 
                         intelligence.addToTotal(total);
-                        postEdit = intelligence.getTotal();
+                        postEdit = intelligence.Total;
                         break;
                     }
                 case "wist": {
-                        preEdit = wisdom.getTotal();
+                        preEdit = wisdom.Total;
                         if(op == '=')
-                            wisdom.setTotal(0);
+                            wisdom.Total = 0;
 
                         wisdom.addToTotal(total);
-                        postEdit = wisdom.getTotal();
+                        postEdit = wisdom.Total;
                         break;
                     }
                 case "chat": {
-                        preEdit = charisma.getTotal();
+                        preEdit = charisma.Total;
                         if(op == '=')
-                            charisma.setTotal(0);
+                            charisma.Total = 0;
 
                         charisma.addToTotal(total);
-                        postEdit = charisma.getTotal();
+                        postEdit = charisma.Total;
                         break;
                     }
                 case "will": {
@@ -762,34 +776,37 @@ namespace BagOfHolding
             }
         }
 
-
         public void setSkillMods() {
             foreach(Skill s in skills) {
-                switch(s.getAbilityType()) {
+                switch(s.AbilityType) {
                     case 0:
-                        s.setAbilityMod(strength.getMod());
+                        s.AbilityMod = strength.Mod;
                         break;
                     case 1:
-                        s.setAbilityMod(dexterity.getMod());
+                        s.AbilityMod = dexterity.Mod;
                         break;
                     case 2:
-                        s.setAbilityMod(constitution.getMod());
+                        s.AbilityMod = constitution.Mod;
                         break;
                     case 3:
-                        s.setAbilityMod(intelligence.getMod());
+                        s.AbilityMod = intelligence.Mod;
                         break;
                     case 4:
-                        s.setAbilityMod(wisdom.getMod());
+                        s.AbilityMod = wisdom.Mod;
                         break;
                     case 5:
-                        s.setAbilityMod(charisma.getMod());
+                        s.AbilityMod = charisma.Mod;
                         break;
                     default:
-                        s.setAbilityMod(0);
+                        s.AbilityMod = 0;
                         break;
                 }
             }
         }
+
+        #endregion
+
+        #region Spells-Left methods
 
         private void setSpellsLeft(string l) {
             string[] sLine = l.Split('|');
@@ -817,338 +834,392 @@ namespace BagOfHolding
 
         }
 
-        private string spellsLeftString() { 
+        private string spellsLeftString() {
             return spellsLeft[0] + "|" + spellsLeft[1] + "|" + spellsLeft[2] + "|" + spellsLeft[3] + "|" + spellsLeft[4] + "|" + spellsLeft[5] + "|" + spellsLeft[6] + "|" + spellsLeft[7] + "|" + spellsLeft[8] + "|" + spellsLeft[9];
         }
 
+        #endregion
+
         #region Get & Set methods
-        public string getPath() {
-            return path;
+
+        public string Path {
+                get {
+                    return path;
+                }
+                set {
+                    path = value;
+                }
+            }
+
+        public string CharID {
+            get {
+                return charID;
+            }
+            set {
+                charID = value;
+            }
         }
 
-        public string getCharID() {
-            return charID;
+        public string Name {
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
         }
 
-        public string getName() {
-            return name;
-        }
-
-        public string getSubtitle() {
-            return subtitle;
-        }
-
-        public List<string> getNotes() {
-            return notes;
-        }
-
-        public string getRace() {
-            return race;
-        }
-
-        public string getSize() {
-            return size;
-        }
-
-        public string getGender() {
-            return gender;
-        }
-
-        public string getAlignment() {
-            return alignment;
-        }
-
-        public Color getColor() {
-            return charColor;
-        }
-
-        public Image getImage() {
-            return charImage;
-        }
-
-        public Color getIBC() {
-            return imageBackColor;
-        }
-
-        public AbilityScore getStr() {
-            return strength;
-        }
-
-        public AbilityScore getDex() {
-            return dexterity;
-        }
-
-        public AbilityScore getCon() {
-            return constitution;
-        }
-
-        public AbilityScore getInt() {
-            return intelligence;
-        }
-
-        public AbilityScore getWis() {
-            return wisdom;
-        }
-
-        public AbilityScore getCha() {
-            return charisma;
-        }
-
-        public List<Klass> getClasses() {
-            return classes;
-        }
-
-        public int getLevel() {
-            return level;
-        }
-
-        public int getExp() {
-            return exp;
-        }
-
-        public int getExpToAdvance() {
-            return expToAdvance;
-        }
-
-        public int getHP() {
-            return hp;
-        }
-
-        public int getMaxHP() {
-            return maxHP;
-        }
-
-        public int getFortitude() {
-            return fortitude;
-        }
-
-        public int getReflex() {
-            return reflex;
-        }
-
-        public int getWill() {
-            return will;
-        }
-
-        public int getBab() {
-            return bab;
-        }
-
-        public int getMelee() {
-            return melee;
-        }
-
-        public int getRanged() {
-            return ranged;
-        }
-
-        public int getAC() {
-            return ac;
-        }
-
-        public int getFF() {
-            return flatFooted;
-        }
-
-        public int getTouch() {
-            return touch;
-        }
-
-        public int getInit() {
-            return initiative;
-        }
-
-        public int getSpeed() {
-            return speed;
-        }
-
-        public List<Skill> getSkills() {
-            return skills;
-        }
-
-        public List<Item> getInv() {
-            return inv;
-        }
-
-        public List<Weapon> getWeapons() {
-            return weapons;
-        }
-
-        public List<Armor> getArmor() {
-            return armor;
-        }
-
-        public List<Spell> getSpellbook() {
-            return spellbook;
-        }
-
-        public int[] getSpellsLeft() {
-            return spellsLeft;
-        }
-
-        public void setPath(string p) {
-            path = p;
-        }
-
-        public void setCharID(string c) {
-            charID = c;
-        }
-
-        public void setName(string n) {
-            name = n;
-        }
-
-        public void setSubtitle(string s) {
-            subtitle = s;
-        }
-
-        public void setNotes(List<string> n) {
-            notes = n;
-        }
-
-        public void setRace(string r) {
-            race = r;
-        }
-
-        public void setSize(string s) {
-            size = s;
-        }
-
-        public void setGender(string g) {
-            gender = g;
-        }
-
-        public void setAlignment(string a) {
-            alignment = a;
-        }
-
-        public void setColor(Color c) {
-            charColor = c;
-        }
-
-        public void setImage(Image i) {
-            charImage = i;
+        public string Subtitle {
+            get {
+                return subtitle;
+            }
+            set {
+                subtitle = value;
+            }
         }
         
-        public void setIBC(Color c) {
-            imageBackColor = c;
+        public List<string> Notes {
+            get {
+                return notes;
+            }
+            set {
+                notes = value;
+            }
         }
 
-        public void setStr(AbilityScore str) {
-            strength = str;
+        public string Race {
+            get {
+                return race;
+            }
+            set {
+                race = value;
+            }
         }
 
-        public void setDex(AbilityScore dex) {
-            dexterity = dex;
+        public string Size {
+            get {
+                return size;
+            }
+            set {
+                size = value;
+            }
         }
 
-        public void setCon(AbilityScore con) {
-            constitution = con;
+        public string Gender {
+            get {
+                return gender;
+            }
+            set {
+                gender = value;
+            }
         }
 
-        public void setInt(AbilityScore intel) {
-            intelligence = intel;
+        public string Alignment {
+            get {
+                return alignment;
+            }
+            set {
+                alignment = value;
+            }
         }
 
-        public void setWis(AbilityScore wis) {
-            wisdom = wis;
+        public Color CharColor {
+            get {
+                return charColor;
+            }
+            set {
+                charColor = value;
+            }
         }
 
-        public void setCha(AbilityScore cha) {
-            charisma = cha;
+        public Image CharImage {
+            get {
+                return charImage;
+            }
+            set {
+                charImage = value;
+            }
         }
 
-        public void setClasses(List<Klass> c) {
-            classes = c;
+        public Color IBC {
+            get {
+                return imageBackColor;
+            }
+            set {
+                imageBackColor = value;
+            }
         }
 
-        public void setLevel(int l) {
-            level = l;
+        public AbilityScore Strength {
+            get {
+                return strength;
+            }
+            set {
+                strength = value;
+            }
         }
 
-        public void setExp(int e) {
-            exp = e;
+        public AbilityScore Dexterity {
+            get {
+                return dexterity;
+            }
+            set {
+                dexterity = value;
+            }
         }
 
-        public void setExpToAdvance(int e) {
-            expToAdvance = e;
+        public AbilityScore Constitution {
+            get {
+                return constitution;
+            }
+            set {
+                constitution = value;
+            }
         }
 
-        public void setHP(int h) {
-            hp = h;
+        public AbilityScore Intelligence {
+            get {
+                return intelligence;
+            }
+            set {
+                intelligence = value;
+            }
         }
 
-        public void setMaxHP(int h) {
-            maxHP = h;
+        public AbilityScore Wisdom {
+            get {
+                return wisdom;
+            }
+            set {
+                wisdom = value;
+            }
         }
 
-        public void setFortitude(int f) {
-            fortitude = f;
+        public AbilityScore Charisma {
+            get {
+                return charisma;
+            }
+            set {
+                charisma = value;
+            }
         }
 
-        public void setReflex(int r) {
-            reflex = r;
+        public List<Klass> Classes {
+            get {
+                return classes;
+            }
+            set {
+                classes = value;
+            }
         }
 
-        public void setWill(int w) {
-            will = w;
+        public int Level {
+            get {
+                return level;
+            }
+            set {
+                level = value;
+            }
         }
 
-        public void setBab(int b) {
-            bab = b;
+        public int Exp {
+            get {
+                return exp;
+            }
+            set {
+                exp = value;
+            }
         }
 
-        public void setMelee(int m) {
-            melee = m;
+        public int ExpToAdvance {
+            get {
+                return expToAdvance;
+            }
+            set {
+                expToAdvance = value;
+            }
         }
 
-        public void setRanged(int r) {
-            ranged = r;
+        public int HP {
+            get {
+                return hp;
+            }
+            set {
+                hp = value;
+            }
         }
 
-        public void setAC(int a) {
-            ac = a;
+        public int MaxHP {
+            get {
+                return maxHP;
+            }
+            set {
+                maxHP = value;
+            }
         }
 
-        public void setFF(int f) {
-            flatFooted = f;
+        public bool HPHidden {
+            get {
+                return hpHidden;
+            }
+            set {
+                hpHidden = value;
+            }
         }
 
-        public void setTouch(int t) {
-            touch = t;
+        public int Fortitude {
+            get {
+                return fortitude;
+            }
+            set {
+                fortitude = value;
+            }
         }
 
-        public void setInit(int i) {
-            initiative = i;
+        public int Reflex {
+            get {
+                return reflex;
+            }
+            set {
+                reflex = value;
+            }
         }
 
-        public void setSpeed(int s) {
-            speed = s;
+        public int Will {
+            get {
+                return will;
+            }
+            set {
+                will = value;
+            }
         }
 
-        public void setSkills(List<Skill> s) {
-            skills = s;
+        public int BAB {
+            get {
+                return bab;
+            }
+            set {
+                bab = value;
+            }
         }
 
-        public void setInv(List<Item> i) {
-            inv = i;
+        public int Melee {
+            get {
+                return melee;
+            }
+            set {
+                melee = value;
+            }
         }
 
-        public void setWeapons(List<Weapon> w) {
-            weapons = w;
+        public int Ranged {
+            get {
+                return ranged;
+            }
+            set {
+                ranged = value;
+            }
         }
 
-        public void setArmor(List<Armor> a) {
-            armor = a;
+        public int AC {
+            get {
+                return ac;
+            }
+            set {
+                ac = value;
+            }
         }
 
-        public void setSpellbook(List<Spell> s) {
-            spellbook = s;
+        public int FF {
+            get {
+                return flatFooted;
+            }
+            set {
+                flatFooted = value;
+            }
         }
 
-        public void setSpellsLeft(int[] s) {
-            spellsLeft = s;
+        public int Touch {
+            get {
+                return touch;
+            }
+            set {
+                touch = value;
+            }
         }
+
+        public int Init {
+            get {
+                return initiative;
+            }
+            set {
+                initiative = value;
+            }
+        }
+
+        public int Speed {
+            get {
+                return speed;
+            }
+            set {
+                speed = value;
+            }
+        }
+
+        public List<Skill> Skills {
+            get {
+                return skills;
+            }
+            set {
+                skills = value;
+            }
+        }
+
+        public List<Item> Inv {
+            get {
+                return inv;
+            }
+            set {
+                inv = value;
+            }
+        }
+
+        public List<Weapon> Weapons {
+            get {
+                return weapons;
+            }
+            set {
+                weapons = value;
+            }
+        }
+
+        public List<Armor> Armor {
+            get {
+                return armor;
+            }
+            set {
+                armor = value;
+            }
+        }
+
+        public List<Spell> Spellbook {
+            get {
+                return spellbook;
+            }
+            set {
+                spellbook = value;
+            }
+        }
+
+        public int[] SpellsLeft {
+            get {
+                return spellsLeft;
+            }
+            set {
+                spellsLeft = value;
+            }
+        }
+
         #endregion
     }
 }

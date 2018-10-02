@@ -8,20 +8,78 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BagOfHolding.Properties
-{
-
-
+namespace BagOfHolding.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
+        
         public static Settings Default {
             get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60, 62, 84")]
+        public global::System.Drawing.Color consoleBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["consoleBackColor"]));
+            }
+            set {
+                this["consoleBackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("243, 247, 124")]
+        public global::System.Drawing.Color consoleForeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["consoleForeColor"]));
+            }
+            set {
+                this["consoleForeColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("169, 66, 76")]
+        public global::System.Drawing.Color windowContColor {
+            get {
+                return ((global::System.Drawing.Color)(this["windowContColor"]));
+            }
+            set {
+                this["windowContColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("64, 64, 64")]
+        public global::System.Drawing.Color windowButtColor {
+            get {
+                return ((global::System.Drawing.Color)(this["windowButtColor"]));
+            }
+            set {
+                this["windowButtColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("185, 173, 63")]
+        public global::System.Drawing.Color windowToolColor {
+            get {
+                return ((global::System.Drawing.Color)(this["windowToolColor"]));
+            }
+            set {
+                this["windowToolColor"] = value;
             }
         }
     }

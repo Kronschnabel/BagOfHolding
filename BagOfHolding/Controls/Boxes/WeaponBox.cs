@@ -27,23 +27,25 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            item_name_box.Text = weapon.getName();
-            weight_box.Text = weapon.getWeight();
-            cost_box.Text = weapon.getCost();
-            notes_box.Lines = weapon.getNotes().ToArray();
-            if(weapon.getEquipped())
+            item_name_box.Text = weapon.Name;
+            weight_box.Text = weapon.Weight;
+            cost_box.Text = weapon.Cost;
+            notes_box.Lines = weapon.Notes.ToArray();
+            if(weapon.Equipped)
                 equipped_box.CheckState = CheckState.Checked;
             else
                 equipped_box.CheckState = CheckState.Unchecked;
-            damage_box.Text = weapon.getDmg();
-            crit_range_box.Text = weapon.getCritRange();
-            category_box.Text = weapon.getCategory();
-            range_box.Text = weapon.getRange();
-            type_box.Text = weapon.getDmgType();
-            size_box.Text = weapon.getSize();
-            setForeColor(weapon.getForeColor());
-            setBackColor(weapon.getBackColor());
+            damage_box.Text = weapon.Dmg;
+            crit_range_box.Text = weapon.CritRange;
+            category_box.Text = weapon.Category;
+            range_box.Text = weapon.Range;
+            type_box.Text = weapon.DmgType;
+            size_box.Text = weapon.Size;
+            setForeColor(weapon.ForeColor);
+            setBackColor(weapon.BackColor);
         }
+
+        #region Utility methods
 
         private void setForeColor(Color f) {
             item_name_box.ForeColor = f;
@@ -85,7 +87,10 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
         #region Get & Set methods
+
         public Weapon getWeapon() {
             return weapon;
         }
@@ -93,81 +98,13 @@ namespace BagOfHolding
         public void setWeapon(Weapon w) {
             weapon = w;
         }
+
         #endregion
 
         #region Event Handlers
-        private void item_name_box_DoubleClick(object sender, EventArgs e) {
-            ColorDialog colorPicker = new ColorDialog();
-            if(colorPicker.ShowDialog() == DialogResult.OK) {
-                weapon.setForeColor(colorPicker.Color);
-                updateUIData();
-            }
-        }
-
-        private void weapon_table_DoubleClick(object sender, EventArgs e) {
-            ColorDialog colorPicker = new ColorDialog();
-            if(colorPicker.ShowDialog() == DialogResult.OK) {
-                weapon.setBackColor(colorPicker.Color);
-                updateUIData();
-            }
-        }
-
-        private void weapon_image_DoubleClick(object sender, EventArgs e) {
-            OpenFileDialog imageSelect = new OpenFileDialog();
-            imageSelect.Filter = "Image Files ('*.jpg') | *.jpg";
-
-            if(imageSelect.ShowDialog() == DialogResult.OK) {
-                weapon.setImage(Image.FromFile(imageSelect.FileName));
-                updateUIData();
-            }
-        }
-
-        private void item_name_box_TextChanged(object sender, EventArgs e) {
-            weapon.setName(item_name_box.Text);
-        }
-
-        private void weight_box_TextChanged(object sender, EventArgs e) {
-            weapon.setWeight(weight_box.Text);
-        }
-
-        private void cost_box_TextChanged(object sender, EventArgs e) {
-            weapon.setCost(cost_box.Text);
-        }
-
-        private void notes_box_TextChanged(object sender, EventArgs e) {
-            weapon.setNotes(notes_box.Lines.ToList());
-        }
-
-        private void equipped_box_CheckedChanged(object sender, EventArgs e) {
-            weapon.setEquipped(equipped_box.Checked);
-        }
-
-        private void damage_box_TextChanged(object sender, EventArgs e) {
-            weapon.setDmg(damage_box.Text);
-        }
-
-        private void crit_range_box_TextChanged(object sender, EventArgs e) {
-            weapon.setCritRange(crit_range_box.Text);
-        }
-
-        private void category_box_TextChanged(object sender, EventArgs e) {
-            weapon.setCategory(category_box.Text);
-        }
-
-        private void range_box_TextChanged(object sender, EventArgs e) {
-            weapon.setRange(range_box.Text);
-        }
-
-        private void type_box_TextChanged(object sender, EventArgs e) {
-            weapon.setDmgType(type_box.Text);
-        }
-
-        private void size_box_TextChanged(object sender, EventArgs e) {
-            weapon.setSize(size_box.Text);
-        }
 
         private void weapon_table_MouseMove(object sender, MouseEventArgs e) {
-            if(checkHover(MousePosition)) 
+            if(checkHover(MousePosition))
                 del_butt.Visible = true;
             else
                 del_butt.Visible = false;
@@ -176,6 +113,71 @@ namespace BagOfHolding
         private void del_butt_Click(object sender, EventArgs e) {
             Dispose();
         }
+
+        private void item_name_box_DoubleClick(object sender, EventArgs e) {
+            ColorDialog colorPicker = new ColorDialog();
+            if(colorPicker.ShowDialog() == DialogResult.OK) {
+                weapon.ForeColor = colorPicker.Color;
+                updateUIData();
+            }
+        }
+
+        private void weapon_table_DoubleClick(object sender, EventArgs e) {
+            ColorDialog colorPicker = new ColorDialog();
+            if(colorPicker.ShowDialog() == DialogResult.OK) {
+                weapon.BackColor = colorPicker.Color;
+                updateUIData();
+            }
+        }
+        
+        #region ValueChanged events
+
+        private void item_name_box_TextChanged(object sender, EventArgs e) {
+            weapon.Name = item_name_box.Text;
+        }
+
+        private void weight_box_TextChanged(object sender, EventArgs e) {
+            weapon.Weight = weight_box.Text;
+        }
+
+        private void cost_box_TextChanged(object sender, EventArgs e) {
+            weapon.Cost = cost_box.Text;
+        }
+
+        private void notes_box_TextChanged(object sender, EventArgs e) {
+            weapon.Notes = notes_box.Lines.ToList();
+        }
+
+        private void equipped_box_CheckedChanged(object sender, EventArgs e) {
+            weapon.Equipped = equipped_box.Checked;
+        }
+
+        private void damage_box_TextChanged(object sender, EventArgs e) {
+            weapon.Dmg = damage_box.Text;
+        }
+
+        private void crit_range_box_TextChanged(object sender, EventArgs e) {
+            weapon.CritRange = crit_range_box.Text;
+        }
+
+        private void category_box_TextChanged(object sender, EventArgs e) {
+            weapon.Category = category_box.Text;
+        }
+
+        private void range_box_TextChanged(object sender, EventArgs e) {
+            weapon.Range = range_box.Text;
+        }
+
+        private void type_box_TextChanged(object sender, EventArgs e) {
+            weapon.DmgType = type_box.Text;
+        }
+
+        private void size_box_TextChanged(object sender, EventArgs e) {
+            weapon.Size = size_box.Text;
+        }
+
+        #endregion
+
         #endregion
     }
 }

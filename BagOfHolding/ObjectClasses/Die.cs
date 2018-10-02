@@ -27,28 +27,31 @@ namespace BagOfHolding
         }
 
         private void updateIncrement() {
-            sIncrement += 3;
+            sIncrement += (sIncrement % 5) + 3;
 
-            if(sIncrement >= 1000)
-                sIncrement = 0;
+            sIncrement %= 132040292;
         }
 
         #region Get & Set methods
-        public int getSeed() {
-            return seed;
+
+        public int Seed {
+            get {
+                return seed;
+            }
+            set {
+                seed = value;
+            }
         }
 
-        public int getIncrement() {
-            return sIncrement;
+        public int Increment {
+            get {
+                return sIncrement;
+            }
+            set {
+                sIncrement = value;
+            }
         }
 
-        public void setSeed(int s) {
-            seed = s;
-        }
-
-        public void setIncrement(int i) {
-            sIncrement = i;
-        }
 #endregion
     }
 }

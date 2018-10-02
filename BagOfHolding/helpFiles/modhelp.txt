@@ -9,10 +9,12 @@ Operators:	(+)(-) : Add or subtract.
 			modifier to each roll, as opposed to just
 			once.
 
-----------------------------------
+-------------------------------------------------
 Constant can be any integer.
-----------------------------------
-Stats:	str		Strength Mod
+-------------------------------------------------
+Stats:	Key	-	Stat
+-------------------------------------------------
+	str		Strength Mod
 	dex		Dexterity Mod
 	con		Constitution Mod
 	int		Intelligence Mod

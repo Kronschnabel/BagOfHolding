@@ -12,7 +12,7 @@ namespace BagOfHolding
         int mod;
 
         public AbilityScore() {
-            setTotal(0);
+            Total = 0;
         }
 
         private void resetMod() {
@@ -29,6 +29,7 @@ namespace BagOfHolding
         }
 
         #region To\From string 
+
         public string toString() {
             return total + "|" + mod;
         }
@@ -41,25 +42,29 @@ namespace BagOfHolding
             if(!int.TryParse(sLine[1], out mod))
                 mod = 0;
         }
+
 #endregion
 
         #region Get & Set methods
-        public int getTotal() {
-            return total;
+
+        public int Total {
+            get {
+                return total;
+            }
+            set {
+                total = value;
+            }
         }
 
-        public int getMod() {
-            return mod;
+        public int Mod {
+            get {
+                return mod;
+            }
+            set {
+                mod = value;
+            }
         }
 
-        public void setTotal(int t) {
-            total = t;
-            resetMod();
-        }
-
-        public void setMod(int m) {
-            mod = m;
-        }
         #endregion
 
     }

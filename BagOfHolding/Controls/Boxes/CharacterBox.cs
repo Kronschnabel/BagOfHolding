@@ -40,6 +40,97 @@ namespace BagOfHolding
             updateUIData();
         }
 
+        private void updateUIData() {
+            max_hp_box.Text = character.MaxHP.ToString();
+            hp_box.Text = character.HP.ToString();
+            exp_box.Text = character.Exp.ToString();
+            max_exp_box.Text = character.ExpToAdvance.ToString();
+            char_notes_box.Lines = character.Notes.ToArray();
+            speed_box.Text = character.Speed.ToString();
+            fort_save_box.Text = character.Fortitude.ToString();
+            will_save_box.Text = character.Will.ToString();
+            ref_save_box.Text = character.Reflex.ToString();
+            str_box.Text = character.Strength.Total.ToString();
+            dex_box.Text = character.Dexterity.Total.ToString();
+            con_box.Text = character.Constitution.Total.ToString();
+            int_box.Text = character.Intelligence.Total.ToString();
+            wis_box.Text = character.Wisdom.Total.ToString();
+            cha_box.Text = character.Charisma.Total.ToString();
+            if(character.Strength.Mod >= 0)
+                str_mod_label.Text = "+" + character.Strength.Mod.ToString();
+            else
+                str_mod_label.Text = character.Strength.Mod.ToString();
+            if(character.Dexterity.Mod >= 0)
+                dex_mod_label.Text = "+" + character.Dexterity.Mod.ToString();
+            else
+                dex_mod_label.Text = character.Dexterity.Mod.ToString();
+            if(character.Constitution.Mod >= 0)
+                con_mod_label.Text = "+" + character.Constitution.Mod.ToString();
+            else
+                con_mod_label.Text = character.Constitution.Mod.ToString();
+            if(character.Intelligence.Mod >= 0)
+                int_mod_label.Text = "+" + character.Intelligence.Mod.ToString();
+            else
+                int_mod_label.Text = character.Intelligence.Mod.ToString();
+            if(character.Wisdom.Mod >= 0)
+                wis_mod_label.Text = "+" + character.Wisdom.Mod.ToString();
+            else
+                wis_mod_label.Text = character.Wisdom.Mod.ToString();
+            if(character.Charisma.Mod >= 0)
+                cha_mod_label.Text = "+" + character.Charisma.Mod.ToString();
+            else
+                cha_mod_label.Text = character.Charisma.Mod.ToString();
+            ff_ac_box.Text = character.FF.ToString();
+            touch_ac_box.Text = character.Touch.ToString();
+            if(character.Init >= 0)
+                init_box.Text = "+" + character.Init.ToString();
+            else
+                init_box.Text = character.Init.ToString();
+            ac_box.Text = character.AC.ToString();
+            if(character.BAB >= 0)
+                bab_box.Text = "+" + character.BAB.ToString();
+            else
+                bab_box.Text = character.BAB.ToString();
+            if(character.Melee >= 0)
+                melee_box.Text = "+" + character.Melee.ToString();
+            else
+                melee_box.Text = character.Melee.ToString();
+            if(character.Ranged >= 0)
+                ranged_box.Text = "+" + character.Ranged.ToString();
+            else
+                ranged_box.Text = character.Ranged.ToString();
+            subtitle_box.Text = character.Subtitle;
+            char_name_box.Text = character.Name;
+            gender_box.Text = character.Gender;
+            size_box.Text = character.Size;
+            race_box.Text = character.Race;
+            alignment_box.Text = character.Alignment;
+            char_level_box.Text = character.Level.ToString();
+            avatar_panel.BackColor = character.CharColor;
+            char_image.Image = character.CharImage;
+            char_image.BackColor = character.IBC;
+
+            health_bar.setCurrent(character.HP);
+            health_bar.setMax(character.MaxHP);
+            exp_bar.setCurrent(character.Exp);
+            exp_bar.setMax(character.ExpToAdvance);
+            health_bar.updateBar();
+            exp_bar.updateBar();
+
+            if(character.HPHidden) {
+                hp_box.Visible = false;
+                hp_slash_label.Visible = false;
+                max_hp_box.Visible = false;
+            }
+            else {
+                hp_box.Visible = true;
+                hp_slash_label.Visible = true;
+                max_hp_box.Visible = true;
+            }
+        }
+
+        #region Start Up methods
+
         public void createWindows() {
             char_win = new Window("char");
             char_control = new CharacterWindow();
@@ -61,8 +152,11 @@ namespace BagOfHolding
             health_bar.setColors(hpForeColor, hpBackColor);
             exp_bar.setColors(expForeColor, expBackColor);
             exp_bar.setBaseWidth(100);
-            exp_bar.updateBar();
         }
+
+        #endregion
+
+        #region Open methods
 
         private void openCharWindow() {
             char_control.setChar(ref character);
@@ -82,83 +176,9 @@ namespace BagOfHolding
             spellbook_control.open();
         }
 
-        private void updateUIData() {
-            max_hp_box.Text = character.getMaxHP().ToString();
-            hp_box.Text = character.getHP().ToString();
-            exp_box.Text = character.getExp().ToString();
-            max_exp_box.Text = character.getExpToAdvance().ToString();
-            char_notes_box.Lines = character.getNotes().ToArray();
-            speed_box.Text = character.getSpeed().ToString();
-            fort_save_box.Text = character.getFortitude().ToString();
-            will_save_box.Text = character.getWill().ToString();
-            ref_save_box.Text = character.getReflex().ToString();
-            str_box.Text = character.getStr().getTotal().ToString();
-            dex_box.Text = character.getDex().getTotal().ToString();
-            con_box.Text = character.getCon().getTotal().ToString();
-            int_box.Text = character.getInt().getTotal().ToString();
-            wis_box.Text = character.getWis().getTotal().ToString();
-            cha_box.Text = character.getCha().getTotal().ToString();
-            if(character.getStr().getMod() >= 0)
-                str_mod_label.Text = "+" + character.getStr().getMod().ToString();
-            else
-                str_mod_label.Text = character.getStr().getMod().ToString();
-            if(character.getDex().getMod() >= 0)
-                dex_mod_label.Text = "+" + character.getDex().getMod().ToString();
-            else 
-                dex_mod_label.Text = character.getDex().getMod().ToString();
-            if(character.getCon().getMod() >= 0)
-                con_mod_label.Text = "+" + character.getCon().getMod().ToString();
-            else
-                con_mod_label.Text = character.getCon().getMod().ToString();
-            if(character.getInt().getMod() >= 0)
-                int_mod_label.Text = "+" + character.getInt().getMod().ToString();
-            else 
-                int_mod_label.Text = character.getInt().getMod().ToString();
-            if(character.getWis().getMod() >= 0)
-                wis_mod_label.Text = "+" + character.getWis().getMod().ToString();
-            else
-                wis_mod_label.Text = character.getWis().getMod().ToString();
-            if(character.getCha().getMod() >= 0)
-                cha_mod_label.Text = "+" + character.getCha().getMod().ToString();
-            else
-                cha_mod_label.Text = character.getCha().getMod().ToString();
-            ff_ac_box.Text = character.getFF().ToString();
-            touch_ac_box.Text = character.getTouch().ToString();
-            if(character.getInit() >= 0)
-                init_box.Text = "+" + character.getInit().ToString();
-            else
-                init_box.Text = character.getInit().ToString();
-            ac_box.Text = character.getAC().ToString();
-            if(character.getBab() >= 0)
-                bab_box.Text = "+" + character.getBab().ToString();
-            else
-                bab_box.Text = character.getBab().ToString();
-            if(character.getMelee() >= 0)
-                melee_box.Text = "+" + character.getMelee().ToString();
-            else
-                melee_box.Text = character.getMelee().ToString();
-            if(character.getRanged() >= 0)
-                ranged_box.Text = "+" + character.getRanged().ToString();
-            else
-                ranged_box.Text = character.getRanged().ToString();
-            subtitle_box.Text = character.getSubtitle();
-            char_name_box.Text = character.getName();
-            gender_box.Text = character.getGender();
-            size_box.Text = character.getSize();
-            race_box.Text = character.getRace();
-            alignment_box.Text = character.getAlignment();
-            char_level_box.Text = character.getLevel().ToString();
-            avatar_panel.BackColor = character.getColor();
-            char_image.Image = character.getImage();
-            char_image.BackColor = character.getIBC();
+        #endregion
 
-            health_bar.setCurrent(character.getHP());
-            health_bar.setMax(character.getMaxHP());
-            exp_bar.setCurrent(character.getExp());
-            exp_bar.setMax(character.getExpToAdvance());
-            health_bar.updateBar();
-            exp_bar.updateBar();
-        }
+        #region Utility methods
 
         private void tryDeleteImage(string path) {
             try {
@@ -177,243 +197,31 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        private void toggleHPHidden() {
+            if(character.HPHidden)
+                character.HPHidden = false;
+            else
+                character.HPHidden = true;
+
+            updateUIData();
+        }
+
+        #endregion
+
+        #region Get & Set methods
+
+        public Character getChar() {
+            return character;
+        }
+
+        public void setChar(Character c) {
+            character = c;
+            updateUIData();
+        }
+
+        #endregion
+
         #region Event Handlers
-        private void avatar_panel_Click(object sender, EventArgs e) {
-            ColorDialog colorPicker = new ColorDialog();
-            if(colorPicker.ShowDialog() == DialogResult.OK) {
-                character.setColor(colorPicker.Color);
-                updateUIData();
-            }
-        }
-
-        private void char_image_Click(object sender, EventArgs e) {
-            OpenFileDialog imageSelect = new OpenFileDialog();
-            imageSelect.Filter = "Image Files ('*.jpg') | *.jpg";
-
-            if(imageSelect.ShowDialog() == DialogResult.OK) {
-                char_image.Image.Dispose();
-                tryDeleteImage(character.getName() + ".jpg");
-                character.setImage(Image.FromFile(imageSelect.FileName));
-                updateUIData();
-            }
-        }
-
-        private void char_name_box_TextChanged(object sender, EventArgs e) {
-            character.setName(char_name_box.Text);
-        }
-
-        private void subtitle_box_TextChanged(object sender, EventArgs e) {
-            character.setSubtitle(subtitle_box.Text);
-        }
-
-        private void race_box_TextChanged(object sender, EventArgs e) {
-            character.setRace(race_box.Text);
-        }
-
-        private void size_box_TextChanged(object sender, EventArgs e) {
-            character.setSize(size_box.Text);
-        }
-
-        private void gender_box_TextChanged(object sender, EventArgs e) {
-            character.setGender(gender_box.Text);
-        }
-
-        private void char_level_box_TextChanged(object sender, EventArgs e) {
-            int lvl;
-            if(int.TryParse(char_level_box.Text, out lvl))
-                character.setLevel(lvl);
-            else
-                character.setLevel(0);
-        }
-
-        private void alignment_box_TextChanged(object sender, EventArgs e) {
-            character.setAlignment(alignment_box.Text);
-        }
-
-        private void hp_box_TextChanged(object sender, EventArgs e) {
-            int hp;
-            if(int.TryParse(hp_box.Text, out hp))
-                character.setHP(hp);
-            else
-                character.setHP(0);
-
-            health_bar.setCurrent(character.getHP());
-            health_bar.updateBar();
-        }
-
-        private void max_hp_box_TextChanged(object sender, EventArgs e) {
-            int mhp;
-            if(int.TryParse(max_hp_box.Text, out mhp))
-                character.setMaxHP(mhp);
-            else
-                character.setMaxHP(0);
-
-            health_bar.setMax(character.getMaxHP());
-            health_bar.updateBar();
-        }
-
-        private void str_box_TextChanged(object sender, EventArgs e) {
-            int strT;
-            if(int.TryParse(str_box.Text, out strT))
-                character.getStr().setTotal(strT);
-            else
-                character.getStr().setTotal(0);
-        }
-
-        private void dex_box_TextChanged(object sender, EventArgs e) {
-            int dexT;
-            if(int.TryParse(dex_box.Text, out dexT))
-                character.getDex().setTotal(dexT);
-            else
-                character.getDex().setTotal(0);
-        }
-
-        private void con_box_TextChanged(object sender, EventArgs e) {
-            int conT;
-            if(int.TryParse(con_box.Text, out conT))
-                character.getCon().setTotal(conT);
-            else
-                character.getCon().setTotal(0);
-        }
-
-        private void int_box_TextChanged(object sender, EventArgs e) {
-            int intT;
-            if(int.TryParse(int_box.Text, out intT))
-                character.getInt().setTotal(intT);
-            else
-                character.getInt().setTotal(0);
-        }
-
-        private void wis_box_TextChanged(object sender, EventArgs e) {
-            int wisT;
-            if(int.TryParse(wis_box.Text, out wisT))
-                character.getWis().setTotal(wisT);
-            else
-                character.getWis().setTotal(0);
-        }
-
-        private void cha_box_TextChanged(object sender, EventArgs e) {
-            int chaT;
-            if(int.TryParse(cha_box.Text, out chaT))
-                character.getCha().setTotal(chaT);
-            else
-                character.getCha().setTotal(0);
-        }
-
-        private void exp_box_TextChanged(object sender, EventArgs e) {
-            int exp;
-            if(int.TryParse(exp_box.Text, out exp))
-                character.setExp(exp);
-            else
-                character.setExp(0);
-
-            exp_bar.setCurrent(character.getExp());
-            exp_bar.updateBar();
-        }
-
-        private void max_exp_box_TextChanged(object sender, EventArgs e) {
-            int mexp;
-            if(int.TryParse(max_exp_box.Text, out mexp))
-                character.setExpToAdvance(mexp);
-            else
-                character.setExpToAdvance(0);
-
-            exp_bar.setMax(character.getExpToAdvance());
-            exp_bar.updateBar();
-        }
-
-        private void init_box_TextChanged(object sender, EventArgs e) {
-            int init;
-            if(int.TryParse(init_box.Text, out init))
-                character.setInit(init);
-            else
-                character.setInit(0);
-        }
-
-        private void ac_box_TextChanged(object sender, EventArgs e) {
-            int ac;
-            if(int.TryParse(ac_box.Text, out ac))
-                character.setAC(ac);
-            else
-                character.setAC(0);
-        }
-
-        private void ff_ac_box_TextChanged(object sender, EventArgs e) {
-            int ff;
-            if(int.TryParse(ff_ac_box.Text, out ff))
-                character.setFF(ff);
-            else
-                character.setFF(0);
-        }
-
-        private void touch_ac_box_TextChanged(object sender, EventArgs e) {
-            int touch;
-            if(int.TryParse(touch_ac_box.Text, out touch))
-                character.setTouch(touch);
-            else
-                character.setTouch(0);
-        }
-
-        private void speed_box_TextChanged(object sender, EventArgs e) {
-            int spd;
-            if(int.TryParse(speed_box.Text, out spd))
-                character.setSpeed(spd);
-            else
-                character.setSpeed(0);
-        }
-
-        private void fort_save_box_TextChanged(object sender, EventArgs e) {
-            int fort;
-            if(int.TryParse(fort_save_box.Text, out fort))
-                character.setFortitude(fort);
-            else
-                character.setFortitude(0);
-        }
-
-        private void will_save_box_TextChanged(object sender, EventArgs e) {
-            int will;
-            if(int.TryParse(will_save_box.Text, out will))
-                character.setWill(will);
-            else
-                character.setWill(0);
-        }
-
-        private void ref_save_box_TextChanged(object sender, EventArgs e) {
-            int reflex;
-            if(int.TryParse(ref_save_box.Text, out reflex))
-                character.setReflex(reflex);
-            else
-                character.setReflex(0);
-        }
-
-        private void bab_box_TextChanged(object sender, EventArgs e) {
-            int bab;
-            if(int.TryParse(bab_box.Text, out bab))
-                character.setBab(bab);
-            else
-                character.setBab(0);
-        }
-
-        private void melee_box_TextChanged(object sender, EventArgs e) {
-            int mel;
-            if(int.TryParse(melee_box.Text, out mel))
-                character.setMelee(mel);
-            else
-                character.setMelee(0);
-        }
-
-        private void ranged_box_TextChanged(object sender, EventArgs e) {
-            int ran;
-            if(int.TryParse(ranged_box.Text, out ran))
-                character.setRanged(ran);
-            else
-                character.setRanged(0);
-        }
-
-        private void char_notes_box_TextChanged(object sender, EventArgs e) {
-            character.setNotes(char_notes_box.Lines.ToList());
-        }
-
 
         private void inv_butt_Click(object sender, EventArgs e) {
             openInvWindow();
@@ -422,7 +230,6 @@ namespace BagOfHolding
         private void spell_butt_Click(object sender, EventArgs e) {
             openSpellBookWindow();
         }
-
 
         private void char_name_box_DoubleClick(object sender, EventArgs e) {
             openCharWindow();
@@ -438,17 +245,264 @@ namespace BagOfHolding
         private void del_butt_Click(object sender, EventArgs e) {
             Dispose();
         }
-        #endregion
 
-        #region Get & Set methods
-        public Character getChar() {
-            return character;
+        private void avatar_panel_Click(object sender, EventArgs e) {
+            ColorDialog colorPicker = new ColorDialog();
+            if(colorPicker.ShowDialog() == DialogResult.OK) {
+                character.CharColor = colorPicker.Color;
+                updateUIData();
+            }
         }
 
-        public void setChar(Character c) {
-            character = c;
-            updateUIData();
+        private void char_image_Click(object sender, EventArgs e) {
+            OpenFileDialog imageSelect = new OpenFileDialog();
+            imageSelect.Filter = "Image Files ('*.jpg') | *.jpg";
+
+            if(imageSelect.ShowDialog() == DialogResult.OK) {
+                char_image.Image.Dispose();
+                tryDeleteImage(character.Name + ".jpg");
+                character.CharImage = Image.FromFile(imageSelect.FileName);
+                updateUIData();
+            }
         }
+
+        private void max_hp_box_DoubleClick(object sender, EventArgs e) {
+            toggleHPHidden();
+        }
+
+        private void hp_slash_label_DoubleClick(object sender, EventArgs e) {
+            toggleHPHidden();
+        }
+
+        private void hp_box_DoubleClick(object sender, EventArgs e) {
+            toggleHPHidden();
+        }
+
+        private void hp_text_panel_DoubleClick(object sender, EventArgs e) {
+            toggleHPHidden();
+        }
+
+        #region TextChanged events
+
+        private void char_name_box_TextChanged(object sender, EventArgs e) {
+            character.Name = char_name_box.Text;
+        }
+
+        private void subtitle_box_TextChanged(object sender, EventArgs e) {
+            character.Subtitle = subtitle_box.Text;
+        }
+
+        private void race_box_TextChanged(object sender, EventArgs e) {
+            character.Race = race_box.Text;
+        }
+
+        private void size_box_TextChanged(object sender, EventArgs e) {
+            character.Size = size_box.Text;
+        }
+
+        private void gender_box_TextChanged(object sender, EventArgs e) {
+            character.Gender = gender_box.Text;
+        }
+
+        private void char_level_box_TextChanged(object sender, EventArgs e) {
+            int lvl;
+            if(int.TryParse(char_level_box.Text, out lvl))
+                character.Level = lvl;
+            else
+                character.Level = 0;
+        }
+
+        private void alignment_box_TextChanged(object sender, EventArgs e) {
+            character.Alignment = alignment_box.Text;
+        }
+
+        private void hp_box_TextChanged(object sender, EventArgs e) {
+            int hp;
+            if(int.TryParse(hp_box.Text, out hp))
+                character.HP = hp;
+            else
+                character.HP = 0;
+
+            health_bar.setCurrent(character.HP);
+            health_bar.updateBar();
+        }
+
+        private void max_hp_box_TextChanged(object sender, EventArgs e) {
+            int mhp;
+            if(int.TryParse(max_hp_box.Text, out mhp))
+                character.MaxHP = mhp;
+            else
+                character.MaxHP = 0;
+
+            health_bar.setMax(character.MaxHP);
+            health_bar.updateBar();
+        }
+
+        private void str_box_TextChanged(object sender, EventArgs e) {
+            int strT;
+            if(int.TryParse(str_box.Text, out strT))
+                character.Strength.Total = strT;
+            else
+                character.Strength.Total = 0;
+        }
+
+        private void dex_box_TextChanged(object sender, EventArgs e) {
+            int dexT;
+            if(int.TryParse(dex_box.Text, out dexT))
+                character.Dexterity.Total = dexT;
+            else
+                character.Dexterity.Total = 0;
+        }
+
+        private void con_box_TextChanged(object sender, EventArgs e) {
+            int conT;
+            if(int.TryParse(con_box.Text, out conT))
+                character.Constitution.Total = conT;
+            else
+                character.Constitution.Total = 0;
+        }
+
+        private void int_box_TextChanged(object sender, EventArgs e) {
+            int intT;
+            if(int.TryParse(int_box.Text, out intT))
+                character.Intelligence.Total = intT;
+            else
+                character.Intelligence.Total = 0;
+        }
+
+        private void wis_box_TextChanged(object sender, EventArgs e) {
+            int wisT;
+            if(int.TryParse(wis_box.Text, out wisT))
+                character.Wisdom.Total = wisT;
+            else
+                character.Wisdom.Total = 0;
+        }
+
+        private void cha_box_TextChanged(object sender, EventArgs e) {
+            int chaT;
+            if(int.TryParse(cha_box.Text, out chaT))
+                character.Charisma.Total = chaT;
+            else
+                character.Charisma.Total = 0;
+        }
+
+        private void exp_box_TextChanged(object sender, EventArgs e) {
+            int exp;
+            if(int.TryParse(exp_box.Text, out exp))
+                character.Exp = exp;
+            else
+                character.Exp = 0;
+
+            exp_bar.setCurrent(character.Exp);
+            exp_bar.updateBar();
+        }
+
+        private void max_exp_box_TextChanged(object sender, EventArgs e) {
+            int mexp;
+            if(int.TryParse(max_exp_box.Text, out mexp))
+                character.ExpToAdvance = mexp;
+            else
+                character.ExpToAdvance = 0;
+
+            exp_bar.setMax(character.ExpToAdvance);
+            exp_bar.updateBar();
+        }
+
+        private void init_box_TextChanged(object sender, EventArgs e) {
+            int init;
+            if(int.TryParse(init_box.Text, out init))
+                character.Init = init;
+            else
+                character.Init = 0;
+        }
+
+        private void ac_box_TextChanged(object sender, EventArgs e) {
+            int ac;
+            if(int.TryParse(ac_box.Text, out ac))
+                character.AC = ac;
+            else
+                character.AC = 0;
+        }
+
+        private void ff_ac_box_TextChanged(object sender, EventArgs e) {
+            int ff;
+            if(int.TryParse(ff_ac_box.Text, out ff))
+                character.FF = ff;
+            else
+                character.FF = 0;
+        }
+
+        private void touch_ac_box_TextChanged(object sender, EventArgs e) {
+            int touch;
+            if(int.TryParse(touch_ac_box.Text, out touch))
+                character.Touch = touch;
+            else
+                character.Touch = 0;
+        }
+
+        private void speed_box_TextChanged(object sender, EventArgs e) {
+            int spd;
+            if(int.TryParse(speed_box.Text, out spd))
+                character.Speed = spd;
+            else
+                character.Speed = 0;
+        }
+
+        private void fort_save_box_TextChanged(object sender, EventArgs e) {
+            int fort;
+            if(int.TryParse(fort_save_box.Text, out fort))
+                character.Fortitude = fort;
+            else
+                character.Fortitude = 0;
+        }
+
+        private void will_save_box_TextChanged(object sender, EventArgs e) {
+            int will;
+            if(int.TryParse(will_save_box.Text, out will))
+                character.Will = will;
+            else
+                character.Will = 0;
+        }
+
+        private void ref_save_box_TextChanged(object sender, EventArgs e) {
+            int reflex;
+            if(int.TryParse(ref_save_box.Text, out reflex))
+                character.Reflex = reflex;
+            else
+                character.Reflex = 0;
+        }
+
+        private void bab_box_TextChanged(object sender, EventArgs e) {
+            int bab;
+            if(int.TryParse(bab_box.Text, out bab))
+                character.BAB = bab;
+            else
+                character.BAB = 0;
+        }
+
+        private void melee_box_TextChanged(object sender, EventArgs e) {
+            int mel;
+            if(int.TryParse(melee_box.Text, out mel))
+                character.Melee = mel;
+            else
+                character.Melee = 0;
+        }
+
+        private void ranged_box_TextChanged(object sender, EventArgs e) {
+            int ran;
+            if(int.TryParse(ranged_box.Text, out ran))
+                character.Ranged = ran;
+            else
+                character.Ranged = 0;
+        }
+
+        private void char_notes_box_TextChanged(object sender, EventArgs e) {
+            character.Notes = char_notes_box.Lines.ToList();
+        }
+
         #endregion
+
+        #endregion
+
     }
 }

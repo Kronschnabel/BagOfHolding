@@ -19,7 +19,7 @@
 //          getCurrentLine()
 //          setCurrentLine()
 //          isArrowKey()
-//          getChar()
+//          getCharacter()
 //
 //Command Utility methods: These methods handle processing the commands that the user enters.
 //          processInput()
@@ -60,6 +60,8 @@ namespace BagOfHolding
         PartyWindow party_control;
         Window character_win;
         CharacterWindow char_control;
+        Window settings_win;
+        SettingsWindow settings_control;
 
         List<Character> party;
         List<Character> npcs;
@@ -71,10 +73,9 @@ namespace BagOfHolding
 
         public BOHConsole() {
             startup();
-            printOpeningStatement();
         }
 
-        #region Open Window(s) methods
+        #region Start Up methods
 
         private void startup() {
             InitializeComponent();
@@ -83,10 +84,13 @@ namespace BagOfHolding
             BringToFront();
 
             cmdHistory = new List<string>();
-            console_box.Size = Screen.PrimaryScreen.WorkingArea.Size;
 
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+
+            setColors();
             createCharLists();
             createWindows();
+            printOpeningStatement();
         }
 
         private void createCharLists() {
@@ -105,7 +109,16 @@ namespace BagOfHolding
             party_win.addControl(party_control);
             Controls.Add(party_win);
             party_control.setParty(ref party);
+
+            settings_win = new Window("settings");
+            settings_control = new SettingsWindow();
+            settings_win.addControl(settings_control);
+            Controls.Add(settings_win);
         }
+
+        #endregion
+
+        #region Open Window methods
 
         private void openPartyWindow() {
             party_win.open();
@@ -116,22 +129,15 @@ namespace BagOfHolding
             character_win.open();
             char_control.open();
         }
+
+        private void openSettingsWindow() {
+            settings_win.open();
+            settings_control.open();
+        }
+
         #endregion
 
         #region Misc. Utility methods
-        private void print(string text) {
-            console_box.AppendText(text);
-        }
-
-        private void printLine(string line) {
-            console_box.AppendText("\n" + line);
-        }
-
-        private void printFile(string path) {
-            foreach(string line in System.IO.File.ReadAllLines(path)) {
-                printLine(line);
-            }
-        }
 
         private bool caretPosInvalid() {
             if(console_box.SelectionStart < (console_box.TextLength - console_box.Lines[console_box.Lines.Length - 1].Length))
@@ -161,12 +167,12 @@ namespace BagOfHolding
             return false;
         }
 
-        private Character getChar(string s) {
+        private Character getCharacter(string s) {
             s = s.ToLower();
             string[] splitName;
 
             foreach(Character c in party) {
-                splitName = c.getName().ToLower().Split(' ');
+                splitName = c.Name.ToLower().Split(' ');
                 if(splitName.Contains(s))
                     return c;
             }
@@ -178,12 +184,120 @@ namespace BagOfHolding
             List<Character> referencedChars = new List<Character>();
 
             foreach(string command in cmd.getSLine()) {
-                Character testChar = getChar(command);
+                Character testChar = getCharacter(command);
                 if(testChar != null)
-                    referencedChars.Add(getChar(command));
+                    referencedChars.Add(getCharacter(command));
             }
 
             return referencedChars;
+        }
+
+        private void setColors() {
+            Color bC = Properties.Settings.Default.consoleBackColor;
+            Color fC = Properties.Settings.Default.consoleForeColor;
+
+            BackColor = bC;
+            console_box.BackColor = bC;
+            console_box.ForeColor = fC;
+        }
+
+        #region Print to Console methods
+        private void print(string text) {
+            console_box.AppendText(text);
+        }
+
+        private void printLine(string line) {
+            console_box.AppendText("\n" + line);
+        }
+
+        private void printFile(string path) {
+            foreach(string line in System.IO.File.ReadAllLines(path)) {
+                printLine(line);
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Command utility methods
+
+        private void processInput(string line) {
+            if(line != null && !line.Equals("")) {
+                line = line.ToLower();
+                Command cmd = new Command(line);
+                cmdHistory.Add(line);
+                printLine("=========================================================");
+
+                if(cmdHistory.Count >= 1)
+                    historyIndex = cmdHistory.Count;
+
+                if(line.Equals("char")) {
+                    openCharWindow();
+                }
+                else if(line.Equals("party")) {
+                    openPartyWindow();
+                }
+                else if(line.Equals("init") || line.Equals("initiative")) {
+                    processCommand(new Command("p d20 +init"));
+                }
+                else if(line.Equals("heal")) {
+                    processCommand(new Command("p hp= +hpT"));
+                }
+                else if(cmd.getSLine()[0].Equals("help")) {
+                    processHelpCommand(cmd);
+                }
+                else if(cmd.getSLine()[0].Equals("color")) {
+                    openSettingsWindow();
+                }
+                else if(line.Equals("quit")) {
+                    Dispose();
+                }
+                else {
+                    processCommand(cmd);
+                }
+            }
+        }
+
+        private void processCommand(Command cmd) {
+            List<Character> referencedChars;
+            printLine("");
+
+            if(cmd.getParty())
+                referencedChars = party;
+            else
+                referencedChars = charsFromCmd(cmd);
+
+            if(referencedChars.Count > 0) {
+                foreach(Character c in referencedChars) {
+                    if(cmd.getModded())
+                        cmd.calcMod(c);
+
+                    if(cmd.getDie()) {
+                        processDieCommand(cmd, d, c);
+                    }
+                    else if(cmd.getVarEdit()) {
+                        Character temp = c;
+                        printLine(temp.Name + ": ");
+                        editCharStats(cmd, cmd.getMod(), ref temp);
+                        printLine("");
+                    }
+                    else {
+                        Character temp = c;
+                        char_control.setChar(ref temp);
+                        openCharWindow();
+                    }
+                }
+            }
+            else if(cmd.getDie()) {
+                if(cmd.getModded())
+                    cmd.calcMod();
+
+                processDieCommand(cmd, d);
+            }
+            else {
+                printLine("Command not recognized.");
+            }
+
         }
 
         private void fillRollResults(Command cmd, Die d, ref List<int> rolls, ref int total) {
@@ -210,88 +324,14 @@ namespace BagOfHolding
 
         private void editCharStats(Command cmd, int total, ref Character referencedChar) {
             char op = cmd.getVar()[cmd.getVar().Length - 1];
-            string var = cmd.getVar().Remove(cmd.getVar().Length - 1).ToLower();
-            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
-
+            string var = cmd.getVar().Remove(cmd.getVar().Length - 1);
             int preEdit = 0;
             int postEdit = 0;
 
             referencedChar.statEditFromCommand(var, op, total, ref preEdit, ref postEdit);
 
-            party_control.updateUIData();
+            string composite = "    [{0} was: {1, -5} is now: {2, -5}]";
             print(string.Format(composite, var, preEdit, postEdit));
-        }
-            #endregion
-
-            #region Command utility methods
-
-        private void processInput(string line) {
-            if(line != null && !line.Equals("")) {
-                Command cmd = new Command(line);
-                cmdHistory.Add(line);
-                printLine("=========================================================");
-
-                if(cmdHistory.Count > 1)
-                    historyIndex = cmdHistory.Count - 1;
-
-                if(line.Equals("char")) {
-                    openCharWindow();
-                }
-                else if(line.Equals("party")) {
-                    openPartyWindow();
-                }
-                else if(cmd.getSLine()[0].Equals("help")) {
-                    processHelpCommand(cmd);
-                }
-                else if(line.Equals("quit")) {
-                    Dispose();
-                }
-                else {
-                    processCommand(cmd);
-                }
-
-                /*if(c != null) {
-                    char_control.setChar(ref c);
-                    openCharWindow();
-                }
-                else if(sLine[0][0] == 'd' || sLine[0][0] == 'D') {
-                    processDieCommand(sLine);
-                } */
-            }
-        }
-
-        private void processCommand(Command cmd) {
-            List<Character> referencedChars;
-            printLine("");
-
-            if(cmd.getParty())
-                referencedChars = party;
-            else
-                referencedChars = charsFromCmd(cmd);
-
-            if(referencedChars.Count > 0) {
-                foreach(Character c in referencedChars) {
-                    if(cmd.getModded())
-                        cmd.calcMod(c);
-                        
-                    if(cmd.getDie()) {
-                        processDieCommand(cmd, d, c);
-                    }
-                    else if(cmd.getVarEdit()) {
-                        Character temp = c;
-                        printLine(temp.getName() + ": ");
-                        editCharStats(cmd, cmd.getMod(), ref temp);
-                        printLine("");
-                    }
-                }
-            }
-            else if(cmd.getDie()) {
-                if(cmd.getModded())
-                    cmd.calcMod();
-
-                processDieCommand(cmd, d);
-            }
-
         }
 
         private void processDieCommand(Command cmd, Die d) {
@@ -309,7 +349,7 @@ namespace BagOfHolding
             int mod = cmd.getMod();
 
             fillRollResults(cmd, d, ref rolls, ref total);
-            printLine(c.getName() + "'s roll results: ");
+            printLine(c.Name + "'s roll results: ");
 
             if(cmd.getVarEdit()) 
                 editCharStats(cmd, total, ref c);
@@ -353,6 +393,7 @@ namespace BagOfHolding
 
             printLine("\n");
         }
+
         #endregion
 
         #region Print statement methods
@@ -388,18 +429,21 @@ namespace BagOfHolding
                 if(rolls.Count > 1)
                     printLine("");
             }
+
             if(cmd.getSum()) {
-                printLine("\nTotal: " + (total - cmd.getMod()) + " (+" + cmd.getMod() + ") = " + total);
+                if(cmd.getMultiMod())
+                    printLine("\nTotal: " + (total - (cmd.getMod() * cmd.getRollCount())) + " (+" + cmd.getMod() + ")* = " + total);
+                else
+                    printLine("\nTotal: " + (total - cmd.getMod()) + " (+" + cmd.getMod() + ") = " + total);
             }
             printLine("");
         }
 
         private void printOpeningStatement() {
             printFile("BOHTitle.txt");
-            printLine("\nBag of Holding Roleplaying console v1.0");
-            printLine("Developed by Matt Kronschnabel");
-            printLine("------------------------------------------");
-            printLine("Enter 'help' if you don't know what to do.\n");
+            printLine("\nBag of Holding Roleplaying console v1.2 Beta");
+            printLine("Enter 'help' if you don't know what to do.");
+            printLine("-----------------------------------------------\n");
         }
 
         private void printHelpStatement() {
@@ -412,6 +456,7 @@ namespace BagOfHolding
             printLine("Enter 'd#' to simulate a #-sided die roll.");
             printLine("Enter 'party' to open up the Party Window.");
             printLine("Enter 'char' to open up the Character Window.");
+            printLine("Enter 'color' to change your color settings.");
             printLine("Enter 'quit' to close the program.");
 
         }
@@ -478,9 +523,14 @@ namespace BagOfHolding
             printLine("     'D4500*5 s : Returns 5 numbers between [1-4500], as well as their sum.");
             printLine("     'd2*23 sum : Returns 23 numbers between [1-2], as well as their sum.");
         }
+
         #endregion
 
         #region Event Handlers
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
 
         private void console_box_KeyDown(object sender, KeyEventArgs e) {
             if(isArrowKey(e.KeyCode)) {
@@ -490,11 +540,25 @@ namespace BagOfHolding
                 }
                 else if(e.KeyCode == Keys.Up && historyIndex >= 0) {
                     e.SuppressKeyPress = true;
-                    setCurrentLine(cmdHistory[historyIndex--]);
+
+                    if(cmdHistory.Count > 0) {
+                        if(historyIndex > 0)
+                            historyIndex -= 1;
+
+                        setCurrentLine(cmdHistory[historyIndex]);
+                    }
                 }
-                else if(e.KeyCode == Keys.Down && historyIndex < cmdHistory.Count - 1) {
+                else if(e.KeyCode == Keys.Down) {
                     e.SuppressKeyPress = true;
-                    setCurrentLine(cmdHistory[historyIndex++]);
+
+                    if(historyIndex < cmdHistory.Count) {
+                        historyIndex += 1;
+
+                        if(historyIndex == cmdHistory.Count)
+                            setCurrentLine("");
+                        else
+                            setCurrentLine(cmdHistory[historyIndex]);
+                    }
                 }
             }
             else if(e.KeyCode == Keys.Enter) {
@@ -511,8 +575,13 @@ namespace BagOfHolding
         }
 
         private void console_box_DoubleClick(object sender, EventArgs e) {
-            BringToFront();
+            foreach(Control c in Controls) {
+                Console.WriteLine(c.Name);
+                if(c.Name.Equals("Window"))
+                    c.Visible = false;
+            }
         }
+
         #endregion
     }
 }

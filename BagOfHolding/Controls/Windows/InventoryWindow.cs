@@ -14,11 +14,9 @@ namespace BagOfHolding
     {
         bool initialized;
         Character character;
-
         char mode = 'i';
 
         public InventoryWindow() {
-            Dock = DockStyle.Fill;
             character = new Character();
         }
 
@@ -26,6 +24,7 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             Show();
             Visible = true;
@@ -36,10 +35,12 @@ namespace BagOfHolding
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
         }
 
         private void updateUIData() {
-            inventory_label.Text = character.getName() + "'s Inventory";
+            inventory_label.Text = character.Name + "'s Inventory";
             item_panel.Controls.Clear();
 
             if(mode == 'i') {
@@ -47,7 +48,7 @@ namespace BagOfHolding
                 weapon_butt.BackColor = Color.Gainsboro;
                 armor_butt.BackColor = Color.Gainsboro;
 
-                foreach(Item i in character.getInv()) {
+                foreach(Item i in character.Inv) {
                     item_panel.Controls.Add(new ItemBox(i));
                 }
             }
@@ -56,7 +57,7 @@ namespace BagOfHolding
                 weapon_butt.BackColor = Color.LightGreen;
                 armor_butt.BackColor = Color.Gainsboro;
 
-                foreach(Weapon w in character.getWeapons()) {
+                foreach(Weapon w in character.Weapons) {
                     item_panel.Controls.Add(new WeaponBox(w));
                 }
             }
@@ -65,7 +66,7 @@ namespace BagOfHolding
                 weapon_butt.BackColor = Color.Gainsboro;
                 armor_butt.BackColor = Color.LightBlue;
 
-                foreach(Armor a in character.getArmor()) {
+                foreach(Armor a in character.Armor) {
                     item_panel.Controls.Add(new ArmorBox(a));
                 }
             }
@@ -73,38 +74,47 @@ namespace BagOfHolding
 
         private void updateCharData() {
             if(mode == 'i') {
-                character.getInv().Clear();
+                character.Inv.Clear();
                 foreach(ItemBox i in item_panel.Controls) {
-                    character.getInv().Add(i.getItem());
+                    character.Inv.Add(i.getItem());
                 }
             }
             else if(mode == 'w') {
-                character.getWeapons().Clear();
+                character.Weapons.Clear();
                 foreach(WeaponBox w in item_panel.Controls) {
-                    character.getWeapons().Add(w.getWeapon());
+                    character.Weapons.Add(w.getWeapon());
                 }
             }
             else if(mode == 'a') {
-                character.getArmor().Clear();
+                character.Armor.Clear();
                 foreach(ArmorBox a in item_panel.Controls) {
-                    character.getArmor().Add(a.getArmor());
+                    character.Armor.Add(a.getArmor());
                 }
             }
         }
+
+        #region Utility methods
 
         private void addNewItem() {
             if(mode == 'i') {
-                character.getInv().Add(new Item());
+                character.Inv.Add(new Item());
             }
             else if(mode == 'w') {
-                character.getWeapons().Add(new Weapon());
+                character.Weapons.Add(new Weapon());
             }
             else if(mode == 'a') {
-                character.getArmor().Add(new Armor());
+                character.Armor.Add(new Armor());
             }
         }
 
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
+
+        #endregion
+
         #region Get & Set methods
+
         public Character getChar() {
             return character;
         }
@@ -112,9 +122,14 @@ namespace BagOfHolding
         public void setChar(ref Character c) {
             character = c;
         }
-#endregion
+
+        #endregion
 
         #region Event Handlers
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
+
         private void item_butt_Click(object sender, EventArgs e) {
             updateCharData();
             mode = 'i';
@@ -190,7 +205,6 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
-
 
         private void saveCharacterToolStripMenuItem_Click(object sender, EventArgs e) {
             character.saveChar();

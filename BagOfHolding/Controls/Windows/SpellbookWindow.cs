@@ -16,7 +16,6 @@ namespace BagOfHolding
         Character character;
 
         public SpellbookWindow() {
-            Dock = DockStyle.Fill;
             character = new Character();
         }
 
@@ -24,27 +23,30 @@ namespace BagOfHolding
             if(!initialized)
                 startup();
 
+            setColors();
             updateUIData();
             Show();
             Visible = true;
             BringToFront();
             IsAccessible = true;
-            Height += 1;
         }
 
         private void startup() {
             initialized = true;
             InitializeComponent();
+            Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
+            Dock = DockStyle.Fill;
         }
 
         private void updateUIData() {
-            spell_book_label.Text = character.getName() + "'s Spellbook";
+            spell_book_label.Text = character.Name + "'s Spellbook";
             spell_panel.Controls.Clear();
-            foreach(Spell s in character.getSpellbook()) {
+
+            foreach(Spell s in character.Spellbook) {
                 spell_panel.Controls.Add(new SpellBox(s));
             }
 
-            int[] spellsLeft = character.getSpellsLeft();
+            int[] spellsLeft = character.SpellsLeft;
             lvl0_box.Value = spellsLeft[0];
             lvl1_box.Value = spellsLeft[1];
             lvl2_box.Value = spellsLeft[2];
@@ -58,14 +60,16 @@ namespace BagOfHolding
         }
 
         private void updateCharData() {
-            character.getSpellbook().Clear();
+            character.Spellbook.Clear();
 
             foreach(SpellBox s in spell_panel.Controls) {
-                character.getSpellbook().Add(s.getSpell());
+                character.Spellbook.Add(s.getSpell());
             }
 
-            character.setSpellsLeft(getSpellsLeftValues());
+            character.SpellsLeft = getSpellsLeftValues();
         }
+
+        #region Utility methods
 
         private int[] getSpellsLeftValues() {
             int[] spellsLeft = new int[10];
@@ -85,9 +89,15 @@ namespace BagOfHolding
         }
 
         private void addNewSpell() {
-            character.getSpellbook().Add(new Spell());
+            character.Spellbook.Add(new Spell());
             updateUIData();
         }
+
+        private void setColors() {
+            menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
+        }
+
+        #endregion
 
         #region Get & Set methods
         public Character getChar() {
@@ -102,8 +112,12 @@ namespace BagOfHolding
 
         #region Event Handlers
 
+        private void settingsChanged(object sender, PropertyChangedEventArgs e) {
+            setColors();
+        }
+
         private void spells_left_ValueChanged(object sender, EventArgs e) {
-            character.setSpellsLeft(getSpellsLeftValues());
+            character.SpellsLeft = getSpellsLeftValues();
         }
 
         private void newItemToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -160,6 +174,7 @@ namespace BagOfHolding
                 updateUIData();
             }
         }
+
         #endregion
     }
 }

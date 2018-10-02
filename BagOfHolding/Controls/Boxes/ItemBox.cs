@@ -27,17 +27,19 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            item_name_box.Text = item.getName();
-            weight_box.Text = item.getWeight();
-            cost_box.Text = item.getCost();
-            notes_box.Lines = item.getNotes().ToArray();
-            if(item.getEquipped())
+            item_name_box.Text = item.Name;
+            weight_box.Text = item.Weight;
+            cost_box.Text = item.Cost;
+            notes_box.Lines = item.Notes.ToArray();
+            if(item.Equipped)
                 equipped_box.CheckState = CheckState.Checked;
             else
                 equipped_box.CheckState = CheckState.Unchecked;
-            setForeColor(item.getForeColor());
-            setBackColor(item.getBackColor());
+            setForeColor(item.ForeColor);
+            setBackColor(item.BackColor);
         }
+
+        #region Utility methods
 
         private void setForeColor(Color f) {
             item_name_box.ForeColor = f;
@@ -61,11 +63,26 @@ namespace BagOfHolding
             return hoverArea.Contains(p);
         }
 
+        #endregion
+
+        #region Get & Set methods
+
+        public Item getItem() {
+            return item;
+        }
+
+        public void setItem(Item i) {
+            item = i;
+        }
+
+        #endregion
+
         #region Event Handlers
+
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                item.setForeColor(colorPicker.Color);
+                item.ForeColor = colorPicker.Color;
                 updateUIData();
             }
         }
@@ -73,29 +90,13 @@ namespace BagOfHolding
         private void item_table_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                item.setBackColor(colorPicker.Color);
+                item.BackColor = colorPicker.Color;
                 updateUIData();
             }
         }
 
-        private void item_name_box_TextChanged(object sender, EventArgs e) {
-            item.setName(item_name_box.Text);
-        }
-
-        private void weight_box_TextChanged(object sender, EventArgs e) {
-            item.setWeight(weight_box.Text);
-        }
-
-        private void cost_box_TextChanged(object sender, EventArgs e) {
-            item.setCost(cost_box.Text);
-        }
-
-        private void notes_box_TextChanged(object sender, EventArgs e) {
-            item.setNotes(notes_box.Lines.ToList());
-        }
-
         private void equipped_box_CheckedChanged(object sender, EventArgs e) {
-            item.setEquipped(equipped_box.Checked);
+            item.Equipped = equipped_box.Checked;
         }
 
         private void item_table_MouseMove(object sender, MouseEventArgs e) {
@@ -108,16 +109,28 @@ namespace BagOfHolding
         private void del_butt_Click(object sender, EventArgs e) {
             Dispose();
         }
-        #endregion
 
-        #region Get & Set methods
-        public Item getItem() {
-            return item;
+        #region TextChanged events
+
+        private void item_name_box_TextChanged(object sender, EventArgs e) {
+            item.Name = item_name_box.Text;
         }
 
-        public void setItem(Item i) {
-            item = i;
+        private void weight_box_TextChanged(object sender, EventArgs e) {
+            item.Weight = weight_box.Text;
         }
+
+        private void cost_box_TextChanged(object sender, EventArgs e) {
+            item.Cost = cost_box.Text;
+        }
+
+        private void notes_box_TextChanged(object sender, EventArgs e) {
+            item.Notes = notes_box.Lines.ToList();
+        }
+
         #endregion
+
+        #endregion
+
     }
 }
