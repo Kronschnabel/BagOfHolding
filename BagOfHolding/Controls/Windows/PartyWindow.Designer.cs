@@ -57,7 +57,6 @@
             this.main_panel.Name = "main_panel";
             this.main_panel.Size = new System.Drawing.Size(853, 507);
             this.main_panel.TabIndex = 1;
-            this.main_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.main_panel_Paint);
             // 
             // menu_strip
             // 
@@ -179,7 +178,6 @@
             this.party_label.Size = new System.Drawing.Size(55, 23);
             this.party_label.TabIndex = 2;
             this.party_label.Text = "Party";
-            this.party_label.Click += new System.EventHandler(this.party_label_Click);
             // 
             // party_panel
             // 
@@ -193,7 +191,6 @@
             this.party_panel.Size = new System.Drawing.Size(853, 443);
             this.party_panel.TabIndex = 0;
             this.party_panel.WrapContents = false;
-            this.party_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.party_panel_Paint);
             // 
             // PartyWindow
             // 
@@ -202,9 +199,6 @@
             this.Controls.Add(this.main_panel);
             this.Name = "PartyWindow";
             this.Size = new System.Drawing.Size(853, 507);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PartyWindow_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PartyWindow_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PartyWindow_KeyUp);
             this.main_panel.ResumeLayout(false);
             this.main_panel.PerformLayout();
             this.menu_strip.ResumeLayout(false);

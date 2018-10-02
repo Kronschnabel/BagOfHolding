@@ -84,7 +84,6 @@ namespace BagOfHolding
             BringToFront();
 
             cmdHistory = new List<string>();
-            console_box.Size = Screen.PrimaryScreen.WorkingArea.Size;
 
             Properties.Settings.Default.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
 
@@ -173,7 +172,7 @@ namespace BagOfHolding
             string[] splitName;
 
             foreach(Character c in party) {
-                splitName = c.getName().ToLower().Split(' ');
+                splitName = c.Name.ToLower().Split(' ');
                 if(splitName.Contains(s))
                     return c;
             }
@@ -278,7 +277,7 @@ namespace BagOfHolding
                     }
                     else if(cmd.getVarEdit()) {
                         Character temp = c;
-                        printLine(temp.getName() + ": ");
+                        printLine(temp.Name + ": ");
                         editCharStats(cmd, cmd.getMod(), ref temp);
                         printLine("");
                     }
@@ -350,7 +349,7 @@ namespace BagOfHolding
             int mod = cmd.getMod();
 
             fillRollResults(cmd, d, ref rolls, ref total);
-            printLine(c.getName() + "'s roll results: ");
+            printLine(c.Name + "'s roll results: ");
 
             if(cmd.getVarEdit()) 
                 editCharStats(cmd, total, ref c);

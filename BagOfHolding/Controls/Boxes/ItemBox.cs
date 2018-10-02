@@ -27,16 +27,16 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            item_name_box.Text = item.getName();
-            weight_box.Text = item.getWeight();
-            cost_box.Text = item.getCost();
-            notes_box.Lines = item.getNotes().ToArray();
-            if(item.getEquipped())
+            item_name_box.Text = item.Name;
+            weight_box.Text = item.Weight;
+            cost_box.Text = item.Cost;
+            notes_box.Lines = item.Notes.ToArray();
+            if(item.Equipped)
                 equipped_box.CheckState = CheckState.Checked;
             else
                 equipped_box.CheckState = CheckState.Unchecked;
-            setForeColor(item.getForeColor());
-            setBackColor(item.getBackColor());
+            setForeColor(item.ForeColor);
+            setBackColor(item.BackColor);
         }
 
         #region Utility methods
@@ -82,7 +82,7 @@ namespace BagOfHolding
         private void item_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                item.setForeColor(colorPicker.Color);
+                item.ForeColor = colorPicker.Color;
                 updateUIData();
             }
         }
@@ -90,13 +90,13 @@ namespace BagOfHolding
         private void item_table_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                item.setBackColor(colorPicker.Color);
+                item.BackColor = colorPicker.Color;
                 updateUIData();
             }
         }
 
         private void equipped_box_CheckedChanged(object sender, EventArgs e) {
-            item.setEquipped(equipped_box.Checked);
+            item.Equipped = equipped_box.Checked;
         }
 
         private void item_table_MouseMove(object sender, MouseEventArgs e) {
@@ -113,19 +113,19 @@ namespace BagOfHolding
         #region TextChanged events
 
         private void item_name_box_TextChanged(object sender, EventArgs e) {
-            item.setName(item_name_box.Text);
+            item.Name = item_name_box.Text;
         }
 
         private void weight_box_TextChanged(object sender, EventArgs e) {
-            item.setWeight(weight_box.Text);
+            item.Weight = weight_box.Text;
         }
 
         private void cost_box_TextChanged(object sender, EventArgs e) {
-            item.setCost(cost_box.Text);
+            item.Cost = cost_box.Text;
         }
 
         private void notes_box_TextChanged(object sender, EventArgs e) {
-            item.setNotes(notes_box.Lines.ToList());
+            item.Notes = notes_box.Lines.ToList();
         }
 
         #endregion

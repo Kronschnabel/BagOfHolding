@@ -15,7 +15,6 @@ namespace BagOfHolding
         int maxDex;
         int armorCheckPenalty;
         int spellFail;
-        Image armorImage;
 
         public Armor() {
             new Item();
@@ -34,7 +33,7 @@ namespace BagOfHolding
         #region To\From string
 
         public new string toString() {
-            return getName() + "|" + getWeight() + "|" + getCost() + "|" + getEquipped() + "|" + size + "|" + speed + "|" + acBonus + "|" + maxDex + "|" + armorCheckPenalty + "|" + spellFail + "|" + getForeColor().ToArgb() + "|" + getBackColor().ToArgb() + notesToString();
+            return Name + "|" + Weight + "|" + Cost + "|" + Equipped + "|" + size + "|" + speed + "|" + acBonus + "|" + maxDex + "|" + armorCheckPenalty + "|" + spellFail + "|" + ForeColor.ToArgb() + "|" + BackColor.ToArgb() + notesToString();
         }
 
         public new void fromString(string l) {
@@ -43,13 +42,13 @@ namespace BagOfHolding
             int fC;
             int bC;
 
-            setName(sLine[0]);
-            setWeight(sLine[1]);
-            setCost(sLine[2]);
+            Name = sLine[0];
+            Weight = sLine[1];
+            Cost = sLine[2];
             if(bool.TryParse(sLine[3], out e))
-                setEquipped(e);
+                Equipped = e;
             else
-                setEquipped(false);
+                Equipped = false;
             size = sLine[4];
             speed = sLine[5];
             if(!int.TryParse(sLine[6], out acBonus))
@@ -61,77 +60,75 @@ namespace BagOfHolding
             if(!int.TryParse(sLine[9], out spellFail))
                 spellFail = 0;
             if(int.TryParse(sLine[10], out fC))
-                setForeColor(Color.FromArgb(fC));
+                ForeColor = Color.FromArgb(fC);
             else
-                setForeColor(Color.Black);
+                ForeColor = Color.Black;
             if(int.TryParse(sLine[11], out bC))
-                setBackColor(Color.FromArgb(bC));
+                BackColor = Color.FromArgb(bC);
             else
-                setBackColor(Color.Gainsboro);
+                BackColor = Color.Gainsboro;
 
             foreach(string n in sLine.Skip(12)) {
-                getNotes().Add(n);
+                Notes.Add(n);
             }
         }
 
-#endregion
+        #endregion
 
         #region Get & Set methods
 
-        public string getSize() {
-            return size;
+        public string Size {
+            get {
+                return size;
+            }
+            set {
+                size = value;
+            }
         }
 
-        public string getSpeed() {
-            return speed;
+        public string Speed {
+            get {
+                return speed;
+            }
+            set {
+                speed = value;
+            }
         }
 
-        public int getACBonus() {
-            return acBonus;
+        public int ACBonus {
+            get {
+                return acBonus;
+            }
+            set {
+                acBonus = value;
+            }
+        }
+    
+        public int MaxDex {
+            get {
+                return maxDex;
+            }
+            set {
+                maxDex = value;
+            }
         }
 
-        public int getMaxDex() {
-            return maxDex;
+        public int ACP {
+            get {
+                return armorCheckPenalty;
+            }
+            set {
+                armorCheckPenalty = value;
+            }
         }
 
-        public int getPenalty() {
-            return armorCheckPenalty;
-        }
-
-        public int getSpellFail() {
-            return spellFail;
-        }
-
-        public Image getImage() {
-            return armorImage;
-        }
-
-        public void setSize(string s) {
-            size = s;
-        }
-
-        public void setSpeed(string s) {
-            speed = s;
-        }
-
-        public void setACBonus(int a) {
-            acBonus = a;
-        }
-
-        public void setMaxDex(int d) {
-            maxDex = d;
-        }
-
-        public void setPenalty(int p) {
-            armorCheckPenalty = p;
-        }
-
-        public void setSpellFail(int s) {
-            spellFail = s;
-        }
-
-        public void setImage(Image i) {
-            armorImage = i;
+        public int SpellFail {
+            get {
+                return spellFail;
+            }
+            set {
+                spellFail = value;
+            }
         }
 
 #endregion

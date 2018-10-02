@@ -82,6 +82,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(95)))), ((int)(((byte)(135)))));
             this.Controls.Add(this.back_panel);
+            this.DoubleBuffered = true;
             this.Name = "Window";
             this.Size = new System.Drawing.Size(900, 500);
             this.back_panel.ResumeLayout(false);

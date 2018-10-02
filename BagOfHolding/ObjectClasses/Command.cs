@@ -106,103 +106,103 @@ namespace BagOfHolding
 
                 switch(var) {
                     case "str": {
-                            mod += (neg * c.getStr().getMod());
+                            mod += (neg * c.Strength.Mod);
                             break;
                         }
                     case "dex": {
-                            mod += (neg * c.getDex().getMod());
+                            mod += (neg * c.Dexterity.Mod);
                             break;
                         }
                     case "con": {
-                            mod += (neg * c.getCon().getMod());
+                            mod += (neg * c.Constitution.Mod);
                             break;
                         }
                     case "int": {
-                            mod += (neg * c.getInt().getMod());
+                            mod += (neg * c.Intelligence.Mod);
                             break;
                         }
                     case "wis": {
-                            mod += (neg * c.getWis().getMod());
+                            mod += (neg * c.Wisdom.Mod);
                             break;
                         }
                     case "cha": {
-                            mod += (neg * c.getCha().getMod());
+                            mod += (neg * c.Charisma.Mod);
                             break;
                         }
                     case "strt": {
-                            mod += (neg * c.getStr().getTotal());
+                            mod += (neg * c.Strength.Total);
                             break;
                         }
                     case "dext": {
-                            mod += (neg * c.getDex().getTotal());
+                            mod += (neg * c.Dexterity.Total);
                             break;
                         }
                     case "cont": {
-                            mod = (neg * c.getCon().getTotal());
+                            mod = (neg * c.Constitution.Total);
                             break;
                         }
                     case "intt": {
-                            mod += (neg * c.getInt().getTotal());
+                            mod += (neg * c.Intelligence.Total);
                             break;
                         }
                     case "wist": {
-                            mod += (neg * c.getWis().getTotal());
+                            mod += (neg * c.Wisdom.Total);
                             break;
                         }
                     case "chat": {
-                            mod += (neg * c.getCha().getTotal());
+                            mod += (neg * c.Charisma.Total);
                             break;
                         }
                     case "will": {
-                            mod += (neg * c.getWill());
+                            mod += (neg * c.Will);
                             break;
                         }
                     case "ref": {
-                            mod += (neg * c.getReflex());
+                            mod += (neg * c.Reflex);
                             break;
                         }
                     case "fort": {
-                            mod += (neg * c.getFortitude());
+                            mod += (neg * c.Fortitude);
                             break;
                         }
                     case "bab": {
-                            mod += (neg * c.getBab());
+                            mod += (neg * c.BAB);
                             break;
                         }
                     case "mel": {
-                            mod += (neg * c.getMelee());
+                            mod += (neg * c.Melee);
                             break;
                         }
                     case "ran": {
-                            mod += (neg * c.getRanged());
+                            mod += (neg * c.Ranged);
                             break;
                         }
                     case "ac": {
-                            mod += (neg * c.getAC());
+                            mod += (neg * c.AC);
                             break;
                         }
                     case "ff": {
-                            mod += (neg * c.getFF());
+                            mod += (neg * c.FF);
                             break;
                         }
                     case "touch": {
-                            mod += (neg * c.getTouch());
+                            mod += (neg * c.Touch);
                             break;
                         }
                     case "init": {
-                            mod += (neg * c.getInit());
+                            mod += (neg * c.Init);
                             break;
                         }
                     case "spd": {
-                            mod += (neg * c.getSpeed());
+                            mod += (neg * c.Speed);
                             break;
                         }
                     case "hp": {
-                            mod += (neg * c.getHP());
+                            mod += (neg * c.HP);
                             break;
                         }
                     case "hpt": {
-                            mod += (neg * c.getMaxHP());
+                            mod += (neg * c.MaxHP);
                             break;
                         }
                     default: {

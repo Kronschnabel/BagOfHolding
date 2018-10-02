@@ -58,7 +58,7 @@
             this.weapon_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.weapon_table.ColumnCount = 2;
             this.weapon_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.weapon_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
+            this.weapon_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.weapon_table.Controls.Add(this.del_butt, 0, 0);
             this.weapon_table.Controls.Add(this.item_info_table, 1, 0);
             this.weapon_table.Controls.Add(this.panel1, 1, 1);
@@ -81,7 +81,7 @@
             this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
-            this.del_butt.Location = new System.Drawing.Point(8, 7);
+            this.del_butt.Location = new System.Drawing.Point(7, 7);
             this.del_butt.Name = "del_butt";
             this.del_butt.Size = new System.Drawing.Size(21, 21);
             this.del_butt.TabIndex = 6;
@@ -96,11 +96,11 @@
             this.item_info_table.ColumnCount = 3;
             this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.27586F));
             this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.72414F));
-            this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.item_info_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 104F));
             this.item_info_table.Controls.Add(this.weight_box, 0, 0);
             this.item_info_table.Controls.Add(this.cost_box, 1, 0);
             this.item_info_table.Controls.Add(this.item_name_box, 0, 0);
-            this.item_info_table.Location = new System.Drawing.Point(40, 4);
+            this.item_info_table.Location = new System.Drawing.Point(39, 4);
             this.item_info_table.Name = "item_info_table";
             this.item_info_table.RowCount = 1;
             this.item_info_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -113,7 +113,7 @@
             this.weight_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.weight_box.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.weight_box.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.weight_box.Location = new System.Drawing.Point(207, 4);
+            this.weight_box.Location = new System.Drawing.Point(205, 4);
             this.weight_box.Name = "weight_box";
             this.weight_box.Size = new System.Drawing.Size(87, 20);
             this.weight_box.TabIndex = 2;
@@ -127,9 +127,9 @@
             this.cost_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cost_box.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cost_box.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cost_box.Location = new System.Drawing.Point(301, 4);
+            this.cost_box.Location = new System.Drawing.Point(299, 4);
             this.cost_box.Name = "cost_box";
-            this.cost_box.Size = new System.Drawing.Size(97, 20);
+            this.cost_box.Size = new System.Drawing.Size(99, 20);
             this.cost_box.TabIndex = 1;
             this.cost_box.Text = "cost";
             this.cost_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -143,7 +143,7 @@
             this.item_name_box.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.item_name_box.Location = new System.Drawing.Point(4, 4);
             this.item_name_box.Name = "item_name_box";
-            this.item_name_box.Size = new System.Drawing.Size(196, 20);
+            this.item_name_box.Size = new System.Drawing.Size(194, 20);
             this.item_name_box.TabIndex = 0;
             this.item_name_box.Text = "itemName";
             this.item_name_box.TextChanged += new System.EventHandler(this.item_name_box_TextChanged);
@@ -154,9 +154,9 @@
             this.panel1.Controls.Add(this.weapon_info_table);
             this.panel1.Controls.Add(this.notes_box);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(40, 39);
+            this.panel1.Location = new System.Drawing.Point(39, 39);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(407, 132);
+            this.panel1.Size = new System.Drawing.Size(408, 132);
             this.panel1.TabIndex = 2;
             // 
             // weapon_info_table

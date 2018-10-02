@@ -27,24 +27,24 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            skill_name_box.Text = skill.getName();
+            skill_name_box.Text = skill.Name;
             ability_box.Text = getAbilityString();
-            total_box.Text = skill.getTotal().ToString();
-            ranks_box.Value = skill.getRanks();
-            ability_mod_box.Text = skill.getAbilityMod().ToString();
-            if(skill.getTrained())
+            total_box.Text = skill.Total.ToString();
+            ranks_box.Value = skill.Ranks;
+            ability_mod_box.Text = skill.AbilityMod.ToString();
+            if(skill.Trained)
                 trained_box.Text = "3";
             else
                 trained_box.Text = "0";
-            miscMod1_box.Text = skill.getMiscMod1().ToString();
-            miscMod2_box.Text = skill.getMiscMod2().ToString();
-            class_skill_box.Checked = skill.getClassSkill();
+            miscMod1_box.Text = skill.MiscMod1.ToString();
+            miscMod2_box.Text = skill.MiscMod2.ToString();
+            class_skill_box.Checked = skill.ClassSkill;
         }
 
         #region Utility methods
 
         private string getAbilityString() {
-            switch(skill.getAbilityType()) {
+            switch(skill.AbilityType) {
                 case 0:
                     return "STR";
                 case 1:
@@ -125,26 +125,26 @@ namespace BagOfHolding
         private void ability_box_Leave(object sender, EventArgs e) {
             switch(ability_box.Text.ToUpper()) {
                 case "STR":
-                    skill.setAbilityType(0);
+                    skill.AbilityType = 0;
                     break;
                 case "DEX":
-                    skill.setAbilityType(1);
+                    skill.AbilityType = 1;
                     break;
                 case "CON":
-                    skill.setAbilityType(2);
+                    skill.AbilityType = 2;
                     break;
                 case "INT":
-                    skill.setAbilityType(3);
+                    skill.AbilityType = 3;
                     break;
                 case "WIS":
-                    skill.setAbilityType(4);
+                    skill.AbilityType = 4;
                     break;
                 case "CHA":
-                    skill.setAbilityType(5);
+                    skill.AbilityType = 5;
                     break;
                 default: {
                         ability_box.Text = "STR";
-                        skill.setAbilityType(0);
+                        skill.AbilityType = 0;
                         break;
                     }
             }
@@ -153,20 +153,20 @@ namespace BagOfHolding
         #region ValueChanged events
 
         private void skill_name_box_TextChanged(object sender, EventArgs e) {
-            skill.setName(skill_name_box.Text);
+            skill.Name = skill_name_box.Text;
         }
 
         private void ranks_box_ValueChanged(object sender, EventArgs e) {
-            skill.setRanks((int) ranks_box.Value);
+            skill.Ranks = (int) ranks_box.Value;
             updateUIData();
         }
 
         private void miscMod1_box_TextChanged(object sender, EventArgs e) {
             int m;
             if(int.TryParse(miscMod1_box.Text, out m))
-                skill.setMiscMod1(m);
+                skill.MiscMod1 = m;
             else
-                skill.setMiscMod1(0);
+                skill.MiscMod1 = 0;
 
             updateUIData();
         }
@@ -174,15 +174,15 @@ namespace BagOfHolding
         private void miscMod2_box_TextChanged(object sender, EventArgs e) {
             int m;
             if(int.TryParse(miscMod2_box.Text, out m))
-                skill.setMiscMod2(m);
+                skill.MiscMod2 = m;
             else
-                skill.setMiscMod2(0);
+                skill.MiscMod2 = 0;
 
             updateUIData();
         }
 
         private void class_skill_box_CheckedChanged(object sender, EventArgs e) {
-            skill.setClassSkill(class_skill_box.Checked);
+            skill.ClassSkill = class_skill_box.Checked;
             updateUIData();
         }
 

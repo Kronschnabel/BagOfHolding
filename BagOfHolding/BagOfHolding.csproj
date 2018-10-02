@@ -60,6 +60,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combat\Camera.cs" />
+    <Compile Include="Combat\CombatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Combat\CombatWindow.Designer.cs">
+      <DependentUpon>CombatWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Combat\Tile.cs" />
     <Compile Include="Controls\Windows\SettingsWindow.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -157,6 +165,9 @@
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Combat\CombatWindow.resx">
+      <DependentUpon>CombatWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Boxes\ArmorBox.resx">
       <DependentUpon>ArmorBox.cs</DependentUpon>
     </EmbeddedResource>

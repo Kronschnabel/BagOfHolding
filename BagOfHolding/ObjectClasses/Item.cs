@@ -48,13 +48,13 @@ namespace BagOfHolding
             if(!bool.TryParse(sLine[3], out equipped))
                 equipped = false;
             if(int.TryParse(sLine[4], out fC))
-                setForeColor(Color.FromArgb(fC));
+                foreColor = Color.FromArgb(fC);
             else
-                setForeColor(Color.Black);
+                foreColor = Color.Black;
             if(int.TryParse(sLine[5], out bC))
-                setBackColor(Color.FromArgb(bC));
+                backColor = Color.FromArgb(bC);
             else
-                setBackColor(Color.Gainsboro);
+                backColor = Color.Gainsboro;
 
             notes.Clear();
             foreach(string n in sLine.Skip(6)) {
@@ -73,66 +73,73 @@ namespace BagOfHolding
             return retString;
         }
 
-#endregion
+        #endregion
 
         #region Get & Set methods
 
-        public string getName() {
-            return name;
+        public string Name {
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
         }
 
-        public string getWeight() {
-            return weight;
+        public string Weight {
+            get {
+                return weight;
+            }
+            set {
+                weight = value;
+            }
         }
 
-        public string getCost() {
-            return cost;
+        public string Cost {
+            get {
+                return cost;
+            }
+            set {
+                cost = value;
+            }
         }
 
-        public List<string> getNotes() {
-            return notes;
+        public List<string> Notes {
+            get {
+                return notes;
+            }
+            set {
+                notes = value;
+            }
         }
 
-        public bool getEquipped() {
-            return equipped;
+        public bool Equipped {
+            get {
+                return equipped;
+            }
+            set {
+                equipped = value;
+            }
         }
 
-        public Color getForeColor() {
-            return foreColor;
+        public Color ForeColor {
+            get {
+                return foreColor;
+            }
+            set {
+                foreColor = value;
+            }
         }
 
-        public Color getBackColor() {
-            return backColor;
+        public Color BackColor {
+            get {
+                return backColor;
+            }
+            set {
+                backColor = value;
+            }
         }
-
-        public void setName(string n) {
-            name = n;
-        }
-
-        public void setWeight(string w) {
-            weight = w;
-        }
-
-        public void setCost(string c) {
-            cost = c;
-        }
-
-        public void setNotes(List<string> n) {
-            notes = n;
-        }
-
-        public void setEquipped(bool e) {
-            equipped = e;
-        }
-
-        public void setForeColor(Color f) {
-            foreColor = f;
-        }
-
-        public void setBackColor(Color b) {
-            backColor = b;
-        }
-
+        
 #endregion
     }
 }

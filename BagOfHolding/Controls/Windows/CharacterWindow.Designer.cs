@@ -514,6 +514,7 @@
             this.hp_text_panel.Name = "hp_text_panel";
             this.hp_text_panel.Size = new System.Drawing.Size(94, 18);
             this.hp_text_panel.TabIndex = 22;
+            this.hp_text_panel.DoubleClick += new System.EventHandler(this.hp_text_panel_DoubleClick);
             // 
             // max_hp_box
             // 
@@ -529,6 +530,7 @@
             this.max_hp_box.TabIndex = 9;
             this.max_hp_box.Text = "0";
             this.max_hp_box.TextChanged += new System.EventHandler(this.max_hp_box_TextChanged);
+            this.max_hp_box.DoubleClick += new System.EventHandler(this.max_hp_box_DoubleClick);
             // 
             // hp_box
             // 
@@ -545,6 +547,7 @@
             this.hp_box.Text = "0";
             this.hp_box.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.hp_box.TextChanged += new System.EventHandler(this.hp_box_TextChanged);
+            this.hp_box.DoubleClick += new System.EventHandler(this.hp_box_DoubleClick);
             // 
             // hp_slash_label
             // 
@@ -559,6 +562,7 @@
             this.hp_slash_label.Size = new System.Drawing.Size(11, 16);
             this.hp_slash_label.TabIndex = 0;
             this.hp_slash_label.Text = "/";
+            this.hp_slash_label.DoubleClick += new System.EventHandler(this.hp_slash_label_DoubleClick);
             // 
             // char_notes_box
             // 
@@ -1214,7 +1218,7 @@
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.class_table_1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.class_table_1.Controls.Add(this.f_class_1, 0, 0);
             this.class_table_1.Controls.Add(this.class_level_box_1, 2, 0);
             this.class_table_1.Controls.Add(this.class_hd_box_1, 3, 0);
@@ -1306,7 +1310,7 @@
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.class_table_2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.class_table_2.Controls.Add(this.f_class_2, 0, 0);
             this.class_table_2.Controls.Add(this.class_level_box_2, 2, 0);
             this.class_table_2.Controls.Add(this.class_hd_box_2, 3, 0);
@@ -1398,7 +1402,7 @@
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.class_table_3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.class_table_3.Controls.Add(this.f_class_3, 0, 0);
             this.class_table_3.Controls.Add(this.class_level_box_3, 2, 0);
             this.class_table_3.Controls.Add(this.class_hd_box_3, 3, 0);
@@ -1490,7 +1494,7 @@
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.class_table_4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.class_table_4.Controls.Add(this.f_class_4, 0, 0);
             this.class_table_4.Controls.Add(this.class_level_box_4, 2, 0);
             this.class_table_4.Controls.Add(this.class_hd_box_4, 3, 0);
@@ -1582,7 +1586,7 @@
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
+            this.class_table_5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.class_table_5.Controls.Add(this.f_class_5, 0, 0);
             this.class_table_5.Controls.Add(this.class_level_box_5, 2, 0);
             this.class_table_5.Controls.Add(this.class_hd_box_5, 3, 0);

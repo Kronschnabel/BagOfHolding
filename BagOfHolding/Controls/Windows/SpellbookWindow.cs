@@ -39,14 +39,14 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            spell_book_label.Text = character.getName() + "'s Spellbook";
+            spell_book_label.Text = character.Name + "'s Spellbook";
             spell_panel.Controls.Clear();
 
-            foreach(Spell s in character.getSpellbook()) {
+            foreach(Spell s in character.Spellbook) {
                 spell_panel.Controls.Add(new SpellBox(s));
             }
 
-            int[] spellsLeft = character.getSpellsLeft();
+            int[] spellsLeft = character.SpellsLeft;
             lvl0_box.Value = spellsLeft[0];
             lvl1_box.Value = spellsLeft[1];
             lvl2_box.Value = spellsLeft[2];
@@ -60,13 +60,13 @@ namespace BagOfHolding
         }
 
         private void updateCharData() {
-            character.getSpellbook().Clear();
+            character.Spellbook.Clear();
 
             foreach(SpellBox s in spell_panel.Controls) {
-                character.getSpellbook().Add(s.getSpell());
+                character.Spellbook.Add(s.getSpell());
             }
 
-            character.setSpellsLeft(getSpellsLeftValues());
+            character.SpellsLeft = getSpellsLeftValues();
         }
 
         #region Utility methods
@@ -89,7 +89,7 @@ namespace BagOfHolding
         }
 
         private void addNewSpell() {
-            character.getSpellbook().Add(new Spell());
+            character.Spellbook.Add(new Spell());
             updateUIData();
         }
 
@@ -117,7 +117,7 @@ namespace BagOfHolding
         }
 
         private void spells_left_ValueChanged(object sender, EventArgs e) {
-            character.setSpellsLeft(getSpellsLeftValues());
+            character.SpellsLeft = getSpellsLeftValues();
         }
 
         private void newItemToolStripMenuItem_Click(object sender, EventArgs e) {

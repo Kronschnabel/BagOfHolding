@@ -45,50 +45,55 @@ namespace BagOfHolding
                 favored = false;
         }
 
-#endregion
+        #endregion
 
         #region Get & Set methods
 
-        public string getName() {
-            return name;
+        public string Name {
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
         }
 
-        public int getLevel() {
-            return level;
+        public int Level {
+            get {
+                return level;
+            }
+            set {
+                level = value;
+            }
         }
 
-        public string getHitDie() {
-            return hitDie;
+        public string HitDie {
+            get {
+                return hitDie;
+            }
+            set {
+                hitDie = value;
+            }
         }
 
-        public int getSkillRanks() {
-            return skillRanks;
+        public int SkillRanks {
+            get {
+                return skillRanks;
+            }
+            set {
+                skillRanks = value;
+            }
         }
 
-        public bool getFavored() {
-            return favored;
+        public bool Favored {
+            get {
+                return favored;
+            }
+            set {
+                favored = value;
+            }
         }
-
-        public void setName(string n) {
-            name = n;
-        }
-
-        public void setLevel(int l) {
-            level = l;
-        }
-
-        public void setHitDie(string h) {
-            hitDie = h;
-        }
-
-        public void setSkillRanks(int s) {
-            skillRanks = s;
-        }
-
-        public void setFavored(bool f) {
-            favored = f;
-        }
-
+        
 #endregion
     }
 }

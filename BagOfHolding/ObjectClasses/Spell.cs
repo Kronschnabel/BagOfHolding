@@ -16,7 +16,6 @@ namespace BagOfHolding
         bool prepared;
         Color foreColor;
         Color backColor;
-        Image spellImage;
 
         public Spell() {
             setBlankSpell();
@@ -76,68 +75,67 @@ namespace BagOfHolding
 
         #region Get & Set methods
 
-        public string getName() {
-            return name;
+        public string Name {
+            get {
+                return name;
+            }
+            set {
+                name = value;
+            }
         }
 
-        public string getSchool() {
-            return school;
+        public string School {
+            get {
+                return school;
+            }
+            set {
+                school = value;
+            }
         }
 
-        public string getLevel() {
-            return level;
+        public string Level {
+            get {
+                return level;
+            }
+            set {
+                level = value;
+            }
         }
 
-        public List<string> getNotes() {
-            return notes;
+        public List<string> Notes {
+            get {
+                return notes;
+            }
+            set {
+                notes = value;
+            }
         }
 
-        public bool getPrepared() {
-            return prepared;
+        public bool Prepared {
+            get {
+                return prepared;
+            }
+            set {
+                prepared = value;
+            }
         }
 
-        public Color getForeColor() {
-            return foreColor;
+        public Color ForeColor {
+            get {
+                return foreColor;
+            }
+            set {
+                foreColor = value;
+            }
         }
 
-        public Color getBackColor() {
-            return backColor;
-        }
-
-        public Image getImage() {
-            return spellImage;
-        }
-
-        public void setName(string n) {
-            name = n;
-        }
-
-        public void setSchool(string s) {
-            school = s;
-        }
-
-        public void setLevel(string l) {
-            level = l;
-        }
-
-        public void setNotes(List<string> n) {
-            notes = n;
-        }
-
-        public void setPrepared(bool p) {
-            prepared = p;
-        }
-
-        public void setForeColor(Color f) {
-            foreColor = f;
-        }
-
-        public void setBackColor(Color b) {
-            backColor = b;
-        }
-
-        public void setImage(Image i) {
-            spellImage = i;
+        public Color BackColor {
+            get {
+                return backColor;
+            }
+            set {
+                backColor = value;
+            }
         }
 
         #endregion

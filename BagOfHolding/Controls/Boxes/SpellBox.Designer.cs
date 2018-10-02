@@ -43,7 +43,7 @@
             this.spell_table.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.spell_table.ColumnCount = 2;
             this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 394F));
+            this.spell_table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 395F));
             this.spell_table.Controls.Add(this.del_butt, 0, 1);
             this.spell_table.Controls.Add(this.spell_info_table, 1, 0);
             this.spell_table.Controls.Add(this.notes_box, 1, 1);
@@ -66,7 +66,7 @@
             this.del_butt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.del_butt.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.del_butt.Image = global::BagOfHolding.Properties.Resources.close_icon;
-            this.del_butt.Location = new System.Drawing.Point(18, 153);
+            this.del_butt.Location = new System.Drawing.Point(17, 153);
             this.del_butt.Name = "del_butt";
             this.del_butt.Size = new System.Drawing.Size(21, 21);
             this.del_butt.TabIndex = 7;
@@ -84,7 +84,7 @@
             this.spell_info_table.Controls.Add(this.school_box, 0, 1);
             this.spell_info_table.Controls.Add(this.level_box, 1, 1);
             this.spell_info_table.Controls.Add(this.spell_name_box, 0, 0);
-            this.spell_info_table.Location = new System.Drawing.Point(60, 4);
+            this.spell_info_table.Location = new System.Drawing.Point(59, 4);
             this.spell_info_table.Name = "spell_info_table";
             this.spell_info_table.RowCount = 2;
             this.spell_info_table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -138,7 +138,7 @@
             this.notes_box.BackColor = System.Drawing.Color.Gainsboro;
             this.notes_box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.notes_box.Font = new System.Drawing.Font("Bahnschrift Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notes_box.Location = new System.Drawing.Point(60, 71);
+            this.notes_box.Location = new System.Drawing.Point(59, 71);
             this.notes_box.Name = "notes_box";
             this.notes_box.Size = new System.Drawing.Size(383, 186);
             this.notes_box.TabIndex = 5;

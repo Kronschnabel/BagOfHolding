@@ -15,7 +15,7 @@ namespace BagOfHolding
     {
         bool initialized;
         List<Character> party;
-        bool ctrlDown;
+
 
         public PartyWindow() {
             party = new List<Character>();
@@ -44,6 +44,14 @@ namespace BagOfHolding
             Dock = DockStyle.Fill;
         }
 
+        #region Utility methods
+
+        private void saveParty() {
+            foreach(Character c in party) {
+                c.saveChar();
+            }
+        }
+
         public void updateUIData() {
             party_panel.Controls.Clear();
 
@@ -62,14 +70,6 @@ namespace BagOfHolding
             }
         }
 
-        #region Utility methods
-
-        private void saveParty() {
-            foreach(Character c in party) {
-                c.saveChar();
-            }
-        }
-
         private void setColors() {
             menu_strip.BackColor = Properties.Settings.Default.windowToolColor;
         }
@@ -77,6 +77,7 @@ namespace BagOfHolding
         #endregion
 
         #region Get & Set methods
+
         public List<Character> getParty() {
             return party;
         }
@@ -84,6 +85,7 @@ namespace BagOfHolding
         public void setParty(ref List<Character> p) {
             party = p;
         }
+
         #endregion
 
         #region Event Handlers
@@ -125,24 +127,6 @@ namespace BagOfHolding
             saveParty();
         }
 
-        private void PartyWindow_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Control)
-                ctrlDown = true;
-
-            if(ctrlDown && (e.KeyCode == Keys.S)) {
-                saveParty(); 
-            }
-        }
-
-        private void PartyWindow_KeyUp(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Control)
-                ctrlDown = false;
-        }
-
-        private void PartyWindow_KeyPress(object sender, KeyPressEventArgs e) {
-            
-        }
-
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e) {
             updatePartyData();
         }
@@ -156,18 +140,6 @@ namespace BagOfHolding
             saveParty();
             party.Clear();
             updateUIData();
-        }
-
-        private void party_panel_Paint(object sender, PaintEventArgs e) {
-
-        }
-
-        private void main_panel_Paint(object sender, PaintEventArgs e) {
-
-        }
-
-        private void party_label_Click(object sender, EventArgs e) {
-
         }
 
         #endregion

@@ -27,13 +27,13 @@ namespace BagOfHolding
         }
 
         private void updateUIData() {
-            spell_name_box.Text = spell.getName();
-            school_box.Text = spell.getSchool();
-            level_box.Text = spell.getLevel();
-            notes_box.Lines = spell.getNotes().ToArray();
-            prepared_box.Checked = spell.getPrepared();
-            setForeColor(spell.getForeColor());
-            setBackColor(spell.getBackColor());
+            spell_name_box.Text = spell.Name;
+            school_box.Text = spell.School;
+            level_box.Text = spell.Level;
+            notes_box.Lines = spell.Notes.ToArray();
+            prepared_box.Checked = spell.Prepared;
+            setForeColor(spell.ForeColor);
+            setBackColor(spell.BackColor);
         }
 
         #region Utility methods
@@ -77,7 +77,7 @@ namespace BagOfHolding
         private void spell_name_box_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                spell.setForeColor(colorPicker.Color);
+                spell.ForeColor = colorPicker.Color;
                 updateUIData();
             }
         }
@@ -85,7 +85,7 @@ namespace BagOfHolding
         private void spell_table_DoubleClick(object sender, EventArgs e) {
             ColorDialog colorPicker = new ColorDialog();
             if(colorPicker.ShowDialog() == DialogResult.OK) {
-                spell.setBackColor(colorPicker.Color);
+                spell.BackColor = colorPicker.Color;
                 updateUIData();
             }
         }
@@ -104,23 +104,23 @@ namespace BagOfHolding
         #region ValueChanged events
 
         private void spell_name_box_TextChanged(object sender, EventArgs e) {
-            spell.setName(spell_name_box.Text);
+            spell.Name = spell_name_box.Text;
         }
 
         private void school_box_TextChanged(object sender, EventArgs e) {
-            spell.setSchool(school_box.Text);
+            spell.School = school_box.Text;
         }
 
         private void level_box_TextChanged(object sender, EventArgs e) {
-            spell.setLevel(level_box.Text);
+            spell.Level = level_box.Text;
         }
 
         private void notes_box_TextChanged(object sender, EventArgs e) {
-            spell.setNotes(notes_box.Lines.ToList());
+            spell.Notes = notes_box.Lines.ToList();
         }
 
         private void prepared_box_CheckedChanged(object sender, EventArgs e) {
-            spell.setPrepared(prepared_box.Checked);
+            spell.Prepared = prepared_box.Checked;
         }
 
         #endregion

@@ -19,6 +19,7 @@ namespace BagOfHolding
 
         Point dragStartPos;
         bool windowDrag;
+        bool test = false;
 
         public Window(string t) {
             type = t;
